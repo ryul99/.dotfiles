@@ -13,12 +13,14 @@ Plugin 'autoclose'
 Plugin 'vim-airline/vim-airline'
 Plugin 'syntastic'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'vim-gitgutter' " 코드 변경내역 확인
-Plugin 'vim-fugitive'
-Plugin "ctrpvim/ctrlp.vim"
+Plugin 'airblade/vim-gitgutter' " 코드 변경내역 확인
+Plugin 'tpope/vim-fugitive'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
 
 " Indentation
 set autoindent
@@ -51,4 +53,3 @@ colorscheme jellybeans
 if has("syntax")
         syntax on
 endif
-
