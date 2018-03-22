@@ -16,7 +16,6 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-gitgutter' " 코드 변경내역 확인
 Plugin 'vim-fugitive'
 Plugin "ctrpvim/ctrlp.vim"
-" Plugin "kchmck/vim-coffee-script" coffee script syntax highlighting
 
 call vundle#end()            " required
 filetype plugin indent on    " required
