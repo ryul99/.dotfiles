@@ -7,7 +7,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'autoclose'
 Plugin 'vim-airline/vim-airline'
@@ -45,6 +45,8 @@ set ignorecase
 set smartcase
 set hlsearch
 set nowrapscan
+
+let airline_powerline_fonts = 1
 
 " using colorscheme
 colorscheme jellybeans
