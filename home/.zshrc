@@ -88,3 +88,7 @@ if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
 
+# OPAM configuration
+if [ -f ~/.opam/opam-init/init.zsh ]; then
+    source ~/.opam/opam-init/init.zsh
+fi
