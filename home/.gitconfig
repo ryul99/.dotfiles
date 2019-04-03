@@ -1,7 +1,7 @@
 # vim: noexpandtab sw=8
 [user]
-	name = pbzweihander
-	email = sd852456@naver.com
+	name = ryul99
+	email = cmchoi9901@gmail.com
 [core]
 	editor = vim
 	pager = less -+XF -Qc
@@ -31,7 +31,7 @@
 [credential]
 	helper = cache --timeout=3600
 [credential "https://github.com"]
-	username = pbzweihander
+	username = ryul99
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
