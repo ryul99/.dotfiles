@@ -1,6 +1,8 @@
 #
 # zplug
 #
+# install oh my zsh, powerline font
+#
 if [ -f ~/.zplug/init.zsh ]; then
     source ~/.zplug/init.zsh
     zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
