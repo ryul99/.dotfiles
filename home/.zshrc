@@ -82,7 +82,6 @@ if which ruby >/dev/null && which gem >/dev/null; then
     export GEM_HOME=$HOME/.gem
     export GEM_PATH=$HOME/.gem
 fi
-fi
 
 # keybinding
 bindkey '^[[H' beginning-of-line
