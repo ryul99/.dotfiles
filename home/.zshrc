@@ -79,6 +79,8 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 if which ruby >/dev/null && which gem >/dev/null; then
+    export GEM_HOME=$HOME/.gem
+    export GEM_PATH=$HOME/.gem
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
