@@ -78,6 +78,10 @@ if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
 
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 # keybinding
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
