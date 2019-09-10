@@ -1,7 +1,7 @@
 #
 # zplug
 #
-# install oh my zsh, powerline font
+# install oh my zsh, zplug, powerline font
 #
 if [ -f ~/.zplug/init.zsh ]; then
     source ~/.zplug/init.zsh
