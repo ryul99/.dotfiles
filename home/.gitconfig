@@ -2,6 +2,7 @@
 [user]
 	name = Changmin Choi
 	email = cmchoi9901@gmail.com
+	signingkey = A18BE3FEDDCFD4F9BC46D696C1C34851BA8B6E67
 [core]
 	editor = vim
 	pager = less -+XF -Qc
@@ -38,3 +39,5 @@
 	smudge = git-lfs smudge -- %f
 [alias]
 	g = "log --graph --pretty=\"format:%C(auto)%h%d %s%x1b[38;5;022m% GS%x1b[0m\""
+[commit]
+	gpgsign = true
