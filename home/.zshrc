@@ -10,7 +10,8 @@ if [ -f ~/.zplug/init.zsh ]; then
     zplug 'zsh-users/zsh-autosuggestions'
     zplug 'plugins/shrink-path', from:oh-my-zsh
     zplug 'simnalamburt/cgitc'
-    zplug 'simnalamburt/shellder', as:theme
+    # zplug 'simnalamburt/shellder', as:theme
+    zplug romkatv/powerlevel10k, as:theme, depth:1
     zplug 'voronkovich/gitignore.plugin.zsh'
     zplug 'rupa/z', use:"*.sh"
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -99,3 +100,6 @@ fi
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
