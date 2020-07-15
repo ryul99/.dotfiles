@@ -11,7 +11,7 @@ if [ -f ~/.zplug/init.zsh ]; then
     zplug 'plugins/shrink-path', from:oh-my-zsh
     zplug 'simnalamburt/cgitc'
     # zplug 'simnalamburt/shellder', as:theme
-    zplug romkatv/powerlevel10k, as:theme, depth:1
+    zplug 'romkatv/powerlevel10k', as:theme, depth:1
     zplug 'voronkovich/gitignore.plugin.zsh'
     zplug 'rupa/z', use:"*.sh"
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
