@@ -86,7 +86,9 @@ fi
 
 # pyenv settings
 if command -v pyenv 1>/dev/null 2>&1; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # keybinding
