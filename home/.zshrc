@@ -67,6 +67,7 @@ fi
 if [ -d ~/.npm-global/bin ]; then
     export PATH="$HOME/.npm-global/bin:$PATH"
 fi
+
 if [ -d ~/perl5/bin ]; then
     export PATH="$HOME/perl5/bin:$PATH"
     export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
@@ -84,12 +85,16 @@ if which ruby >/dev/null && which gem >/dev/null; then
     export GEM_PATH=$HOME/.gem
 fi
 
-# pyenv settings
-if command -v pyenv 1>/dev/null 2>&1; then
+# >>> pyenv settings >>>
+if [ -d ~/.pyenv/bin ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+# <<< pyenv settings <<<
 
 # keybinding
 bindkey '^[[H' beginning-of-line
