@@ -9,7 +9,7 @@ if [ -f ~/.zplug/init.zsh ]; then
     zplug 'zsh-users/zsh-completions'
     zplug 'zsh-users/zsh-autosuggestions'
     zplug 'plugins/shrink-path', from:oh-my-zsh
-    zplug 'simnalamburt/cgitc'
+    # zplug 'simnalamburt/cgitc'
     # zplug 'simnalamburt/shellder', as:theme
     zplug 'romkatv/powerlevel10k', as:theme, depth:1
     zplug 'voronkovich/gitignore.plugin.zsh'
