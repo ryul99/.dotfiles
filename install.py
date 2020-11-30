@@ -63,21 +63,6 @@ except ImportError:
 
 
 post_actions = []
-post_actions += [
-    '''#!/bin/bash
-    # Check whether ~/.vim and ~/.zsh are well-configured
-    for f in ~/.vim ~/.zsh ~/.vimrc ~/.zshrc; do
-        if ! readlink $f >/dev/null; then
-            echo -e "\033[0;31m\
-WARNING: $f is not a symbolic link to ~/.dotfiles.
-Please remove your local folder/file $f and try again.\033[0m"
-            echo -n "(Press any key to continue) "; read user_confirm
-            exit 1;
-        else
-            echo "$f --> $(readlink $f)"
-        fi
-    done
-''']
 
 vim = 'nvim' if find_executable('nvim') else 'vim'
 post_actions += [
@@ -230,8 +215,6 @@ else:
               color_fn=GREEN, use_bold=True)
 
 log("- Please restart shell (e.g. " + CYAN("`exec zsh`") + ") if necessary.")
-log("- To install some packages locally (e.g. neovim, tmux), try " + CYAN("`dotfiles install <package>`"))
-log("- If you want to update dotfiles (or have any errors), try " + CYAN("`dotfiles update`"))
 log("\n\n", cr=False)
 
 sys.exit(len(errors))
