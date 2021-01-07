@@ -40,7 +40,7 @@ tasks = {
     # VIM
     '~/.vimrc' : 'home/.vimrc',
     '~/.vim' : 'home/.vim',
-    '~/.vim/autoload/plug.vim' : '/home/.vim/bundle/vim-plug/plug.vim',
+    '~/.vim/autoload/plug.vim' : 'home/.vim/bundle/vim-plug/plug.vim',
 
     # GIT
     '~/.gitconfig' : 'home/.gitconfig',
