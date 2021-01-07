@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved, required
-set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 
 " set the runtime path to include vim-plug and initialize
