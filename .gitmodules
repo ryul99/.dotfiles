@@ -1,3 +1,6 @@
-[submodule "home/.vim/bundle/Vundle.vim"]
-	path = home/.vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vim-plug"]
+	path = vim-plug
+	url = https://github.com/junegunn/vim-plug.git
+[submodule "home/.vim/bundle/vim-plug"]
+	path = home/.vim/bundle/vim-plug
+	url = https://github.com/junegunn/vim-plug.git

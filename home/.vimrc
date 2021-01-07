@@ -2,22 +2,21 @@ set nocompatible              " be iMproved, required
 set rtp+=~/.vim/bundle/Vundle.vim
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-call vundle#begin()
+" set the runtime path to include vim-plug and initialize
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'autoclose'
-Plugin 'vim-airline/vim-airline'
-Plugin 'syntastic'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'airblade/vim-gitgutter' " 코드 변경내역 확인
-Plugin 'tpope/vim-fugitive'
-Plugin 'ctrlpvim/ctrlp.vim'
+" let Vundle manage vim-plug, required
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'autoclose'
+Plug 'vim-airline/vim-airline'
+Plug 'syntastic'
+Plug 'nanotech/jellybeans.vim'
+Plug 'airblade/vim-gitgutter' " 코드 변경내역 확인
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
 
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 
 

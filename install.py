@@ -40,6 +40,7 @@ tasks = {
     # VIM
     '~/.vimrc' : 'home/.vimrc',
     '~/.vim' : 'home/.vim',
+    '~/.vim/autoload/plug.vim' : '/home/.vim/bundle/vim-plug/plug.vim',
 
     # GIT
     '~/.gitconfig' : 'home/.gitconfig',
@@ -84,9 +85,9 @@ Please remove your local folder/file $f and try again.\033[0m"
 vim = 'nvim' if find_executable('nvim') else 'vim'
 post_actions += [
     # Run vim-plug installation
-    {'install' : '{vim} +PluginInstall +qall'.format(vim=vim),
-     'update'  : '{vim} +PluginUpdate  +qall'.format(vim=vim),
-     'none'    : '# {vim} +PluginUpdate (Skipped)'.format(vim=vim)
+    {'install' : '{vim} +PlugInstall +qall'.format(vim=vim),
+     'update'  : '{vim} +PlugUpdate  +qall'.format(vim=vim),
+     'none'    : '# {vim} +PlugUpdate (Skipped)'.format(vim=vim)
      }['update' if not args.skip_vimplug else 'none']
 ]
 
