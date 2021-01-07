@@ -8,9 +8,9 @@ call plug#begin('~/.vim/plugged')
 " let Vundle manage vim-plug, required
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'autoclose'
+Plug 'townk/vim-autoclose'
 Plug 'vim-airline/vim-airline'
-Plug 'syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'nanotech/jellybeans.vim'
 Plug 'airblade/vim-gitgutter' " 코드 변경내역 확인
 Plug 'tpope/vim-fugitive'
