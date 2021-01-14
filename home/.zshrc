@@ -151,6 +151,27 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 # <<< pyenv settings <<<
 
+# Anaconda3
+# see ~/.zshenv for $CONDA_EXE detection
+function _conda_initialize() {
+# >>> conda initialize >>>
+if [ -n "${CONDA_EXE}" ]; then
+  ${CONDA_EXE} config --set auto_activate_base false
+  __conda_setup="$(${CONDA_EXE} 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  fi
+  unset __conda_setup
+fi
+# <<< conda initialize <<<
+}
+# Note: conda initialize is slow (0.3 sec), so execute lazily
+conda() {
+  unfunction conda
+  _conda_initialize
+  conda "$@"
+}
+
 # OPAM configuration
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh

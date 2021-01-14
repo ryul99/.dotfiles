@@ -48,6 +48,7 @@ tasks = {
 
     # ZSH
     '~/.zshrc' : 'home/.zshrc',
+    '~/.zshenv' : 'home/.zshenv',
     '~/.p10k.zsh' : 'home/.p10k.zsh',
 
     # tmux
