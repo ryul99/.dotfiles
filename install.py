@@ -31,7 +31,7 @@ args = parser.parse_args()
 # (path of target symlink) : (location of source file in the repository)
 tasks = {
     # SSH
-    # '~/.ssh/config' : 'home/.ssh/.config',
+    '~/.ssh/config' : 'home/.ssh/config',
 
     # SHELLS
     '~/.bashrc' : 'home/.bashrc',
