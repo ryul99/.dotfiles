@@ -180,6 +180,11 @@ fi
 if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
+
+# TMUX ssh forwarding
+if [ -z "$TMUX" ] && [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
 ### <<< End of External Programs <<<
 
 #
