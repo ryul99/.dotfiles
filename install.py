@@ -51,6 +51,12 @@ tasks = {
     '~/.zshenv' : 'home/.zshenv',
     '~/.p10k.zsh' : 'home/.p10k.zsh',
 
+    # Bins
+    '~/.local/bin/dotfiles' : 'bin/dotfiles',
+    '~/.local/bin/fasd' : 'zsh/fasd/fasd',
+    '~/.local/bin/is_mosh' : 'zsh/is_mosh/is_mosh',
+    '~/.local/bin/fzf' : '~/.fzf/bin/fzf', # fzf is at $HOME/.fzf
+
     # tmux
     '~/.tmux.conf' : 'home/.tmux.conf',
 }
@@ -80,7 +86,25 @@ Please remove your local folder/file $f and try again.\033[0m"
         else
             echo "$f --> $(readlink $f)"
         fi
-    done
+    done ''']
+
+post_actions += [
+    '''#!/bin/bash
+    # Download command line scripts
+    mkdir -p "$HOME/.local/bin/"
+    _download() {
+        curl -L "$2" > "$1" && chmod +x "$1"
+    }
+    ret=0
+    set -v
+    _download "$HOME/.local/bin/video2gif" "https://raw.githubusercontent.com/wookayin/video2gif/master/video2gif" || ret=1
+    exit $ret;
+''']
+
+post_actions += [
+    '''#!/bin/bash
+    # validate neovim package installation on python2/3 and automatically install if missing
+    bash "etc/install-neovim-py.sh"
 ''']
 
 vim = 'nvim' if find_executable('nvim') else 'vim'
@@ -91,6 +115,24 @@ post_actions += [
      'none'    : '# {vim} +PlugUpdate (Skipped)'.format(vim=vim)
      }['update' if not args.skip_vimplug else 'none']
 ]
+
+post_actions += [
+    r'''#!/bin/bash
+    # Setting up for coc.nvim (~/.config/coc, node.js)
+
+    # (i) create ~/.config/coc directory if not exists
+    GREEN="\033[0;32m"; YELLOW="\033[0;33m"; RESET="\033[0m";
+    coc_dir="$HOME/.config/coc/"
+    if [ ! -d "$coc_dir" ]; then
+	mkdir -p "$coc_dir" || exit 1;
+	echo "Created: $coc_dir"
+    else
+	echo -e "${GREEN}coc directory:${RESET}   $coc_dir"
+    fi
+
+    # (ii) validate or auto-install node.js locally
+    bash "etc/install-node.sh" || exit 1;
+''']
 
 post_actions += [
     r'''#!/bin/bash
