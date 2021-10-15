@@ -47,7 +47,6 @@ tasks = {
     '~/.gitexclude' : 'home/.gitexclude',
 
     # ZSH
-    '~/.zprofile' : 'home/.zprofile',
     '~/.zshrc' : 'home/.zshrc',
     '~/.zshenv' : 'home/.zshenv',
     '~/.p10k.zsh' : 'home/.p10k.zsh',
