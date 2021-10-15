@@ -1,6 +1,15 @@
-[submodule "vim-plug"]
-	path = vim-plug
-	url = https://github.com/junegunn/vim-plug.git
 [submodule "home/.vim/bundle/vim-plug"]
 	path = home/.vim/bundle/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+
+[submodule "bin/fasd"]
+        path = bin/fasd
+        url = https://github.com/clvv/fasd.git
+
+[submodule "tmux/plugins/tpm"]
+        path = tmux/plugins/tpm
+        url = https://github.com/tmux-plugins/tpm
+
+[submodule "bin/is_mosh"]
+        path = bin/is_mosh
+        url = https://github.com/wookayin/is_mosh
