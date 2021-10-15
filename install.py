@@ -47,17 +47,19 @@ tasks = {
     '~/.gitexclude' : 'home/.gitexclude',
 
     # ZSH
+    '~/.zprofile' : 'home/.zprofile',
     '~/.zshrc' : 'home/.zshrc',
     '~/.zshenv' : 'home/.zshenv',
     '~/.p10k.zsh' : 'home/.p10k.zsh',
 
     # Bins
     '~/.local/bin/dotfiles' : 'bin/dotfiles',
-    '~/.local/bin/fasd' : 'zsh/fasd/fasd',
-    '~/.local/bin/is_mosh' : 'zsh/is_mosh/is_mosh',
-    '~/.local/bin/fzf' : '~/.fzf/bin/fzf', # fzf is at $HOME/.fzf
+    '~/.local/bin/fasd' : 'bin/fasd',
+    '~/.local/bin/is_mosh' : 'bin/is_mosh',
+    # '~/.local/bin/fzf' : '~/.fzf/bin/fzf', # fzf is at $HOME/.fzf
 
     # tmux
+    '~/.tmux' : 'home/.tmux',
     '~/.tmux.conf' : 'home/.tmux.conf',
 }
 
