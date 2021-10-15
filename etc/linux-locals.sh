@@ -446,6 +446,11 @@ install_lazygit() {
   $PREFIX/bin/lazygit --version
 }
 
+install_pyenv() {
+  set -e
+  git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+}
 
 # entrypoint script
 if [ `uname` != "Linux" ]; then

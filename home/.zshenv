@@ -101,6 +101,9 @@ fi
 if [ -d $HOME/.cargo/bin/ ]; then
   path=( $path $HOME/.cargo/bin )
 fi
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
 
 #
@@ -166,4 +169,3 @@ export COPYFILE_DISABLE=true
 if [ -f "$HOME/.zshenv.local" ]; then
   source "$HOME/.zshenv.local"
 fi
-. "$HOME/.cargo/env"
