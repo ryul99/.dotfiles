@@ -41,6 +41,7 @@ tasks = {
     '~/.vimrc' : 'home/.vimrc',
     '~/.vim' : 'home/.vim',
     '~/.vim/autoload/plug.vim' : 'home/.vim/bundle/vim-plug/plug.vim',
+    '~/.config/nvim' : 'home/.config/nvim',
 
     # GIT
     '~/.gitconfig' : 'home/.gitconfig',
