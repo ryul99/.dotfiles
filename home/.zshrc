@@ -93,38 +93,51 @@ bindkey '^[[3~' delete-char
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
-### Added by zplug's installer
-if [[ ! -d $HOME/.zplug ]]; then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-source "$HOME/.zplug/init.zsh"
-### End of zplug's installer chunk
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
 
-### zplug plugins
-if [[ -f ~/.zplug/init.zsh ]]; then
-    zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-    zplug romkatv/powerlevel10k, as:theme, depth:1
-    zplug simnalamburt/cgitc
-    # zplug simnalamburt/zsh-expand-all
-    zplug ahmetb/kubectl-aliases, use:".kubectl_aliases"
-    zplug voronkovich/gitignore.plugin.zsh
-    zplug rupa/z, use:"z.sh"
-    zplug zsh-users/zsh-completions
-    zplug zsh-users/zsh-autosuggestions
-    zplug zsh-users/zsh-history-substring-search
-    zplug zsh-users/zsh-syntax-highlighting, defer:2
+### Zinit plugins
+if [[ -f ~/.zinit/bin/zinit.zsh ]]; then
+    zinit ice depth=1
+    zinit light romkatv/powerlevel10k
 
-    # zplug check returns true if all packages are installed
-    # Therefore, when it returns false, run zplug install
-    if ! zplug check; then
-        zplug install
-    fi
+    zinit ice wait
+    zinit light simnalamburt/cgitc
+    # zinit ice wait
+    # zinit light simnalamburt/zsh-expand-all
+    zinit ice wait pick".kubectl_aliases"
+    zinit light ahmetb/kubectl-aliases
 
-    # source plugins and add commands to the PATH
-    zplug load
+    zinit ice wait
+    zinit light voronkovich/gitignore.plugin.zsh
+    zinit ice wait src"z.sh"
+    zinit light rupa/z
+
+    zinit ice wait as'completion' id-as'git-completion'
+    zinit snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
+    zinit ice wait blockf atpull'zinit creinstall -q .'
+    zinit light zsh-users/zsh-completions
+    zinit ice wait atload'_zsh_autosuggest_start'
+    zinit light zsh-users/zsh-autosuggestions
+    zinit ice wait
+    zinit light zsh-users/zsh-history-substring-search
+    zinit ice wait
+    zinit light zdharma/fast-syntax-highlighting
+    # zinit ice wait atinit'zpcompinit; zpcdreplay'
+    # zinit light zsh-users/zsh-syntax-highlighting
 fi
-### End of zplug plugins
+### End of Zinit plugins
 
 ### >>> External Programs >>>
 # >>> pyenv settings >>>
