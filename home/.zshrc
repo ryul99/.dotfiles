@@ -187,6 +187,14 @@ fi
 if [ -z "$TMUX" ] && [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
+
+# vim coc.clangd setting
+CLANGD=$(cd $HOME/.config/coc/extensions/coc-clangd-data/install/*/clang*/bin && echo $PWD)
+if [ -d $CLANGD ]; then
+    export PATH="$PATH:$CLANGD"
+fi
+unset CLANGD
+
 ### <<< End of External Programs <<<
 
 #
