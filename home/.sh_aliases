@@ -38,6 +38,13 @@ elif hash exa 2>/dev/null; then
     alias lla='exa -algF --group-directories-first'
     alias lt='exa -TF --group-directories-first'
     alias lta='exa -TFa --group-directories-first'
+elif hash gls 2> /dev/null; then
+    alias l='gls --color=auto --group-directories-first'
+    alias ls='gls --color=auto --group-directories-first'
+    alias la='gls --color=auto --group-directories-first -AF'
+    alias ll='gls --color=auto --group-directories-first -lF'
+    alias lla='gls --color=auto --group-directories-first -AlF'
+    alias lh='gls --color=auto --group-directories-first -AlhF'
 else
     alias l='ls --color=auto --group-directories-first'
     alias ls='ls --color=auto --group-directories-first'
