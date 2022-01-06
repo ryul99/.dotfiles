@@ -174,6 +174,13 @@ conda() {
   conda "$@"
 }
 
+# >>> rbenv settings >>>
+if [ -d ~/.rbenv/bin ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+# <<< rbenv settings <<<
+
 # OPAM configuration
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh
