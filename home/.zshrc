@@ -57,6 +57,8 @@ function __zshrc_zsh_history_substring_search_bindkey {
     # https://github.com/zsh-users/zsh-syntax-highlighting/issues/411#issuecomment-317077561
     bindkey '^[[A' history-substring-search-up
     bindkey '^[[B' history-substring-search-down
+    bindkey '^[OA' history-substring-search-up
+    bindkey '^[OB' history-substring-search-down
     bindkey -M vicmd 'k' history-substring-search-up
     bindkey -M vicmd 'j' history-substring-search-down
 }
