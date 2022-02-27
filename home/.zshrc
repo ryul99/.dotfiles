@@ -27,10 +27,23 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
 
-#
-# zsh-substring-completion
-#
+# keybinding
+bindkey -v
+export KEYTIMEOUT=1
+bindkey -M vicmd "^a" beginning-of-line
+bindkey -M vicmd "^e" end-of-line
+bindkey '^[[H' beginning-of-line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[4~' end-of-line
+bindkey '^[[3~' delete-char
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;3D' backward-word
+bindkey -r '^D'
 
+# zsh-substring-completion
 setopt complete_in_word
 setopt always_to_end
 export WORDCHARS=''
@@ -38,10 +51,15 @@ zmodload -i zsh/complist
 
 zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+# zsh-history-substring-search
+function __zshrc_zsh_history_substring_search_bindkey {
+    # lazily config bindkey
+    # https://github.com/zsh-users/zsh-syntax-highlighting/issues/411#issuecomment-317077561
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+    bindkey -M vicmd 'k' history-substring-search-up
+    bindkey -M vicmd 'j' history-substring-search-down
+}
 
 # zsh-autosuggestions
 typeset -g ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -86,12 +104,11 @@ if which ruby >/dev/null && which gem >/dev/null; then
     export GEM_PATH=$HOME/.gem
 fi
 
-# keybinding
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-bindkey '^[[3~' delete-char
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
+if (( $+commands[nvim] )); then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -128,9 +145,9 @@ if [[ -f ~/.zinit/bin/zinit.zsh ]]; then
     zinit snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
     zinit ice wait blockf atpull'zinit creinstall -q .'
     zinit light zsh-users/zsh-completions
-    zinit ice wait atload'_zsh_autosuggest_start'
+    zinit ice wait atload"_zsh_autosuggest_start"
     zinit light zsh-users/zsh-autosuggestions
-    zinit ice wait
+    zinit ice wait atload"__zshrc_zsh_history_substring_search_bindkey"
     zinit light zsh-users/zsh-history-substring-search
     zinit ice wait
     zinit light zdharma-continuum/fast-syntax-highlighting
