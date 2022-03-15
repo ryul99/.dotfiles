@@ -229,7 +229,6 @@ unset CLANGD
 
 # >>> command completion >>>
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
 # <<< command completion <<<
 
 # local settings
