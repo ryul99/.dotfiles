@@ -169,6 +169,10 @@ try | call plug#begin(exists('s:plug') ? s:plug : '~/.vim/plugged')
     Plug 'hashivim/vim-terraform'
     Plug 'nirum-lang/nirum.vim'
     Plug 'neovimhaskell/haskell-vim'
+    Plug 'pangloss/vim-javascript'
+    Plug 'jason0x43/vim-js-indent'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
 
     " Language server and Auto completion
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -422,6 +426,9 @@ let g:vista_fzf_preview = ['right:50%']
 
 " autocmd User lsp_buffer_enabled call vista#RunForNearestMethodOrFunction()
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+" typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " blamer.nvim
 let g:blamer_enabled = 1
