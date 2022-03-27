@@ -22,6 +22,9 @@ set showcmd
 set signcolumn=yes
 set colorcolumn=79,99,119
 
+" mouse
+set mouse=a
+
 " Indentation
 set cindent
 set autoindent
