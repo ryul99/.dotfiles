@@ -200,6 +200,13 @@ if [ -d ~/.rbenv/bin ]; then
 fi
 # <<< rbenv settings <<<
 
+# >>> nodenv settings >>>
+if [ -d ~/.nodenv/bin ]; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
+fi
+# <<< nodenv settings <<<
+
 # OPAM configuration
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh
