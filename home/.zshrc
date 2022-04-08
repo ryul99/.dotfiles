@@ -187,6 +187,11 @@ unset CLANGD
 #
 export PS1='%n@%m:%~%(!.#.$) '
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+if [[ ! -d "$ZINIT_HOME" ]]; then
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
 ### Zinit plugins
 if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
     source "${ZINIT_HOME}/zinit.zsh"
