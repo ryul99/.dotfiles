@@ -112,63 +112,15 @@ else
     export EDITOR=vim
 fi
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
-
-### Zinit plugins
-if [[ -f ~/.zinit/bin/zinit.zsh ]]; then
-    zinit ice depth=1
-    zinit light romkatv/powerlevel10k
-
-    zinit ice wait
-    zinit light simnalamburt/cgitc
-    # zinit ice wait
-    # zinit light simnalamburt/zsh-expand-all
-    zinit ice wait pick".kubectl_aliases"
-    zinit light ahmetb/kubectl-aliases
-
-    zinit ice wait
-    zinit light voronkovich/gitignore.plugin.zsh
-    zinit ice wait src"z.sh"
-    zinit light rupa/z
-
-    zinit ice wait as'completion' id-as'git-completion'
-    zinit snippet https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh
-    zinit ice wait blockf atpull'zinit creinstall -q .'
-    zinit light zsh-users/zsh-completions
-    zinit ice wait atload"_zsh_autosuggest_start"
-    zinit light zsh-users/zsh-autosuggestions
-    zinit ice wait atload"__zshrc_zsh_history_substring_search_bindkey"
-    zinit light zsh-users/zsh-history-substring-search
-    zinit ice wait
-    zinit light zdharma-continuum/fast-syntax-highlighting
-    # zinit ice wait atinit'zpcompinit; zpcdreplay'
-    # zinit light zsh-users/zsh-syntax-highlighting
-fi
-### End of Zinit plugins
-
 ### >>> External Programs >>>
 # >>> pyenv settings >>>
-if [ -d ~/.pyenv/bin ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
+if [ -d ~/.pyenv ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
 fi
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  # eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+if [ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]; then
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
 # <<< pyenv settings <<<
 
@@ -229,6 +181,73 @@ fi
 unset CLANGD
 
 ### <<< End of External Programs <<<
+
+#
+# Zinit
+#
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+### Zinit plugins
+if [[ -f ~/.zinit/bin/zinit.zsh ]]; then
+    zinit depth=1 light-mode for romkatv/powerlevel10k
+
+    function __zshrc_cgitc_patch {
+        sed 's/master/$(git_main_branch)/g' abbreviations > abbreviations.mod
+        sed 's/master/$(git_main_branch)/g' abbreviations.zsh > abbreviations.mod.zsh
+        sed 's/abbreviations/abbreviations.mod/' init.zsh > init.mod.zsh
+    }
+
+    function __zshrc_kubectl_aliases_patch {
+        sed 's/alias k\(\w*\)a\(\w\?\)=/alias k\1ap\2=/g' .kubectl_aliases > .kubectl_aliases_mod
+    }
+
+    function __zshrc_pyenv_atload {
+        eval "$(pyenv init --path zsh)"
+        command pyenv rehash >/dev/null &!
+    }
+
+    zinit wait lucid for \
+        voronkovich/gitignore.plugin.zsh \
+        agkozak/zsh-z \
+        voronkovich/gitignore.plugin.zsh \
+        has"pyenv" id-as"pyenv" atclone"pyenv init - --no-rehash zsh > pyenv.zsh" atpull"%atclone" run-atpull pick"pyenv.zsh" nocompile"!" atload"!__zshrc_pyenv_atload" ryul99/zinit-null \
+        if"[ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]" id-as"pyenv-virtualenv" atclone"pyenv virtualenv-init - zsh > pyenv-virtualenv.zsh" atpull"%atclone" run-atpull pick"pyenv-virtualenv.zsh" nocompile"!" ryul99/zinit-null \
+        has"fzf" id-as"fzf" multisrc"(completion|key-bindings).zsh" compile"(completion|key-bindings).zsh" svn https://github.com/junegunn/fzf/trunk/shell \
+        if"[ -f /opt/asdf-vm/asdf.sh ]" id-as"asdf" pick"/opt/asdf-vm/asdf.sh" nocompile ryul99/zinit-null
+
+
+    # aliases
+    zinit wait lucid for \
+        atclone"__zshrc_cgitc_patch" atpull"%atclone" run-atpull pick"init.mod.zsh" simnalamburt/cgitc \
+        atclone"__zshrc_kubectl_aliases_patch" atpull"%atclone" run-atpull pick".kubectl_aliases_mod" nocompile"!" ahmetb/kubectl-aliases
+
+    # completions
+    zinit wait lucid for \
+        id-as"git-completion" as"completion" mv"git-completion -> _git" nocompile https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh \
+        has"helm" id-as"helm-completion" as"completion" atclone"helm completion zsh > _helm" atpull"%atclone" run-atpull ryul99/zinit-null \
+        has"poetry" id-as"poetry-completion" as"completion" atclone"poetry completions zsh > _poetry" atpull"%atclone" run-atpull ryul99/zinit-null
+
+    # last group
+    zinit wait lucid for \
+        atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
+        atload"__zshrc_zsh_history_substring_search_bindkey" zsh-users/zsh-history-substring-search \
+        blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions \
+        atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
+fi
+### End of Zinit plugins
 
 #
 # Etc
