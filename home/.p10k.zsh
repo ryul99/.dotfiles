@@ -33,10 +33,12 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon               # os identifier
-    dir                     # current directory
+    context                 # user@hostname
+    status                  # exit code of the last command
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    dir                     # current directory
     prompt_char             # prompt symbol
   )
 
@@ -46,7 +48,6 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    status                  # exit code of the last command
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
@@ -85,7 +86,6 @@
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     toolbox                 # toolbox name (https://github.com/containers/toolbox)
-    context                 # user@hostname
     nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     ranger                  # ranger shell (https://github.com/ranger/ranger)
     nnn                     # nnn shell (https://github.com/jarun/nnn)
@@ -1597,7 +1597,21 @@
   #   - always:   Trim down prompt when accepting a command line.
   #   - same-dir: Trim down prompt when accepting a command line unless this is the first command
   #               typed after changing current working directory.
-  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
+
+  # Customize transient prompt.
+  # https://github.com/romkatv/powerlevel10k/issues/316#issuecomment-551867287
+  function p10k-on-pre-prompt() {
+    # Show empty line if it's the first prompt in the TTY.
+    [[ $P9K_TTY == old ]] && p10k display 'empty_line'=show
+    # Show the first prompt line.
+    p10k display '1'=show
+  }
+
+  function p10k-on-post-prompt() {
+    # Hide the empty line and the first prompt line.
+    p10k display 'empty_line|1'=hide
+  }
 
   # Instant prompt mode.
   #
