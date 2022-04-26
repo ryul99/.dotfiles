@@ -458,6 +458,11 @@ install_fzf() {
     ~/.fzf/install
 }
 
+install_cargo() {
+    set -e
+    curl https://sh.rustup.rs -sSf | sh
+}
+
 # entrypoint script
 if [ `uname` != "Linux" ]; then
     echo "Run on Linux (not on Mac OS X)"; exit 1
