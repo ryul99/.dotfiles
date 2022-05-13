@@ -257,7 +257,7 @@ let g:lightline.component_function = {
     \     'fileformat': 'LightlineFileformat',
     \     'fileencoding': 'LightlineFileencoding',
     \     'filetype': 'LightlineFiletype',
-    \     'gitbranch': 'fugitive#head',
+    \     'gitbranch': 'FugitiveHead',
     \     'currentfunction': 'NearestMethodOrFunction'
     \ }
 
