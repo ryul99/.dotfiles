@@ -3,7 +3,7 @@
 # A collection of bash scripts for installing some libraries/packages in
 # user namespaces (e.g. ~/.local/), without having root privileges.
 
-PREFIX="$HOME/.local/"
+PREFIX="$HOME/.local"
 
 COLOR_NONE="\033[0m"
 COLOR_RED="\033[0;31m"
