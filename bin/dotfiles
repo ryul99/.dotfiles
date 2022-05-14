@@ -103,11 +103,11 @@ def open_github():
     webbrowser.open("https://dotfiles.wook.kr", new=0)
 
 
-@add_argument('target', nargs='*', help='target package to install, see ~/.dotfiles/etc/linux-locals.sh for list')
+@add_argument('target', nargs='*', help='target package to install, see ~/.dotfiles/scripts/linux-locals.sh for list')
 @add_argument('--force', action='store_true')
 def install_local(target, force, argv=[]):
     '''
-    Install local packages as specified in /etc/linux-locals.sh.
+    Install local packages as specified in /scripts/linux-locals.sh.
     Available only in Linux.
     '''
 
@@ -124,7 +124,7 @@ def install_local(target, force, argv=[]):
     dotfiles_dir = os.path.expanduser('~/.dotfiles')
 
     if not target:
-        ret = subprocess.check_output('./etc/linux-locals.sh || true',
+        ret = subprocess.check_output('./scripts/linux-locals.sh || true',
                                       shell=True, cwd=dotfiles_dir)
         if not isinstance(ret, str): ret = ret.decode()
         print("Available packages:")
@@ -134,7 +134,7 @@ def install_local(target, force, argv=[]):
 
     for t in target:
         ret = subprocess.call(
-            './etc/linux-locals.sh install_{target} {force_flag} {flag}'.format(
+            './scripts/linux-locals.sh install_{target} {force_flag} {flag}'.format(
                 target=t,
                 force_flag='--force' if force else '',
                 flag=' '.join(argv)   # TODO: shlex (python 3+)
