@@ -106,7 +106,7 @@ post_actions += [
 post_actions += [
     '''#!/bin/bash
     # validate neovim package installation on python2/3 and automatically install if missing
-    bash "etc/install-neovim-py.sh"
+    bash "scripts/install-neovim-py.sh"
 ''']
 
 vim = 'nvim' if find_executable('nvim') else 'vim'
@@ -133,7 +133,7 @@ post_actions += [
     fi
 
     # (ii) validate or auto-install node.js locally
-    bash "etc/install-node.sh" || exit 1;
+    bash "scripts/install-node.sh" || exit 1;
 ''']
 
 post_actions += [
