@@ -218,8 +218,8 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
         voronkovich/gitignore.plugin.zsh \
         has"pyenv" id-as"pyenv" atclone"pyenv init - --no-rehash zsh > pyenv.zsh" atpull"%atclone" run-atpull pick"pyenv.zsh" nocompile"!" atload"!__zshrc_pyenv_atload" ryul99/zinit-null \
         if"[ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]" id-as"pyenv-virtualenv" atclone"pyenv virtualenv-init - zsh > pyenv-virtualenv.zsh" atpull"%atclone" run-atpull pick"pyenv-virtualenv.zsh" nocompile"!" ryul99/zinit-null \
+        has"fzf" id-as"fzf" multisrc"(completion|key-bindings).zsh" compile"(completion|key-bindings).zsh" svn https://github.com/junegunn/fzf/trunk/shell \
         rupa/z
-        # has"fzf" id-as"fzf" multisrc"(completion|key-bindings).zsh" compile"(completion|key-bindings).zsh" svn https://github.com/junegunn/fzf/trunk/shell \
         # if"[ -f /opt/asdf-vm/asdf.sh ]" id-as"asdf" pick"/opt/asdf-vm/asdf.sh" nocompile ryul99/zinit-null
 
     # aliases
