@@ -80,8 +80,6 @@ if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
 fi
 
-DEFAULT_USER="$USER" # for shellder
-
 # Path
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
 
