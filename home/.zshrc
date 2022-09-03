@@ -196,12 +196,6 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
 
     zinit depth=1 light-mode for romkatv/powerlevel10k
 
-    function __zshrc_cgitc_patch {
-        sed 's/master/$(git_main_branch)/g' abbreviations > abbreviations.mod
-        sed 's/master/$(git_main_branch)/g' abbreviations.zsh > abbreviations.mod.zsh
-        sed 's/abbreviations/abbreviations.mod/' init.zsh > init.mod.zsh
-    }
-
     function __zshrc_kubectl_aliases_patch {
         sed 's/alias k\(\w*\)a\(\w\?\)=/alias k\1ap\2=/g' .kubectl_aliases > .kubectl_aliases_mod
     }
