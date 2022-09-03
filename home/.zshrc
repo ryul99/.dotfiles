@@ -21,7 +21,6 @@ fi
 #
 
 setopt auto_cd histignorealldups sharehistory
-zstyle ':completion:*' menu select
 
 export HISTSIZE=10000
 export SAVEHIST=10000
@@ -49,6 +48,7 @@ setopt always_to_end
 export WORDCHARS=''
 zmodload -i zsh/complist
 
+zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # zsh-history-substring-search
@@ -212,8 +212,6 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
     }
 
     zinit wait lucid for \
-        voronkovich/gitignore.plugin.zsh \
-        voronkovich/gitignore.plugin.zsh \
         has"pyenv" id-as"pyenv" atclone"pyenv init - --no-rehash zsh > pyenv.zsh" atpull"%atclone" run-atpull pick"pyenv.zsh" nocompile"!" atload"!__zshrc_pyenv_atload" ryul99/zinit-null \
         if"[ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]" id-as"pyenv-virtualenv" atclone"pyenv virtualenv-init - zsh > pyenv-virtualenv.zsh" atpull"%atclone" run-atpull pick"pyenv-virtualenv.zsh" nocompile"!" ryul99/zinit-null \
         has"fzf" id-as"fzf" multisrc"(completion|key-bindings).zsh" compile"(completion|key-bindings).zsh" svn https://github.com/junegunn/fzf/trunk/shell \
@@ -222,21 +220,20 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
 
     # aliases
     zinit wait lucid for \
-        atclone"__zshrc_cgitc_patch" atpull"%atclone" run-atpull pick"init.mod.zsh" simnalamburt/cgitc \
-        atclone"__zshrc_kubectl_aliases_patch" atpull"%atclone" run-atpull pick".kubectl_aliases_mod" nocompile"!" ahmetb/kubectl-aliases
+        light-mode simnalamburt/cgitc \
+        light-mode ahmetb/kubectl-aliases
 
     # completions
     zinit wait lucid for \
-        id-as"git-completion" as"completion" mv"git-completion -> _git" nocompile https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh \
+        light-mode zsh-users/zsh-completions \
         has"helm" id-as"helm-completion" as"completion" atclone"helm completion zsh > _helm" atpull"%atclone" run-atpull ryul99/zinit-null \
         has"poetry" id-as"poetry-completion" as"completion" atclone"poetry completions zsh > _poetry" atpull"%atclone" run-atpull ryul99/zinit-null
 
     # last group
     zinit wait lucid for \
-        atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
         atload"__zshrc_zsh_history_substring_search_bindkey" zsh-users/zsh-history-substring-search \
-        blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions \
-        atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions
+        atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
+        zdharma-continuum/fast-syntax-highlighting
 fi
 ### End of Zinit plugins
 
