@@ -226,7 +226,7 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
     # last group
     zinit wait lucid for \
         atload"__zshrc_zsh_history_substring_search_bindkey" zsh-users/zsh-history-substring-search \
-        atload"_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
+        atload"zicompinit; zicdreplay" blockf zsh-users/zsh-autosuggestions \
         zdharma-continuum/fast-syntax-highlighting
 fi
 ### End of Zinit plugins
