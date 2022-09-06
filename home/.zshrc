@@ -157,6 +157,12 @@ if [ -d ~/.nodenv/bin ]; then
 fi
 # <<< nodenv settings <<<
 
+# >>> scala setting (coursier install dir) >>>
+if [ -d ~/.local/share/coursier/bin ]; then
+    export PATH="$PATH:/home/ryul99/.local/share/coursier/bin"
+fi
+# <<< scala setting <<<
+
 # OPAM configuration
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh
