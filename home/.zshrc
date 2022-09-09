@@ -38,8 +38,10 @@ bindkey '^[[4~' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;3C' forward-word
+bindkey '^[f' forward-word # for mac
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;3D' backward-word
+bindkey '^[b' backward-word # for mac
 bindkey -r '^D'
 
 # zsh-substring-completion
