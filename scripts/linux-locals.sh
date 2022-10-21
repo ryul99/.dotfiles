@@ -117,7 +117,7 @@ install_zsh() {
 install_node() {
     # Install node.js LTS at ~/.local
     set -e
-    curl -sL install-node.now.sh | bash -s -- --prefix=$HOME/.local --verbose --yes
+    curl -sL install-node.now.sh/lts | bash -s -- --prefix=$HOME/.local --verbose --yes
 
     echo -e "\n$(which node) : $(node --version)"
     node --version
