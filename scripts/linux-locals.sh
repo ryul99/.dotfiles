@@ -463,6 +463,11 @@ install_cargo() {
     curl https://sh.rustup.rs -sSf | sh
 }
 
+install_asdf() {
+    set -e
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
+}
+
 # entrypoint script
 if [ `uname` != "Linux" ]; then
     echo "Run on Linux (not on Mac OS X)"; exit 1
