@@ -165,6 +165,12 @@ if [ -d ~/.local/share/coursier/bin ]; then
 fi
 # <<< scala setting <<<
 
+# >>> asdf setting >>>
+if [ -f ~/.asdf/asdf.sh ]; then
+    source ~/.asdf/asdf.sh
+fi
+# <<< asdf setting <<<
+
 # OPAM configuration
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh
