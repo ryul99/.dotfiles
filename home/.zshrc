@@ -213,7 +213,7 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
         if"[ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]" id-as"pyenv-virtualenv" atclone"pyenv virtualenv-init - zsh > pyenv-virtualenv.zsh" atpull"%atclone" run-atpull pick"pyenv-virtualenv.zsh" nocompile"!" ryul99/zinit-null \
         rupa/z \
         has"fzf" id-as"fzf" multisrc"(completion|key-bindings).zsh" compile"(completion|key-bindings).zsh" svn https://github.com/junegunn/fzf/trunk/shell \
-        if"[ -f ~/.asdf/asdf.sh ]" id-as"asdf" pick"~/.asdf/asdf.sh" nocompile ryul99/zinit-null
+        if"[ -f ~/.asdf/asdf.sh ]" id-as"asdf" pick"$HOME/.asdf/asdf.sh" nocompile ryul99/zinit-null
 
     # aliases
     zinit wait lucid for \
