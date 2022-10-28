@@ -113,7 +113,7 @@ else
 fi
 
 ### >>> External Programs >>>
-# >>> pyenv settings >>>
+# pyenv settings
 if [ -d ~/.pyenv ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
@@ -122,12 +122,10 @@ fi
 if [ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]; then
     export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
-# <<< pyenv settings <<<
 
 # Anaconda3
 # see ~/.zshenv for $CONDA_EXE detection
 function _conda_initialize() {
-# >>> conda initialize >>>
 if [ -n "${CONDA_EXE}" ]; then
   ${CONDA_EXE} config --set auto_activate_base false
   __conda_setup="$(${CONDA_EXE} 'shell.zsh' 'hook' 2> /dev/null)"
@@ -136,7 +134,6 @@ if [ -n "${CONDA_EXE}" ]; then
   fi
   unset __conda_setup
 fi
-# <<< conda initialize <<<
 }
 # Note: conda initialize is slow (0.3 sec), so execute lazily
 conda() {
@@ -145,31 +142,29 @@ conda() {
   conda "$@"
 }
 
-# >>> rbenv settings >>>
+# rbenv settings
 if [ -d ~/.rbenv/bin ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
-# <<< rbenv settings <<<
 
-# >>> nodenv settings >>>
+# nodenv settings
 if [ -d ~/.nodenv/bin ]; then
   export PATH="$HOME/.nodenv/bin:$PATH"
   eval "$(nodenv init -)"
 fi
-# <<< nodenv settings <<<
 
-# >>> scala setting (coursier install dir) >>>
+# scala setting (coursier install dir)
 if [ -d ~/.local/share/coursier/bin ]; then
     export PATH="$PATH:/home/ryul99/.local/share/coursier/bin"
 fi
-# <<< scala setting <<<
 
 # OPAM configuration
 if [ -f ~/.opam/opam-init/init.zsh ]; then
     source ~/.opam/opam-init/init.zsh
 fi
 
+# fzf setting
 # if [ -f ~/.fzf.zsh ]; then
 #     source ~/.fzf.zsh
 # fi
