@@ -91,6 +91,9 @@ else
     export EDITOR=vim
 fi
 
+# TIME FMT
+export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
+
 ### >>> External Programs >>>
 # pyenv settings
 if [ -d ~/.pyenv ]; then
