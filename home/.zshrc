@@ -85,27 +85,6 @@ fi
 # Path
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
 
-if [ -d ~/.cargo/bin ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-if [ -d ~/.npm-global/bin ]; then
-    export PATH="$HOME/.npm-global/bin:$PATH"
-fi
-
-if [ -d ~/perl5/bin ]; then
-    export PATH="$HOME/perl5/bin:$PATH"
-    export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
-    export PERL_LOCAL_LIB_ROOT="$HOME/perl5:$PERL_LOCAL_LIB_ROOT"
-    export PERL_MB_OPT="--install_base \"$HOME/perl5\"";
-    export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
-fi
-
-if which ruby >/dev/null && which gem >/dev/null; then
-    export GEM_HOME=$HOME/.gem
-    export GEM_PATH=$HOME/.gem
-fi
-
 if (( $+commands[nvim] )); then
     export EDITOR=nvim
 else
@@ -180,6 +159,31 @@ if [ -d $CLANGD ]; then
     export PATH="$PATH:$CLANGD"
 fi
 unset CLANGD
+
+# cargo
+if [ -d ~/.cargo/bin ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# npm global
+if [ -d ~/.npm-global/bin ]; then
+    export PATH="$HOME/.npm-global/bin:$PATH"
+fi
+
+# perl
+if [ -d ~/perl5/bin ]; then
+    export PATH="$HOME/perl5/bin:$PATH"
+    export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
+    export PERL_LOCAL_LIB_ROOT="$HOME/perl5:$PERL_LOCAL_LIB_ROOT"
+    export PERL_MB_OPT="--install_base \"$HOME/perl5\"";
+    export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
+fi
+
+# ruby
+if which ruby >/dev/null && which gem >/dev/null; then
+    export GEM_HOME=$HOME/.gem
+    export GEM_PATH=$HOME/.gem
+fi
 
 ### <<< End of External Programs <<<
 
