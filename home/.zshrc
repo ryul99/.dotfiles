@@ -147,9 +147,10 @@ if [ -f ~/.opam/opam-init/init.zsh ]; then
 fi
 
 # fzf setting
-# if [ -f ~/.fzf.zsh ]; then
+if [ -f ~/.fzf.zsh ]; then
+    export PATH="$PATH:$HOME/.fzf/bin"
 #     source ~/.fzf.zsh
-# fi
+fi
 
 # TMUX ssh forwarding
 if [ -z "$TMUX" ] && [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
