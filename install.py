@@ -20,8 +20,6 @@ parser.add_argument('-f', '--force', action="store_true", default=False,
                     help='If set, it will override existing symbolic links')
 parser.add_argument('--skip-vimplug', action='store_true',
                     help='If set, do not update vim plugins.')
-parser.add_argument('--skip-zgen', '--skip-zplug', action='store_true',
-                    help='If set, skip zgen updates.')
 
 args = parser.parse_args()
 

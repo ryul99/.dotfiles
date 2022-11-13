@@ -48,11 +48,9 @@ def add_argument(*args, **kwargs):
 
 ###############################################################################################
 
-@add_argument('--fast', action='store_true', help='Skip all slow updates (zgen, vimplug)')
-@add_argument('--skip-zplug', action='store_true', help='Skip zplug/zgen update')
-@add_argument('--skip-vimplug', action='store_true', help='Skip vim-plug update')
+@add_argument('--fast', action='store_true', help='Skip all slow updates (zsh/vim plugins)')
+@add_argument('--skip-vimplug', action='store_true', help='Skip updating vim plugins (vim-plug)')
 def update(fast=False,
-           skip_zplug=False,
            skip_vimplug=False):
     '''Update the dotfiles from github.'''
 
@@ -68,9 +66,8 @@ def update(fast=False,
     git_old_head = _git_head()
 
     install_args = set()
-    if skip_zplug: install_args.add("--skip-zplug")
     if skip_vimplug: install_args.add("--skip-vimplug")
-    if fast: install_args.update(["--skip-zplug", "--skip-vimplug"])
+    if fast: install_args.update(["--skip-vimplug"])
     install_args = ' '.join(install_args)
 
     # TODO: check if current branch is master
@@ -78,9 +75,9 @@ def update(fast=False,
         set -x
         cd ~/.dotfiles
         git fetch origin
-        git stash
-        git merge --ff-only && python3 install.py {install_args}
-        git stash pop
+        git stash push -m "DOTFILES_UPDATE"
+        git merge --ff-only && python install.py {install_args}
+        git stash list | grep "DOTFILES_UPDATE" && git stash pop --index -q
     '''.format(install_args=install_args)
     subprocess.call(['bash', '-c', action])
 
