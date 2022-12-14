@@ -473,6 +473,21 @@ install_poetry() {
     curl -sSL https://install.python-poetry.org | python3 -
 }
 
+install_btop() {
+    set -e
+    TMP_BTOP_DIR="/tmp/$USER/btop/"
+    mkdir -p $TMP_BTOP_DIR
+    cd $TMP_BTOP_DIR
+    curl --remote-name-all -o "$TMP_BTOP_DIR/btop.tbz" --location  $( \
+    curl -s https://api.github.com/repos/aristocratos/btop/releases/latest \
+    | grep "browser_download_url.*$(uname -m)-linux.*" \
+    | cut -d : -f 2,3 \
+    | tr -d \" )
+    tar xjf "$TMP_BTOP_DIR/btop.tbz"
+    cd btop
+    make install PREFIX="$HOME/.local"
+}
+
 # entrypoint script
 if [ `uname` != "Linux" ]; then
     echo "Run on Linux (not on Mac OS X)"; exit 1
