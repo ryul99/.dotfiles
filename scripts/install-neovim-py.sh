@@ -17,9 +17,9 @@ NVIM_MINIMUM_VERSION="0.5.1"
 if which nvim >/dev/null && _version_check "$(nvim --version | head -n1 | cut -d' ' -f2)" "$NVIM_MINIMUM_VERSION"; then
     echo -e "neovim found at ${GREEN}$(which nvim)${RESET}"
     host_python3=""
+    [[ -z "$host_python3" ]] && host_python3="$(which python3)"
     [[ -z "$host_python3" ]] && [[ -f "/usr/local/bin/python3" ]] && host_python3="/usr/local/bin/python3"
     [[ -z "$host_python3" ]] && [[ -f "/usr/bin/python3" ]]       && host_python3="/usr/bin/python3"
-    [[ -z "$host_python3" ]] && host_python3="$(which python3)"
     if [[ -z "$host_python3" ]]; then
         echo -e "${RED}  Python3 not found -- please have it installed in the system! ${RESET}";
         exit 1;
