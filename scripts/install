@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Ref: https://github.com/wookayin/dotfiles/blob/master/etc/install
+
+_version_check() {
+    curver="$1"; targetver="$2";
+    [ "$targetver" = "$(echo -e "$curver\n$targetver" | sort -V | head -n1)" ]
+}
+
+if _version_check "$(git --version | cut -d' ' -f3)" "2.8"; then
+    GIT_FLAGS="-j8"
+fi
+
+GIT_REPO="git@github.com:ryul99/.dotfiles.git"
+
+set -x
+set -e
+
+git clone --recursive ${GIT_FLAGS} ${GIT_REPO} ~/.dotfiles
