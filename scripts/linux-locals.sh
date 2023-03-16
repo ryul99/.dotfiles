@@ -488,6 +488,12 @@ install_btop() {
     make install PREFIX="$HOME/.local"
 }
 
+install_rbenv() {
+    set -e
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+}
+
 # entrypoint script
 if [ `uname` != "Linux" ]; then
     echo "Run on Linux (not on Mac OS X)"; exit 1
