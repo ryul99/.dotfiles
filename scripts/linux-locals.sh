@@ -99,6 +99,8 @@ install_zsh() {
     # replace to romkatv's installer
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh-bin/master/install)"
 
+    return
+
     ZSH_VER="5.4.1"
     TMP_ZSH_DIR="/tmp/$USER/zsh/"; mkdir -p $TMP_ZSH_DIR
 
