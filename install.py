@@ -30,6 +30,7 @@ args = parser.parse_args()
 tasks = {
     # SSH
     '~/.ssh/config' : 'home/.ssh/config',
+    '~/.ssh/rc' : 'home/.ssh/rc',
 
     # SHELLS
     '~/.bashrc' : 'home/.bashrc',
