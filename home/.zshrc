@@ -226,6 +226,7 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
     # completions
     zinit wait lucid for \
         light-mode zsh-users/zsh-completions \
+        light-mode MenkeTechnologies/zsh-cargo-completion \
         has"helm" id-as"helm-completion" as"completion" atclone"helm completion zsh > _helm" atpull"%atclone" run-atpull ryul99/zinit-null \
         has"poetry" id-as"poetry-completion" as"completion" atclone"poetry completions zsh > _poetry" atpull"%atclone" run-atpull ryul99/zinit-null
 
