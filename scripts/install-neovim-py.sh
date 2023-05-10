@@ -25,7 +25,7 @@ if which nvim >/dev/null && _version_check "$(nvim --version | head -n1 | cut -d
         exit 1;
     fi
     suggest_cmds=()
-    for py_bin in "$host_python3" "/usr/bin/python"; do
+    for py_bin in "$host_python3"; do
         echo -e "Checking neovim package for the host python: ${GREEN}${py_bin}${RESET}"
         neovim_ver=$($py_bin -c 'import pynvim; print("{major}.{minor}.{patch}".format(**pynvim.VERSION.__dict__))')
         neovim_install_cmd="$py_bin -m pip install --user --upgrade pynvim"
