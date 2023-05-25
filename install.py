@@ -138,7 +138,7 @@ post_actions += [
 post_actions += [
     r'''#!/bin/bash
     # Change default shell to zsh
-    /bin/zsh --version >/dev/null || "$(which zsh)" || (\
+    /bin/zsh --version >/dev/null || which zsh > /dev/null || (\
         echo -e "\033[0;31mError: /bin/zsh not found. Please install zsh.\033[0m"; exit 1)
     if [[ ! "$SHELL" = *zsh ]]; then
         echo -e '\033[0;33mPlease type your password if you wish to change the default shell to ZSH\e[m'
