@@ -15,8 +15,5 @@ GIT_REPO="git@github.com:ryul99/.dotfiles.git"
 
 set -x
 set -e
-
-if git clone --recursive ${GIT_FLAGS} ${GIT_REPO} ~/.dotfiles; then
-    GIT_REPO="https://github.com/ryul99/.dotfiles.git"
-    git clone --recursive ${GIT_FLAGS} ${GIT_REPO} ~/.dotfiles
-fi
+git clone --recursive ${GIT_FLAGS} ${GIT_REPO} ~/.dotfiles || \
+git clone --recursive ${GIT_FLAGS} "https://github.com/ryul99/.dotfiles.git" ~/.dotfiles
