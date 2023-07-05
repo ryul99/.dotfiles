@@ -26,6 +26,8 @@
 	autosetuprebase = always
 [push]
 	default = simple
+[pull]
+	rebase = false
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
