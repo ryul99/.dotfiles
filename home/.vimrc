@@ -136,7 +136,7 @@ try | call plug#begin(exists('s:plug') ? s:plug : '~/.vim/plugged')
     Plug 'editorconfig/editorconfig-vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'airblade/vim-gitgutter'
-    Plug '~/.fzf'
+    Plug '~/.fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'vim-scripts/BufOnly.vim'
     Plug 'google/vim-searchindex'
