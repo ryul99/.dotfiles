@@ -83,7 +83,8 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 # Path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$PATH"
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 if (( $+commands[nvim] )); then
     export EDITOR=nvim
