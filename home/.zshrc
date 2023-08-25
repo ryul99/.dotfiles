@@ -93,7 +93,11 @@ else
 fi
 
 if ! test "$SSH_AUTH_SOCK" ; then
-    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+    if test "~/.ssh/ssh_auth_sock" ; then
+        export SSH_AUTH_SOCK='~/.ssh/ssh_auth_sock'
+    else
+        export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+    fi
 fi
 
 
