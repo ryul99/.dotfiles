@@ -42,7 +42,7 @@ _template_github_latest() {
   echo -e "${COLOR_YELLOW}Installing $name from $repo ... ${COLOR_NONE}"
   local download_url=$(\
     curl -L https://api.github.com/repos/${repo}/releases 2>/dev/null | \
-    python -c "\
+    python3 -c "\
 import json, sys, fnmatch;
 J = json.load(sys.stdin);
 for asset in J[0]['assets']:
@@ -71,7 +71,7 @@ install_git() {
 
   local GIT_LATEST_VERSION=$(\
     curl -L https://api.github.com/repos/git/git/tags 2>/dev/null | \
-    python -c 'import json, sys; print(json.load(sys.stdin)[0]["name"])'\
+    python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["name"])'\
   )  # e.g. "v2.38.1"
   test  -n "$GIT_LATEST_VERSION"
 
@@ -197,7 +197,7 @@ install_bazel() {
   # install the 'latest' stable release (no pre-releases.)
   BAZEL_LATEST_VERSION=$(\
     curl -L https://api.github.com/repos/bazelbuild/bazel/releases/latest 2>/dev/null | \
-    python -c 'import json, sys; print(json.load(sys.stdin)["name"])'\
+    python3 -c 'import json, sys; print(json.load(sys.stdin)["name"])'\
   )
   test -n $BAZEL_LATEST_VERSION
   BAZEL_VER="${BAZEL_LATEST_VERSION}"
@@ -249,7 +249,7 @@ install_miniconda() {
   bash "Miniconda3-latest-Linux-x86_64.sh" -b -p ${MINICONDA_PREFIX}
 
   # 3.9.5 as of Nov 2021
-  $MINICONDA_PREFIX/bin/python --version
+  $MINICONDA_PREFIX/bin/python3 --version
   echo -e "${COLOR_GREEN}All set!${COLOR_NONE}"
 
   echo -e "${COLOR_YELLOW}Warning: miniconda is deprecated, consider using miniforge3.${COLOR_NONE}"
@@ -270,7 +270,7 @@ install_vim() {
   local TMP_VIM_DIR="$DOTFILES_TMPDIR/vim/"; mkdir -p $TMP_VIM_DIR
   local VIM_LATEST_VERSION=$(\
     curl -L https://api.github.com/repos/vim/vim/tags 2>/dev/null | \
-    python -c 'import json, sys; print(json.load(sys.stdin)[0]["name"])'\
+    python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["name"])'\
   )
   test -n $VIM_LATEST_VERSION
   local VIM_LATEST_VERSION=${VIM_LATEST_VERSION/v/}    # (e.g) 8.0.1234
@@ -293,7 +293,7 @@ install_vim() {
 
   # make sure that all necessary features are shipped
   if ! (vim --version | grep -q '+python3'); then
-    echo "vim: python is not enabled"
+    echo "vim: python3 is not enabled"
     exit 1;
   fi
 }
@@ -305,7 +305,7 @@ install_neovim() {
   # Otherwise, use the latest stable version.
   local NEOVIM_LATEST_VERSION=$(\
     curl -L https://api.github.com/repos/neovim/neovim/releases/latest 2>/dev/null | \
-    python -c 'import json, sys; print(json.load(sys.stdin)["tag_name"])'\
+    python3 -c 'import json, sys; print(json.load(sys.stdin)["tag_name"])'\
   )   # usually "stable"
   : "${NEOVIM_VERSION:=$NEOVIM_LATEST_VERSION}"
 
@@ -397,7 +397,7 @@ install_ripgrep() {
   # install ripgrep
   RIPGREP_LATEST_VERSION=$(\
       curl -L https://api.github.com/repos/BurntSushi/ripgrep/releases 2>/dev/null | \
-      python -c 'import json, sys; J = json.load(sys.stdin); assert J[0]["assets"][0]["name"].startswith("ripgrep"); print(J[0]["name"])'\
+      python3 -c 'import json, sys; J = json.load(sys.stdin); assert J[0]["assets"][0]["name"].startswith("ripgrep"); print(J[0]["name"])'\
   )
   test -n $RIPGREP_LATEST_VERSION
   echo -e "${COLOR_YELLOW}Installing ripgrep ${RIPGREP_LATEST_VERSION} ...${COLOR_NONE}"
@@ -571,7 +571,7 @@ install_asdf() {
 }
 
 install_poetry() {
-  curl -sSL https://install.python-poetry.org | python3 -
+  curl -sSL https://install.python3-poetry.org | python3 -
 }
 
 install_btop() {
