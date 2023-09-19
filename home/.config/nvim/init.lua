@@ -3,4 +3,3 @@ vim.cmd([[
     let &packpath=&runtimepath
 ]])
 local vimrc = require('vimrc')
-local treesitter = require('treesitter')

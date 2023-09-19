@@ -497,6 +497,9 @@ return packer.startup(function(use)
     vim.g.blamer_enabled = 1
     vim.g.blamer_show_in_visual_modes = 0
 
+    -- treesitter
+    local treesitter = require('treesitter')
+
     -- Filetype specific
 
     vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
