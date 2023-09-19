@@ -25,7 +25,7 @@ o.splitright = true
 o.backup = false
 o.swapfile = false
 
-if vim.fn.has('nvim') == 0 then
+if not vim.fn.has('nvim') then
     o.compatible = false
 end
 
@@ -190,7 +190,7 @@ km.set('v', '//', "\"vy/\\V<C-R>=escape(@v,'/')<CR><CR>")
 --
 
 -- save with sudo
-if vim.fn.has('nvim') == 1 then
+if vim.fn.has('nvim') then
     km.set('c', 'w!!', 'w suda://%')
 else
     -- cmap w!! w !sudo tee %
@@ -260,7 +260,7 @@ return packer.startup(function(use)
 
     use 'AndrewRadev/splitjoin.vim'
 
-    if vim.fn.has('nvim') == 1 then
+    if vim.fn.has('nvim') then
         use 'lambdalisue/suda.vim'
     end
 
@@ -311,7 +311,7 @@ return packer.startup(function(use)
     vim.g.python3_host_prog = '/usr/bin/python'
 
     -- Persistent history
-    if vim.fn.has('persistent_undo') == 1 then
+    if vim.fn.has('persistent_undo') then
         vim.cmd([[
       let vimdir='$HOME/.vim'
       let &runtimepath.=','.vimdir
@@ -324,16 +324,16 @@ return packer.startup(function(use)
     end
 
     -- indentLine
-    vim.cmd([[autocmd FileType markdown let g:indentLine_enabled=0]])
+    vim.cmd([[autocmd FileType markdown let g:indentLine_enabled=false]])
     km.set('n', '<leader>i', ':IndentLinesToggle<CR>', {
         silent = true
     })
     vim.g.indentLine_char = '▏'
 
     -- vim-better-whitespace
-    vim.g.better_whitespace_enabled = 1
-    vim.g.strip_whitespace_on_save = 1
-    vim.g.strip_whitespace_confirm = 0
+    vim.g.better_whitespace_enabled = true
+    vim.g.strip_whitespace_on_save = true
+    vim.g.strip_whitespace_confirm = false
 
     -- mundo.vim
     vim.g.mundo_right = 1
@@ -447,7 +447,7 @@ return packer.startup(function(use)
     })
 
     -- float-preview
-    vim.g['float_preview#docked'] = 1
+    vim.g['float_preview#docked'] = true
 
     -- BufOnly.vim
     vim.cmd([[
@@ -456,7 +456,7 @@ return packer.startup(function(use)
   ]])
 
     -- vim-json
-    vim.g.vim_json_syntax_conceal = 0
+    vim.g.vim_json_syntax_conceal = false
 
     -- alt
     vim.cmd([[
@@ -498,9 +498,9 @@ return packer.startup(function(use)
     local treesitter = require('treesitter')
 
     -- vim-cpp-modern
-    vim.g.cpp_attributes_highlight = 1
-    vim.g.cpp_member_highlight = 1
-    vim.g.cpp_simple_highlight = 1
+    vim.g.cpp_attributes_highlight = true
+    vim.g.cpp_member_highlight = true
+    vim.g.cpp_simple_highlight = true
 
     -- Filetype specific
 
