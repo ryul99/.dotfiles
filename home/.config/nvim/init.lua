@@ -3,4 +3,4 @@ vim.cmd([[
     let &packpath=&runtimepath
 ]])
 require('vimrc')
-require('plugins.treesitter')
+require('treesitter')
