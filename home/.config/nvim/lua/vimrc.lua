@@ -238,7 +238,7 @@ packer.init({
 })
 
 return packer.startup(function(use)
-    use "wbthomason/packer.nvim" -- Have packer manage itself	
+    use "wbthomason/packer.nvim" -- Have packer manage itself
 
     use 'itchyny/lightline.vim'
     use 'simnalamburt/vim-mundo'
@@ -374,28 +374,28 @@ return packer.startup(function(use)
     function! LightlineReadonly()
       return &readonly && &filetype !=# 'help' ? 'RO' : ''
     endfunction
-    
+
     function! LightlineFilename()
       let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
       let modified = &modified ? ' +' : ''
       return filename . modified
     endfunction
-    
+
     function! LightlineFileformat()
       return winwidth(0) > 90 ? &fileformat : ''
     endfunction
-    
+
     function! LightlineFileencoding()
       return winwidth(0) > 100 ? &fileencoding : ''
     endfunction
-    
+
     function! LightlineFiletype()
       return winwidth(0) > 80 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
     endfunction
-    
+
     function! NearestMethodOrFunction()
       return get(b:, 'vista_nearest_method_or_function', '')
-    endfunction  
+    endfunction
   ]])
 
     -- fzf
@@ -464,7 +464,7 @@ return packer.startup(function(use)
       else
         exec a:vim_command . " " . l:alternate
       endif
-    endfunction  
+    endfunction
   ]])
 
     km.set('n', '<leader>.', ":call AltCommand(expand('%'), ':e')<cr>")

@@ -2,5 +2,5 @@ vim.cmd([[
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
 ]])
-require('vimrc')
-require('treesitter')
+local vimrc = require('vimrc')
+local treesitter = require('treesitter')
