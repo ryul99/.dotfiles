@@ -301,6 +301,7 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+    use 'bfrg/vim-cpp-modern'
 
     --
     -- Plugin Configs
