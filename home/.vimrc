@@ -192,6 +192,7 @@ try | call plug#begin(exists('s:plug') ? s:plug : '~/.vim/plugged')
     Plug 'mattn/vim-lsp-settings'
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end() | catch /^Vim\%((\a\+)\)\=:E117/ | endtry
 
