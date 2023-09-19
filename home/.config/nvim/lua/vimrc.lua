@@ -248,6 +248,7 @@ return packer.startup(function(use)
     use 'easymotion/vim-easymotion'
     use 'airblade/vim-gitgutter'
     use 'junegunn/fzf.vim'
+    use 'junegunn/fzf'
     use 'vim-scripts/BufOnly.vim'
     use 'google/vim-searchindex'
     use 'kshenoy/vim-signature'
