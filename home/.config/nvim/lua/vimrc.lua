@@ -481,6 +481,7 @@ return packer.startup(function(use)
     km.set('n', '<leader><leader>v', ':Vista finder<CR>')
 
     vim.cmd([[
+    let g:vista#finders = ['fzf']
     let g:vista_fzf_preview = ['right:50%']
   ]])
 
