@@ -188,6 +188,10 @@ try | call plug#begin(exists('s:plug') ? s:plug : '~/.vim/plugged')
     Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
     Plug 'liuchengxu/vista.vim'
     Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end() | catch /^Vim\%((\a\+)\)\=:E117/ | endtry
 
