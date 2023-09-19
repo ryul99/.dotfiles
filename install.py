@@ -111,9 +111,9 @@ post_actions += [
 vim = 'nvim' if find_executable('nvim') else 'vim'
 post_actions += [
     # Run vim-plug installation
-    {'install' : '{vim} +PlugInstall +qall'.format(vim=vim),
-     'update'  : '{vim} +PlugUpdate  +qall'.format(vim=vim),
-     'none'    : '# {vim} +PlugUpdate (Skipped)'.format(vim=vim)
+    {'install' : '{vim} +PackerInstall +qall'.format(vim=vim),
+     'update'  : '{vim} +PackerUpdate +qall'.format(vim=vim),
+     'none'    : '# {vim} +PackerUpdate (Skipped)'.format(vim=vim)
      }['update' if not args.skip_vimplug else 'none']
 ]
 
