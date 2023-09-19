@@ -500,6 +500,11 @@ return packer.startup(function(use)
     -- treesitter
     local treesitter = require('treesitter')
 
+    -- vim-cpp-modern
+    vim.g.cpp_attributes_highlight = 1
+    vim.g.cpp_member_highlight = 1
+    vim.g.cpp_simple_highlight = 1
+
     -- Filetype specific
 
     vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
