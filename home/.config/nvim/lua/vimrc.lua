@@ -258,8 +258,6 @@ return packer.startup(function(use)
         run = 'fzf#install()'
     }
 
-    use 'skywind3000/vim-quickui'
-    use 'APZelos/blamer.nvim'
     use 'AndrewRadev/splitjoin.vim'
 
     if vim.fn.has('nvim') == 1 then
@@ -492,10 +490,6 @@ return packer.startup(function(use)
         pattern = {"*.tsx", "*.jsx"},
         command = "set filetype=typescriptreact"
     })
-
-    -- blamer.nvim
-    vim.g.blamer_enabled = 1
-    vim.g.blamer_show_in_visual_modes = 0
 
     -- treesitter
     local treesitter = require('treesitter')
