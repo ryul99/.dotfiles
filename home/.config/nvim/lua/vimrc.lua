@@ -297,7 +297,10 @@ return packer.startup(function(use)
     use 'prabirshrestha/asyncomplete-lsp.vim'
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
     }
     use 'bfrg/vim-cpp-modern'
 
