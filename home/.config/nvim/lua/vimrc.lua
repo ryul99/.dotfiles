@@ -302,7 +302,7 @@ return packer.startup(function(use)
             ts_update()
         end,
     }
-    use 'bfrg/vim-cpp-modern'
+    -- use 'bfrg/vim-cpp-modern'
 
     --
     -- Plugin Configs
