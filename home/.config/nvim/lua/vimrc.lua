@@ -37,7 +37,7 @@ o.signcolumn = 'yes'
 o.colorcolumn = {'79', '99', '119'}
 
 -- mouse
-o.mouse = a
+o.mouse = 'a'
 
 -- Indentation
 o.cindent = true
