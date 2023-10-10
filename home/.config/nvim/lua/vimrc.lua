@@ -502,9 +502,9 @@ return packer.startup(function(use)
     km.set('n', '<F8>', ':TagbarToggle<CR>')
 
     -- vim-cpp-modern
-    vim.g.cpp_attributes_highlight = true
-    vim.g.cpp_member_highlight = true
-    vim.g.cpp_simple_highlight = true
+    -- vim.g.cpp_attributes_highlight = true
+    -- vim.g.cpp_member_highlight = true
+    -- vim.g.cpp_simple_highlight = true
 
     -- Filetype specific
 
