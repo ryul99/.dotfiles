@@ -275,6 +275,7 @@ return packer.startup(function(use)
     use 'Yggdroot/indentLine'
     use 'ntpeters/vim-better-whitespace'
     use 'connorholyday/vim-snazzy'
+    use 'preservim/tagbar'
 
     -- Languages
     use 'HerringtonDarkholme/yats.vim'
@@ -496,6 +497,9 @@ return packer.startup(function(use)
 
     -- treesitter
     local treesitter = require('treesitter')
+
+    -- tagbar
+    km.set('n', '<F8>', ':TagbarToggle<CR>')
 
     -- vim-cpp-modern
     vim.g.cpp_attributes_highlight = true
