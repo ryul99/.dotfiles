@@ -303,6 +303,26 @@ return packer.startup(function(use)
             ts_update()
         end,
     }
+
+      -- Snippet generation
+    use {
+        "hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        opt = true,
+        config = function()
+            require("config.cmp").setup()
+        end,
+        requires = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lua",
+            "ray-x/cmp-treesitter",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+        },
+        disable = false,
+  }
     -- use 'bfrg/vim-cpp-modern'
 
     --
@@ -496,7 +516,7 @@ return packer.startup(function(use)
     })
 
     -- treesitter
-    local treesitter = require('treesitter')
+    local treesitter = require('plugins/treesitter')
 
     -- tagbar
     km.set('n', '<F8>', ':TagbarToggle<CR>')
@@ -528,7 +548,7 @@ return packer.startup(function(use)
         pattern = "yaml",
         command = "setlocal indentkeys-=:"
     })
-    vim.api.nvim_create_autocmd("Filetype", {
+    vim.api.nvim_create_autocmd("FileType", {
         pattern = "sql",
         command = "setlocal sw=2 sts=2 et"
     })
