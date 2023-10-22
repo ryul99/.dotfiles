@@ -76,19 +76,6 @@ return packer.startup(function(use)
     use 'connorholyday/vim-snazzy'
     use 'preservim/tagbar'
 
-    -- Languages
-    use 'HerringtonDarkholme/yats.vim'
-    use 'cespare/vim-toml'
-    use 'elzr/vim-json'
-    use 'neoclide/jsonc.vim'
-    use 'hashivim/vim-terraform'
-    use 'nirum-lang/nirum.vim'
-    use 'neovimhaskell/haskell-vim'
-    use 'pangloss/vim-javascript'
-    use 'jason0x43/vim-js-indent'
-    use 'leafgarland/typescript-vim'
-    use 'peitalin/vim-jsx-typescript'
-
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
     use 'prabirshrestha/vim-lsp'
