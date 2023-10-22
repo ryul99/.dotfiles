@@ -213,4 +213,6 @@ vim.diagnostic.config {
     },
 }
 
+km.set('n', '<C-F12>', 'vim.diagnostic.disable()')
+
 require ('plugins/packer')
