@@ -74,8 +74,8 @@ post_actions = []
 
 post_actions += [
     '''#!/bin/bash
-    # Check whether ~/.vim and ~/.zsh are well-configured
-    for f in ~/.vim ~/.vimrc ~/.zshrc; do
+    # Check whether and ~/.zsh are well-configured
+    for f in ~/.vimrc ~/.zshrc; do
         if ! readlink $f >/dev/null; then
             echo -e "\033[0;31m\
 WARNING: $f is not a symbolic link to ~/.dotfiles.
