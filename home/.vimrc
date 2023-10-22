@@ -174,18 +174,6 @@ try | call plug#begin(exists('s:plug') ? s:plug : '~/.vim/plugged')
     Plug 'peitalin/vim-jsx-typescript'
 
     " Language server and Auto completion
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'fannheyward/coc-pyright', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'fannheyward/coc-sql', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'neoclide/coc-yank', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-    " Plug 'clangd/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
     Plug 'liuchengxu/vista.vim'
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
@@ -291,64 +279,6 @@ function! NearestMethodOrFunction()
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
-" coc.nvim
-let g:coc_node_path = "$HOME/.local/bin/node"
-set updatetime=100
-set completeopt=preview,noinsert,menuone,noselect
-set shortmess+=c
-
-let g:coc_disable_startup_warning = 1
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-nmap <silent> <F1> :<C-u>CocList<cr>
-imap <silent> <F1> <Esc>:<C-u>CocList<cr>
-nmap <silent> <F2> <Plug>(coc-rename)
-imap <silent> <F2> <ESC><Plug>(coc-rename)
-nmap <silent> <leader>f <Plug>(coc-format)
-xmap <silent> <leader>f <Plug>(coc-format-selected)
-xmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>ac <Plug>(coc-codeaction)
-
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
-nmap <silent> <C-x> <Plug>(coc-cursors-word)*
-xmap <silent> <C-x> <Plug>(coc-cursors-range)
-nmap <leader>x  <Plug>(coc-cursors-operator)
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-highlight link CocCursorRange NONE
-highlight CocCursorRange guibg=#b16286 guifg=#ebdbb2
-
-autocmd FileType python call coc#config('python', {'pythonPath': system('pyenv which python | tr -d \\n')})
-
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : smoothie#forwards()
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : smoothie#backwards()
-
-" coc-yank
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
 " fzf
 let g:fzf_action = {
     \     'ctrl-t': 'tab split',
@@ -417,7 +347,6 @@ nnoremap = <C-^>
 nnoremap <leader>v :Vista!!<CR>
 nnoremap <leader><leader>v :Vista finder<CR>
 
-let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:50%']
 
 " autocmd User lsp_buffer_enabled call vista#RunForNearestMethodOrFunction()

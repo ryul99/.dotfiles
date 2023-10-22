@@ -162,13 +162,6 @@ if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
 
-# vim coc.clangd setting
-CLANGD=$(cd $HOME/.config/coc/extensions/coc-clangd-data/install/*/clang*/bin && echo $PWD) 2> /dev/null
-if [ -d $CLANGD ]; then
-    export PATH="$PATH:$CLANGD"
-fi
-unset CLANGD
-
 # cargo
 if [ -d ~/.cargo/bin ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
