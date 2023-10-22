@@ -4,4 +4,3 @@ vim.cmd([[
 ]])
 
 require('vimrc')
-require('plugins/packer')
