@@ -1,5 +1,6 @@
-local o = vim.opt
-local km = vim.keymap
+o = vim.opt
+km = vim.keymap
+fn = vim.fn
 
 --
 -- General Configs
@@ -201,7 +202,7 @@ end
 -- diagnostic
 --
 
-vim.diagnostic.config {
+vim.diagnostic.config({
     virtual_text = {
         severity = { min = vim.diagnostic.severity.ERROR },
     },
@@ -211,8 +212,9 @@ vim.diagnostic.config {
     signs = {
         severity = { min = vim.diagnostic.severity.ERROR },
     },
-}
+})
 
-km.set('n', '<F36>', 'vim.diagnostic.disable()')
+km.set('n', '<F12>', '<cmd>lua vim.diagnostic.disable()<CR>')
 
 require ('plugins/packer')
+require ('config/plugins')
