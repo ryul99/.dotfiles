@@ -201,6 +201,16 @@ end
 -- diagnostic
 --
 
-vim.diagnostic.config({severity = vim.diagnostic.severity.ERROR})
+vim.diagnostic.config {
+    virtual_text = {
+      severity = { min = vim.diagnostic.severity.ERROR },
+    },
+    underline = {
+      severity = { min = vim.diagnostic.severity.ERROR },
+    },
+    signs = {
+        severity = { min = vim.diagnostic.severity.ERROR },
+    },
+}
 
 require ('plugins/packer')
