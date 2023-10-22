@@ -214,7 +214,6 @@ vim.diagnostic.config({
     },
 })
 
-km.set('n', '<F12>', '<cmd>lua vim.diagnostic.disable()<CR>')
-
 require ('plugins/packer')
 require ('config/plugins')
+require ('config/lsp')

@@ -78,10 +78,10 @@ return packer.startup(function(use)
 
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
-    use 'prabirshrestha/vim-lsp'
-    use 'mattn/vim-lsp-settings'
-    use 'prabirshrestha/asyncomplete.vim'
-    use 'prabirshrestha/asyncomplete-lsp.vim'
+    use 'neovim/nvim-lspconfig'
+    use 'VonHeikemen/lsp-zero.nvim'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
