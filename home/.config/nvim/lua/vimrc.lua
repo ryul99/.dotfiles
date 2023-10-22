@@ -197,4 +197,10 @@ else
     km.set('c', 'w!!', 'w !sudo tee %')
 end
 
+--
+-- diagnostic
+--
+
+vim.diagnostic.config({severity = vim.diagnostic.severity.ERROR})
+
 require ('plugins/packer')
