@@ -1,1 +1,3 @@
 home/.vim
+home/.tmux/plugins
+home/.config/nvim/plugin
