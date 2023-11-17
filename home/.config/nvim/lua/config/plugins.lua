@@ -18,7 +18,6 @@ if vim.fn.has('persistent_undo') then
 end
 
 -- indentLine
-vim.cmd([[autocmd FileType markdown let g:indentLine_enabled=false]])
 km.set('n', '<leader>i', ':IndentLinesToggle<CR>', {
     silent = true
 })
