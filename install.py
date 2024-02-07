@@ -75,7 +75,7 @@ post_actions = []
 post_actions += [
     '''#!/bin/bash
     # Check whether and ~/.zsh are well-configured
-    for f in ~/.vimrc ~/.zshrc; do
+    for f in ~/.zshrc; do
         if ! readlink $f >/dev/null; then
             echo -e "\033[0;31m\
 WARNING: $f is not a symbolic link to ~/.dotfiles.
@@ -114,24 +114,6 @@ post_actions += [
      'none'    : '# {vim} +PackerUpdate (Skipped)'.format(vim=vim)
      }['update' if not args.skip_vimplug else 'none']
 ]
-
-post_actions += [
-    r'''#!/bin/bash
-    # Setting up for coc.nvim (~/.config/coc, node.js)
-
-    # (i) create ~/.config/coc directory if not exists
-    GREEN="\033[0;32m"; YELLOW="\033[0;33m"; RESET="\033[0m";
-    coc_dir="$HOME/.config/coc/"
-    if [ ! -d "$coc_dir" ]; then
-	mkdir -p "$coc_dir" || exit 1;
-	echo "Created: $coc_dir"
-    else
-	echo -e "${GREEN}coc directory:${RESET}   $coc_dir"
-    fi
-
-    # (ii) validate or auto-install node.js locally
-    bash "scripts/install-node.sh" || exit 1;
-''']
 
 post_actions += [
     r'''#!/bin/bash
