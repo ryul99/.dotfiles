@@ -75,6 +75,7 @@ return packer.startup(function(use)
     use 'ntpeters/vim-better-whitespace'
     use 'connorholyday/vim-snazzy'
     use 'preservim/tagbar'
+    use 'stevearc/dressing.nvim'
 
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
