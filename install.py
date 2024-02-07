@@ -37,7 +37,7 @@ tasks = {
     '~/.sh_aliases' : 'home/.sh_aliases',
 
     # VIM
-    '~/.vimrc' : 'home/.vimrc',
+    # '~/.vimrc' : 'home/.vimrc',
     '~/.config/nvim' : 'home/.config/nvim',
 
     # GIT
