@@ -90,6 +90,18 @@ return packer.startup(function(use)
             ts_update()
         end,
     }
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({
+                ---NOTE: If given `false` then the plugin won't create any mappings
+                mappings = {
+                    ---Extra mapping; `gco`, `gcO`, `gcA`
+                    extra = false,
+                },
+            })
+        end
+    }
 
       -- Snippet generation
     use {
