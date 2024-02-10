@@ -120,12 +120,6 @@ post_actions += [
     # Change default shell to zsh
     /bin/zsh --version >/dev/null || which zsh > /dev/null || (\
         echo -e "\033[0;31mError: /bin/zsh not found. Please install zsh.\033[0m"; exit 1)
-    if [[ ! "$SHELL" = *zsh ]]; then
-        echo -e '\033[0;33mPlease type your password if you wish to change the default shell to ZSH\e[m'
-        chsh -s "$(which zsh)" && echo -e 'Successfully changed the default shell, please re-login'
-    else
-        echo -e "\033[0;32m\$SHELL is already zsh.\033[0m $(zsh --version)"
-    fi
 ''']
 
 
