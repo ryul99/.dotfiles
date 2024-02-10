@@ -758,11 +758,15 @@ install_rclone() {
 
 
 # entrypoint script
-if [ `uname` != "Linux" ]; then
-  echo "Run on Linux (not on Mac OS X)"; exit 1
-fi
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
-  $@
+  echo -e "\nProceed?"
+  TMOUT=10 # timeout second
+  select yn in "Yes" "No"; do
+      case $yn in
+          Yes ) $@; break;;
+          No ) exit;;
+      esac
+  done
 else
   echo "Usage: $0 [command], where command is one of the following:"
   declare -F | cut -d" " -f3 | grep -v '^_'
