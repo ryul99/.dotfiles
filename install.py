@@ -18,8 +18,8 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--force', action="store_true", default=False,
                     help='If set, it will override existing symbolic links')
-parser.add_argument('--skip-vimplug', action='store_true',
-                    help='If set, do not update vim plugins.')
+parser.add_argument('--skip-nvim', action='store_true',
+                    help='If set, do not update neovim plugins.')
 
 args = parser.parse_args()
 
@@ -51,8 +51,6 @@ tasks = {
 
     # Bins
     '~/.local/bin/dotfiles' : 'bin/dotfiles',
-    '~/.local/bin/fasd' : 'bin/fasd',
-    '~/.local/bin/is_mosh' : 'bin/is_mosh',
     # '~/.local/bin/fzf' : '~/.fzf/bin/fzf', # fzf is at $HOME/.fzf
 
     # tmux
@@ -89,31 +87,15 @@ Please remove your local folder/file $f and try again.\033[0m"
 
 post_actions += [
     '''#!/bin/bash
-    # Download command line scripts
-    mkdir -p "$HOME/.local/bin/"
-    _download() {
-        curl -L "$2" > "$1" && chmod +x "$1"
-    }
-    ret=0
-    set -v
-    _download "$HOME/.local/bin/video2gif" "https://raw.githubusercontent.com/wookayin/video2gif/master/video2gif" || ret=1
-    exit $ret;
-''']
-
-post_actions += [
-    '''#!/bin/bash
     # validate neovim package installation on python2/3 and automatically install if missing
     bash "scripts/install-neovim-py.sh"
 ''']
 
-vim = 'nvim' if find_executable('nvim') else 'vim'
-post_actions += [
-    # Run vim-plug installation
-    {'install' : '{vim} +PackerInstall +qall'.format(vim=vim),
-     'update'  : '{vim} +PackerUpdate +qall'.format(vim=vim),
-     'none'    : '# {vim} +PackerUpdate (Skipped)'.format(vim=vim)
-     }['update' if not args.skip_vimplug else 'none']
-]
+if find_executable('nvim'):
+    post_actions += [{
+         'update'  : "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerUpdate'",
+         'none'    : "# (neovim update skipped)",
+    }['update' if not args.skip_nvim else 'none']]
 
 post_actions += [
     r'''#!/bin/bash
