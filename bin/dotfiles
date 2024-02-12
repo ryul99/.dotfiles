@@ -49,9 +49,9 @@ def add_argument(*args, **kwargs):
 ###############################################################################################
 
 @add_argument('--fast', action='store_true', help='Skip all slow updates (zsh/vim plugins)')
-@add_argument('--skip-vimplug', action='store_true', help='Skip updating vim plugins (vim-plug)')
+@add_argument('--skip-nvim', action='store_true', help='Skip updating vim plugins (vim-plug)')
 def update(fast=False,
-           skip_vimplug=False):
+           skip_nvim=False):
     '''Update the dotfiles from github.'''
 
     dotfiles_dir = os.path.expanduser('~/.dotfiles')
@@ -66,8 +66,8 @@ def update(fast=False,
     git_old_head = _git_head()
 
     install_args = set()
-    if skip_vimplug: install_args.add("--skip-vimplug")
-    if fast: install_args.update(["--skip-vimplug"])
+    if skip_nvim: install_args.add("--skip-nvim")
+    if fast: install_args.update(["--skip-nvim"])
     install_args = ' '.join(install_args)
 
     # TODO: check if current branch is master
