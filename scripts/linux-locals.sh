@@ -759,11 +759,14 @@ install_rclone() {
 install_glow () {
   set -x
 
-  GLOW_VERSION="1.5.1"
+  GLOW_LATEST_VERSION=$(\
+    curl -L https://api.github.com/repos/charmbracelet/glow/releases/latest 2>/dev/null | \
+    python3 -c 'import json, sys; print(json.load(sys.stdin)["name"])'\
+  )
 
   local TMP_GLOW_DIR="$DOTFILES_TMPDIR/glow"
   mkdir -p $TMP_GLOW_DIR && cd $TMP_GLOW_DIR
-  wget "https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_Linux_x86_64.tar.gz"
+  wget "https://github.com/charmbracelet/glow/releases/download/${GLOW_LATEST_VERSION}/glow_Linux_x86_64.tar.gz"
   tar xf glow_Linux_x86_64.tar.gz
   mv glow $PREFIX/bin/
 }
