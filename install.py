@@ -97,13 +97,6 @@ if find_executable('nvim'):
          'none'    : "# (neovim update skipped)",
     }['update' if not args.skip_nvim else 'none']]
 
-post_actions += [
-    r'''#!/bin/bash
-    # Change default shell to zsh
-    /bin/zsh --version >/dev/null || which zsh > /dev/null || (\
-        echo -e "\033[0;31mError: /bin/zsh not found. Please install zsh.\033[0m"; exit 1)
-''']
-
 
 ################# END OF FIXME #################
 
