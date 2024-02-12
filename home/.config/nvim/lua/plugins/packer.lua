@@ -76,6 +76,7 @@ return packer.startup(function(use)
     use 'connorholyday/vim-snazzy'
     use 'preservim/tagbar'
     use 'stevearc/dressing.nvim'
+    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
 
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
