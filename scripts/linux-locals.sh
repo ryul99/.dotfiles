@@ -756,6 +756,18 @@ install_rclone() {
   printf '\nNow run "rclone config" for setup. Check https://rclone.org/docs/ for more details.\n\n'
 }
 
+install_glow () {
+  set -x
+
+  GLOW_VERSION="1.5.1"
+
+  local TMP_GLOW_DIR="$DOTFILES_TMPDIR/glow"
+  mkdir -p $TMP_GLOW_DIR && cd $TMP_GLOW_DIR
+  wget "https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_Linux_x86_64.tar.gz"
+  tar xf glow_Linux_x86_64.tar.gz
+  mv glow $PREFIX/bin/
+}
+
 
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
