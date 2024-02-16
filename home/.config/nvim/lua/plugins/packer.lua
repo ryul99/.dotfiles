@@ -44,13 +44,11 @@ return packer.startup(function(use)
     use 'vim-utils/vim-interruptless'
     use 'junegunn/gv.vim'
     use 'editorconfig/editorconfig-vim'
-    use 'easymotion/vim-easymotion'
     use 'airblade/vim-gitgutter'
     use 'junegunn/fzf.vim'
     use 'junegunn/fzf'
     use 'vim-scripts/BufOnly.vim'
     use 'google/vim-searchindex'
-    use 'kshenoy/vim-signature'
 
     use {
         '~/.fzf',
