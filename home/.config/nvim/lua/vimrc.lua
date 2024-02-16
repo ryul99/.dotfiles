@@ -190,6 +190,9 @@ imap('<C-s>', '<ESC>:w<CR>')
 -- Visual to search
 vmap('//', "\"vy/\\V<C-R>=escape(@v,'/')<CR><CR>")
 
+imap('<c-b>', '<c-o>b', { silent = true })  -- words backward
+imap('<c-f>', '<c-o>w', { silent = true })  -- words forward
+
 --
 -- Commands
 --
