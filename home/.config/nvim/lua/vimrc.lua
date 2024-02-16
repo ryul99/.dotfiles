@@ -10,6 +10,8 @@ local vmap = function(...) vim.keymap.set('v', ...) end
 -- General Configs
 --
 
+vim.g.mapleader = ","
+
 vim.cmd([[
     filetype plugin on
     syntax on
@@ -71,20 +73,6 @@ o.showmatch = true
 -- Key Mappings
 --
 
--- Easy Home/End
--- translate this vim language comment to lua
-imap('<C-a>', '<ESC>I')
-imap('<C-e>', '<ESC>A')
-nmap('<C-a>', '^')
-nmap('<C-e>', '$')
-vmap('<C-a>', '^')
-vmap('<C-e>', '$')
-
--- Easy Delete Key
-vmap('<BS>', '"_d', {
-    silent = true
-})
-
 -- Easy Indentation
 vmap('<Tab>', '>gv', {
     silent = true
@@ -108,51 +96,51 @@ nmap('<C-k>', '<C-w><C-k>')
 nmap('<C-l>', '<C-w><C-l>')
 
 -- Easy Resize
-nmap('<C-A-h>', ':vertical resize -2<CR>', {
+nmap('<C-S-h>', ':vertical resize -2<CR>', {
     silent = true
 })
-nmap('<C-A-j>', ':resize -2<CR>', {
+nmap('<C-S-j>', ':resize -2<CR>', {
     silent = true
 })
-nmap('<C-A-k>', ':resize +2<CR>', {
+nmap('<C-S-k>', ':resize +2<CR>', {
     silent = true
 })
-nmap('<C-A-l>', ':vertical resize +2<CR>', {
+nmap('<C-S-l>', ':vertical resize +2<CR>', {
     silent = true
 })
 
 -- Tab Navigations
-nmap('<a-t>', ':tabnew<CR>', {
+nmap('<Leader>t', ':tabnew<CR>', {
     silent = true
 })
-nmap('<a-T>', ':-tabnew<CR>', {
+nmap('<Leader>T', ':-tabnew<CR>', {
     silent = true
 })
-nmap('<a-1>', '1gt', {
+nmap('<Leader>1', '1gt', {
     silent = true
 })
-nmap('<a-2>', '2gt', {
+nmap('<Leader>2', '2gt', {
     silent = true
 })
-nmap('<a-3>', '3gt', {
+nmap('<Leader>3', '3gt', {
     silent = true
 })
-nmap('<a-4>', '4gt', {
+nmap('<Leader>4', '4gt', {
     silent = true
 })
-nmap('<a-5>', '5gt', {
+nmap('<Leader>5', '5gt', {
     silent = true
 })
-nmap('<a-6>', '6gt', {
+nmap('<Leader>6', '6gt', {
     silent = true
 })
-nmap('<a-7>', '7gt', {
+nmap('<Leader>7', '7gt', {
     silent = true
 })
-nmap('<a-8>', '8gt', {
+nmap('<Leader>8', '8gt', {
     silent = true
 })
-nmap('<a-9>', '9gt', {
+nmap('<Leader>9', '9gt', {
     silent = true
 })
 
@@ -174,9 +162,6 @@ imap('<S-Down>', '<Esc>:m+<CR>', {
 nmap('<Tab><Tab>', ':b #<CR>', {
     silent = true
 })
-
--- Easy delete
-imap('<A-BS>', '<C-w>')
 
 -- Remove highlight
 nmap(',<Space>', ':noh<CR>', {
