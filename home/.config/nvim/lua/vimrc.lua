@@ -2,6 +2,10 @@ o = vim.opt
 km = vim.keymap
 fn = vim.fn
 
+local imap = function(...) vim.keymap.set('i', ...) end
+local nmap = function(...) vim.keymap.set('n', ...) end
+local vmap = function(...) vim.keymap.set('v', ...) end
+
 --
 -- General Configs
 --
@@ -69,122 +73,122 @@ o.showmatch = true
 
 -- Easy Home/End
 -- translate this vim language comment to lua
-km.set('i', '<C-a>', '<ESC>I')
-km.set('i', '<C-e>', '<ESC>A')
-km.set('n', '<C-a>', '^')
-km.set('n', '<C-e>', '$')
-km.set('v', '<C-a>', '^')
-km.set('v', '<C-e>', '$')
+imap('<C-a>', '<ESC>I')
+imap('<C-e>', '<ESC>A')
+nmap('<C-a>', '^')
+nmap('<C-e>', '$')
+vmap('<C-a>', '^')
+vmap('<C-e>', '$')
 
 -- Easy Delete Key
-km.set('v', '<BS>', '"_d', {
+vmap('<BS>', '"_d', {
     silent = true
 })
 
 -- Easy Indentation
-km.set('v', '<Tab>', '>gv', {
+vmap('<Tab>', '>gv', {
     silent = true
 })
-km.set('v', '<S-Tab>', '<gv', {
+vmap('<S-Tab>', '<gv', {
     silent = true
 })
 
 -- Easy Splitting
-km.set('n', '<C-_>', ':split<CR>', {
+nmap('<C-_>', ':split<CR>', {
     silent = true
 })
-km.set('n', '<C-\\>', ':vertical split<CR>', {
+nmap('<C-\\>', ':vertical split<CR>', {
     silent = true
 })
 
 -- Easy Navigation
-km.set('n', '<C-h>', '<C-w><C-h>')
-km.set('n', '<C-j>', '<C-w><C-j>')
-km.set('n', '<C-k>', '<C-w><C-k>')
-km.set('n', '<C-l>', '<C-w><C-l>')
+nmap('<C-h>', '<C-w><C-h>')
+nmap('<C-j>', '<C-w><C-j>')
+nmap('<C-k>', '<C-w><C-k>')
+nmap('<C-l>', '<C-w><C-l>')
 
 -- Easy Resize
-km.set('n', '<C-A-h>', ':vertical resize -2<CR>', {
+nmap('<C-A-h>', ':vertical resize -2<CR>', {
     silent = true
 })
-km.set('n', '<C-A-j>', ':resize -2<CR>', {
+nmap('<C-A-j>', ':resize -2<CR>', {
     silent = true
 })
-km.set('n', '<C-A-k>', ':resize +2<CR>', {
+nmap('<C-A-k>', ':resize +2<CR>', {
     silent = true
 })
-km.set('n', '<C-A-l>', ':vertical resize +2<CR>', {
+nmap('<C-A-l>', ':vertical resize +2<CR>', {
     silent = true
 })
 
 -- Tab Navigations
-km.set('n', '<a-t>', ':tabnew<CR>', {
+nmap('<a-t>', ':tabnew<CR>', {
     silent = true
 })
-km.set('n', '<a-T>', ':-tabnew<CR>', {
+nmap('<a-T>', ':-tabnew<CR>', {
     silent = true
 })
-km.set('n', '<a-1>', '1gt', {
+nmap('<a-1>', '1gt', {
     silent = true
 })
-km.set('n', '<a-2>', '2gt', {
+nmap('<a-2>', '2gt', {
     silent = true
 })
-km.set('n', '<a-3>', '3gt', {
+nmap('<a-3>', '3gt', {
     silent = true
 })
-km.set('n', '<a-4>', '4gt', {
+nmap('<a-4>', '4gt', {
     silent = true
 })
-km.set('n', '<a-5>', '5gt', {
+nmap('<a-5>', '5gt', {
     silent = true
 })
-km.set('n', '<a-6>', '6gt', {
+nmap('<a-6>', '6gt', {
     silent = true
 })
-km.set('n', '<a-7>', '7gt', {
+nmap('<a-7>', '7gt', {
     silent = true
 })
-km.set('n', '<a-8>', '8gt', {
+nmap('<a-8>', '8gt', {
     silent = true
 })
-km.set('n', '<a-9>', '9gt', {
+nmap('<a-9>', '9gt', {
     silent = true
 })
 
 -- Line Moving
-km.set('n', '<S-Up>', ':m-2<CR>', {
+nmap('<S-Up>', ':m-2<CR>', {
     silent = true
 })
-km.set('n', '<S-Down>', ':m+<CR>', {
+nmap('<S-Down>', ':m+<CR>', {
     silent = true
 })
-km.set('i', '<S-Up>', '<Esc>:m-2<CR>', {
+imap('<S-Up>', '<Esc>:m-2<CR>', {
     silent = true
 })
-km.set('i', '<S-Down>', '<Esc>:m+<CR>', {
+imap('<S-Down>', '<Esc>:m+<CR>', {
     silent = true
 })
 
 -- Buffer Navigations
-km.set('n', '<Tab><Tab>', ':b #<CR>', {
+nmap('<Tab><Tab>', ':b #<CR>', {
     silent = true
 })
 
 -- Easy delete
-km.set('i', '<A-BS>', '<C-w>')
+imap('<A-BS>', '<C-w>')
 
 -- Remove highlight
-km.set('n', ',<Space>', ':noh<CR>', {
+nmap(',<Space>', ':noh<CR>', {
     silent = true
 })
 
 -- Easy save
-km.set('n', '<C-s>', ':w<CR>')
-km.set('i', '<C-s>', '<ESC>:w<CR>')
+nmap('<C-s>', ':w<CR>')
+imap('<C-s>', '<ESC>:w<CR>')
 
 -- Visual to search
-km.set('v', '//', "\"vy/\\V<C-R>=escape(@v,'/')<CR><CR>")
+vmap('//', "\"vy/\\V<C-R>=escape(@v,'/')<CR><CR>")
 
 --
 -- Commands
