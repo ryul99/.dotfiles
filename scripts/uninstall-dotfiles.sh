@@ -2,7 +2,7 @@
 
 # unlink symbolic links to .dotfiles at HOME
 
-echo -e 'Going to remove below files... Continue? (Answer in 1 or 2)\n'
+printf 'Going to remove below files... Continue? (Answer in 1 or 2)\n\n'
 
 FILES=$(find $HOME -lname *dotfiles* -maxdepth 1)
 
