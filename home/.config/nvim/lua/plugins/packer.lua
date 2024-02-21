@@ -135,6 +135,10 @@ return packer.startup(function(use)
             "netman.ui.neo-tree",
         }
     }
+    use {
+        "miversen33/netman.nvim",
+        module = "netman",
+    }
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
