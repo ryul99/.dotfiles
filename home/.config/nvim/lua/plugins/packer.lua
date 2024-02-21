@@ -130,15 +130,29 @@ return packer.startup(function(use)
             "MunifTanjim/nui.nvim",
             "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         },
-        sources = {
-            "filesystem", -- Neotree filesystem source
-            "netman.ui.neo-tree",
-        }
+        config = function()
+            require("neo-tree").setup({
+                sources = {
+                    "filesystem", -- Neotree filesystem source
+                    "buffers",
+                    "git_status",
+                    "netman.ui.neo-tree",
+                },
+                source_selector = {
+                    winbar = true,
+                    sources = {
+                        { source = "filesystem" },
+                        { source = "buffers" },
+                        { source = "git_status" },
+                        -- Any other items you had in your source selector
+                        -- Just add the netman source as well
+                        { source = "remote" }
+                    }
+                }
+            })
+        end
     }
-    use {
-        "miversen33/netman.nvim",
-        module = "netman",
-    }
+    use "miversen33/netman.nvim"
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
