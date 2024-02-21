@@ -84,6 +84,9 @@ unset CONDA_SHLVL
 if [ -d "$HOME/.miniconda3/bin/" ]; then
   path=( $path "$HOME/.miniconda3/bin" )
   export CONDA_EXE="$HOME/.miniconda3/bin/conda"
+elif [ -d "$HOME/miniconda3/bin/" ]; then
+  path=( $path "$HOME/miniconda3/bin/" )
+  export CONDA_EXE="$HOME/miniconda3/bin/conda"
 elif [ -d "/usr/local/miniconda3/" ]; then
   path=( $path "/usr/local/miniconda3/bin" )
   export CONDA_EXE="/usr/local/miniconda3/bin/conda"
