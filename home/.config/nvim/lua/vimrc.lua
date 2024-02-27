@@ -96,16 +96,16 @@ nmap('<C-k>', '<C-w><C-k>')
 nmap('<C-l>', '<C-w><C-l>')
 
 -- Easy Resize
-nmap('<C-S-h>', ':vertical resize -2<CR>', {
+nmap('<A-h>', ':vertical resize -2<CR>', {
     silent = true
 })
-nmap('<C-S-j>', ':resize -2<CR>', {
+nmap('<A-j>', ':resize -2<CR>', {
     silent = true
 })
-nmap('<C-S-k>', ':resize +2<CR>', {
+nmap('<A-k>', ':resize +2<CR>', {
     silent = true
 })
-nmap('<C-S-l>', ':vertical resize +2<CR>', {
+nmap('<A-l>', ':vertical resize +2<CR>', {
     silent = true
 })
 
