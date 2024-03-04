@@ -196,6 +196,9 @@ km.set('n', '<F8>', ':TagbarToggle<CR>')
 -- neotree
 km.set('n', '<leader>T', ':Neotree toggle<CR>')
 
+-- vim-visual-multi
+vim.g.VM_mouse_mappings = 1
+
 -- vim-cpp-modern
 -- vim.g.cpp_attributes_highlight = true
 -- vim.g.cpp_member_highlight = true
