@@ -56,6 +56,10 @@ tasks = {
     # tmux
     '~/.tmux' : 'home/.tmux',
     '~/.tmux.conf' : 'home/.tmux.conf',
+
+    # wezterm
+    '~/.config/wezterm' : 'home/.config/wezterm',
+    '~/.wezterm.lua' : 'home/.wezterm.lua'
 }
 
 
