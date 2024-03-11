@@ -1,0 +1,25 @@
+{
+    "~/.ssh/config" : "home/.ssh/config",
+    "~/.ssh/rc" : "home/.ssh/rc",
+
+    "~/.bashrc" : "home/.bashrc",
+    "~/.sh_aliases" : "home/.sh_aliases",
+
+    "~/.config/nvim" : "home/.config/nvim",
+
+    "~/.gitconfig" : "home/.gitconfig",
+    "~/.gitexclude" : "home/.gitexclude",
+
+    "~/.zshrc" : "home/.zshrc",
+    "~/.zshenv" : "home/.zshenv",
+    "~/.p10k.zsh" : "home/.p10k.zsh",
+
+    "~/.local/bin/dotfiles" : "bin/dotfiles",
+
+    "~/.tmux" : "home/.tmux",
+    "~/.tmux.conf" : "home/.tmux.conf",
+
+    "~/.config/wezterm" : "home/.config/wezterm",
+    "~/.wezterm.lua" : "home/.wezterm.lua"
+}
+

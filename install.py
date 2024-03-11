@@ -15,6 +15,7 @@ print(__doc__)  # print logo.
 
 
 import argparse
+import json
 parser = argparse.ArgumentParser()
 parser.add_argument('-f', '--force', action="store_true", default=False,
                     help='If set, it will override existing symbolic links')
@@ -27,40 +28,8 @@ args = parser.parse_args()
 
 # Task Definition
 # (path of target symlink) : (location of source file in the repository)
-tasks = {
-    # SSH
-    '~/.ssh/config' : 'home/.ssh/config',
-    '~/.ssh/rc' : 'home/.ssh/rc',
-
-    # SHELLS
-    '~/.bashrc' : 'home/.bashrc',
-    '~/.sh_aliases' : 'home/.sh_aliases',
-
-    # VIM
-    # '~/.vimrc' : 'home/.vimrc',
-    '~/.config/nvim' : 'home/.config/nvim',
-
-    # GIT
-    '~/.gitconfig' : 'home/.gitconfig',
-    '~/.gitexclude' : 'home/.gitexclude',
-
-    # ZSH
-    '~/.zshrc' : 'home/.zshrc',
-    '~/.zshenv' : 'home/.zshenv',
-    '~/.p10k.zsh' : 'home/.p10k.zsh',
-
-    # Bins
-    '~/.local/bin/dotfiles' : 'bin/dotfiles',
-    # '~/.local/bin/fzf' : '~/.fzf/bin/fzf', # fzf is at $HOME/.fzf
-
-    # tmux
-    '~/.tmux' : 'home/.tmux',
-    '~/.tmux.conf' : 'home/.tmux.conf',
-
-    # wezterm
-    '~/.config/wezterm' : 'home/.config/wezterm',
-    '~/.wezterm.lua' : 'home/.wezterm.lua'
-}
+with open('file_mappings.json', 'r') as file:
+    tasks = json.load(file)
 
 
 try:
