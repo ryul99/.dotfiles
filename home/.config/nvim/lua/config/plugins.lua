@@ -18,9 +18,6 @@ if vim.fn.has('persistent_undo') then
 end
 
 -- indentLine
-km.set('n', '<leader>i', ':IndentLinesToggle<CR>', {
-    silent = true
-})
 vim.g.indentLine_char = '▏'
 
 -- vim-better-whitespace
@@ -30,9 +27,6 @@ vim.g.strip_whitespace_confirm = false
 
 -- mundo.vim
 vim.g.mundo_right = 1
-km.set('n', '<leader>m', ':MundoToggle<CR>', {
-    silent = true
-})
 
 -- theme
 vim.cmd([[colorscheme snazzy]])
@@ -113,31 +107,6 @@ command! -bang -nargs=* Rg
   \     fzf#vim#with_preview(),
   \     <bang>0)
 ]])
-km.set('n', '<leader><Tab>', ':Files<CR>')
-km.set('n', '<leader><leader><Tab>', ':Files!<CR>')
-km.set('n', '<leader>q', ':Buffers<CR>')
-km.set('n', '<leader><leader>q', ':Buffers!<CR>')
-km.set('n', '<leader>r', ':Rg<space>')
-km.set('n', '<leader><leader>r', ':Rg!<space>')
-
--- gv
-km.set('n', '<leader>g', ':GV<CR>')
-km.set('n', '<leader><leader>g', ':GV!<CR>', {
-    silent = true
-})
-
--- gitgutter
-km.set('n', '<leader>G', ':GitGutterToggle<CR>', {
-    silent = true
-})
-
--- vim-obsession
-km.set('n', '<leader>o', ':Obsess<CR>', {
-    silent = true
-})
-km.set('n', '<leader>O', ':Obsess!<CR>', {
-    silent = true
-})
 
 -- float-preview
 vim.g['float_preview#docked'] = true
@@ -163,19 +132,7 @@ function! AltCommand(path, vim_command)
 endfunction
 ]])
 
-km.set('n', '<leader>.', ":call AltCommand(expand('%'), ':e')<cr>")
-
--- vim-commentary
-km.set('n', '<C-/>', 'gcc')
-km.set('i', '<C-/>', '<ESC>gcca')
-
--- vim-vinegar
-km.set('n', '=', '<C-^>')
-
--- vista
-km.set('n', '<leader>v', ':Vista!!<CR>')
-km.set('n', '<leader><leader>v', ':Vista finder<CR>')
-
+-- vista.vim
 vim.cmd([[
 let g:vista#finders = ['fzf']
 let g:vista_fzf_preview = ['right:50%']
@@ -186,13 +143,6 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
     pattern = {"*.tsx", "*.jsx"},
     command = "set filetype=typescriptreact"
 })
-
-
--- tagbar
-km.set('n', '<F8>', ':TagbarToggle<CR>')
-
--- neotree
-km.set('n', '<leader>T', ':Neotree toggle<CR>')
 
 -- vim-visual-multi
 vim.g.VM_mouse_mappings = 1

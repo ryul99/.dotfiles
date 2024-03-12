@@ -1,10 +1,5 @@
 o = vim.opt
-km = vim.keymap
 fn = vim.fn
-
-local imap = function(...) vim.keymap.set('i', ...) end
-local nmap = function(...) vim.keymap.set('n', ...) end
-local vmap = function(...) vim.keymap.set('v', ...) end
 
 --
 -- General Configs
@@ -69,18 +64,6 @@ o.cursorline = true
 -- Pair Matching
 o.showmatch = true
 
-
---
--- Commands
---
-
--- save with sudo
-if vim.fn.has('nvim') then
-    km.set('c', 'w!!', 'w suda://%')
-else
-    -- cmap w!! w !sudo tee %
-    km.set('c', 'w!!', 'w !sudo tee %')
-end
 
 --
 -- diagnostic

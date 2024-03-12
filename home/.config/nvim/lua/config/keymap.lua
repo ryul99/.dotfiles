@@ -1,6 +1,7 @@
 local imap = function(...) vim.keymap.set('i', ...) end
 local nmap = function(...) vim.keymap.set('n', ...) end
 local vmap = function(...) vim.keymap.set('v', ...) end
+local cmap = function(...) vim.keymap.set('c', ...) end
 
 --
 -- Key Mappings
@@ -111,8 +112,73 @@ vmap('//', "\"vy/\\V<C-R>=escape(@v,'/')<CR><CR>")
 imap('<c-b>', '<c-o>b', { silent = true })  -- words backward
 imap('<c-f>', '<c-o>w', { silent = true })  -- words forward
 
+-- save with sudo
+if vim.fn.has('nvim') then
+    cmap('w!!', 'w suda://%')
+else
+    -- cmap w!! w !sudo tee %
+    cmap('w!!', 'w !sudo tee %')
+end
+
 
 -- Plugins
+
+-- tagbar
+nmap('<F8>', ':TagbarToggle<CR>')
+
+-- neotree
+nmap('<leader>T', ':Neotree toggle<CR>')
+
+-- indentline
+nmap('<leader>i', ':IndentLinesToggle<CR>', {
+    silent = true
+})
+
+-- fzf
+nmap('<leader><Tab>', ':Files<CR>')
+nmap('<leader><leader><Tab>', ':Files!<CR>')
+nmap('<leader>q', ':Buffers<CR>')
+nmap('<leader><leader>q', ':Buffers!<CR>')
+nmap('<leader>r', ':Rg<space>')
+nmap('<leader><leader>r', ':Rg!<space>')
+
+-- gv
+nmap('<leader>g', ':GV<CR>')
+nmap('<leader><leader>g', ':GV!<CR>', {
+    silent = true
+})
+
+-- gitgutter
+nmap('<leader>G', ':GitGutterToggle<CR>', {
+    silent = true
+})
+
+-- vim-obsession
+nmap('<leader>o', ':Obsess<CR>', {
+    silent = true
+})
+nmap('<leader>O', ':Obsess!<CR>', {
+    silent = true
+})
+
+-- alt
+nmap('<leader>.', ":call AltCommand(expand('%'), ':e')<cr>")
+
+-- vim-commentary
+nmap('<C-/>', 'gcc')
+imap('<C-/>', '<ESC>gcca')
+
+-- vim-vinegar
+nmap('=', '<C-^>')
+
+-- vista
+nmap('<leader>v', ':Vista!!<CR>')
+nmap('<leader><leader>v', ':Vista finder<CR>')
+
+-- mundo
+nmap('<leader>m', ':MundoToggle<CR>', {
+    silent = true
+})
 
 -- Copilot
 vim.g.copilot_no_tab_map = true
