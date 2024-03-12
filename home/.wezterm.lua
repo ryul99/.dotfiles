@@ -24,5 +24,13 @@ wezterm.action.PasteFrom 'Clipboard', })
 table.insert( keymaps, { key = 'V', mods = 'SHIFT|CTRL', action =
 wezterm.action.PasteFrom 'PrimarySelection', })
 
+config.keys = {
+    {
+        key = 'Enter',
+        mods = 'ALT',
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+}
+
 -- and finally, return the configuration to wezterm
 return config
