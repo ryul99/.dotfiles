@@ -187,8 +187,6 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
     command = "set filetype=typescriptreact"
 })
 
--- treesitter
-local treesitter = require('plugins/treesitter')
 
 -- tagbar
 km.set('n', '<F8>', ':TagbarToggle<CR>')

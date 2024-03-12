@@ -78,6 +78,7 @@ return packer.startup(function(use)
     use 'mg979/vim-visual-multi'
 
     -- Language server and Auto completion
+    use 'github/copilot.vim'
     use 'liuchengxu/vista.vim'
     use 'neovim/nvim-lspconfig'
     use 'VonHeikemen/lsp-zero.nvim'
