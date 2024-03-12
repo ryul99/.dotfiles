@@ -30,16 +30,16 @@ nmap('<C-k>', '<C-w><C-k>')
 nmap('<C-l>', '<C-w><C-l>')
 
 -- Easy Resize
-nmap('<A-h>', ':vertical resize -2<CR>', {
+nmap('<C-A-h>', ':vertical resize -2<CR>', {
     silent = true
 })
-nmap('<A-j>', ':resize -2<CR>', {
+nmap('<C-A-j>', ':resize -2<CR>', {
     silent = true
 })
-nmap('<A-k>', ':resize +2<CR>', {
+nmap('<C-A-k>', ':resize +2<CR>', {
     silent = true
 })
-nmap('<A-l>', ':vertical resize +2<CR>', {
+nmap('<C-A-l>', ':vertical resize +2<CR>', {
     silent = true
 })
 
@@ -180,6 +180,3 @@ nmap('<leader>m', ':MundoToggle<CR>', {
     silent = true
 })
 
--- Copilot
-vim.g.copilot_no_tab_map = true
-imap('<C-J>', '<Plug>copilot#Accept("\\<CR>")', { noremap = true, silent = true })

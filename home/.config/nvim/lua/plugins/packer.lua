@@ -78,7 +78,6 @@ return packer.startup(function(use)
     use 'mg979/vim-visual-multi'
 
     -- Language server and Auto completion
-    use 'github/copilot.vim'
     use 'liuchengxu/vista.vim'
     use 'neovim/nvim-lspconfig'
     use 'VonHeikemen/lsp-zero.nvim'
@@ -102,6 +101,14 @@ return packer.startup(function(use)
                 },
             })
         end
+    }
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({})
+        end,
     }
 
       -- Snippet generation
