@@ -11,7 +11,7 @@ local config = wezterm.config_builder()
 color_scheme = 'dimidium'
 
 -- font
-config.font = wezterm.font('CaskaydiaMono Nerd Font Mono')
+config.font = wezterm.font('CaskaydiaMono Nerd Font')
 config.font_size = 16
 
 -- keymaps Copy & Paste
