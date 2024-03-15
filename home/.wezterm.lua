@@ -10,9 +10,16 @@ local config = wezterm.config_builder()
 -- color
 color_scheme = 'dimidium'
 
--- font
+-- visual
 config.font = wezterm.font('CaskaydiaMono Nerd Font')
-config.font_size = 16
+config.font_size = 18
+
+config.window_padding = {
+    left = '0.5cell',
+    right = '0.5cell',
+    top = '0cell',
+    bottom = '0cell',
+}
 
 -- keymaps Copy & Paste
 table.insert( keymaps, { key = 'C', mods = 'SHIFT|CTRL', action =
