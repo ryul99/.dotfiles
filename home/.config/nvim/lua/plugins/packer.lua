@@ -88,6 +88,38 @@ return packer.startup(function(use)
             })
         end
     }
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        },
+        config = function()
+            require("neo-tree").setup({
+                sources = {
+                    "filesystem", -- Neotree filesystem source
+                    "buffers",
+                    "git_status",
+                    "netman.ui.neo-tree",
+                },
+                source_selector = {
+                    winbar = true,
+                    sources = {
+                        { source = "filesystem" },
+                        { source = "buffers" },
+                        { source = "git_status" },
+                        -- Any other items you had in your source selector
+                        -- Just add the netman source as well
+                        { source = "remote" }
+                    }
+                }
+            })
+        end
+    }
+    use "miversen33/netman.nvim"
 
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
@@ -130,38 +162,7 @@ return packer.startup(function(use)
         },
         disable = false,
     }
-    use {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        },
-        config = function()
-            require("neo-tree").setup({
-                sources = {
-                    "filesystem", -- Neotree filesystem source
-                    "buffers",
-                    "git_status",
-                    "netman.ui.neo-tree",
-                },
-                source_selector = {
-                    winbar = true,
-                    sources = {
-                        { source = "filesystem" },
-                        { source = "buffers" },
-                        { source = "git_status" },
-                        -- Any other items you had in your source selector
-                        -- Just add the netman source as well
-                        { source = "remote" }
-                    }
-                }
-            })
-        end
-    }
-    use "miversen33/netman.nvim"
+
 
     if PACKER_BOOTSTRAP then
         require("packer").sync()
