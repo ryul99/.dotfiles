@@ -127,7 +127,6 @@ return packer.startup(function(use)
     use 'VonHeikemen/lsp-zero.nvim'
     use 'mfussenegger/nvim-lint'
     use 'mhartington/formatter.nvim'
-    use 'mfussenegger/nvim-dap'
     use {
         "rcarriga/nvim-dap-ui",
         requires = {"mfussenegger/nvim-dap"},
