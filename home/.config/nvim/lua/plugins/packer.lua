@@ -76,6 +76,18 @@ return packer.startup(function(use)
     use 'stevearc/dressing.nvim'
     use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
     use 'mg979/vim-visual-multi'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({
+                ---NOTE: If given `false` then the plugin won't create any mappings
+                mappings = {
+                    ---Extra mapping; `gco`, `gcO`, `gcA`
+                    extra = false,
+                },
+            })
+        end
+    }
 
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
@@ -89,18 +101,6 @@ return packer.startup(function(use)
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
-    }
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup({
-                ---NOTE: If given `false` then the plugin won't create any mappings
-                mappings = {
-                    ---Extra mapping; `gco`, `gcO`, `gcA`
-                    extra = false,
-                },
-            })
-        end
     }
     use {
         "zbirenbaum/copilot.lua",
