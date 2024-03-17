@@ -125,6 +125,8 @@ return packer.startup(function(use)
     use 'liuchengxu/vista.vim'
     use 'neovim/nvim-lspconfig'
     use 'VonHeikemen/lsp-zero.nvim'
+    use 'mfussenegger/nvim-lint'
+    use 'mhartington/formatter.nvim'
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use {
