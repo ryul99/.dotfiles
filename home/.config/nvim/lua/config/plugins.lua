@@ -147,11 +147,6 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
 -- vim-visual-multi
 vim.g.VM_mouse_mappings = 1
 
--- vim-cpp-modern
--- vim.g.cpp_attributes_highlight = true
--- vim.g.cpp_member_highlight = true
--- vim.g.cpp_simple_highlight = true
-
 -- Filetype specific
 
 vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
