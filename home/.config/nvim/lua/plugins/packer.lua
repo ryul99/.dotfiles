@@ -128,7 +128,13 @@ return packer.startup(function(use)
     use 'mfussenegger/nvim-lint'
     use 'mhartington/formatter.nvim'
     use 'mfussenegger/nvim-dap'
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = {"mfussenegger/nvim-dap"},
+        config = function()
+            require("dapui").setup()
+        end,
+    }
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use {
@@ -147,7 +153,7 @@ return packer.startup(function(use)
         end,
     }
 
-      -- Snippet generation
+    -- Snippet generation
     use {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
