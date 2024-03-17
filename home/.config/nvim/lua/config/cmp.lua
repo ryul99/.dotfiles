@@ -66,6 +66,7 @@ function M.setup()
     },
     sources = {
       { name = 'nvim_lsp', keyword_length = 3 },
+      { name = 'nvim_lsp_signature_help' },
       { name = "treesitter" },
       { name = "buffer" },
       { name = "nvim_lua" },
