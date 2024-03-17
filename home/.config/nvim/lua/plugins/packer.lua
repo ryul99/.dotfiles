@@ -124,7 +124,6 @@ return packer.startup(function(use)
     -- Language server and Auto completion
     use 'liuchengxu/vista.vim'
     use 'neovim/nvim-lspconfig'
-    use 'VonHeikemen/lsp-zero.nvim'
     use 'mfussenegger/nvim-lint'
     use 'mhartington/formatter.nvim'
     use {
