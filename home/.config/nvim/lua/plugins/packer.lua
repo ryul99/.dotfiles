@@ -161,15 +161,22 @@ return packer.startup(function(use)
             require("config.cmp").setup()
         end,
         requires = {
+            "ray-x/cmp-treesitter",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lua",
-            "ray-x/cmp-treesitter",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-signature-help",
         },
         disable = false,
+    }
+    use {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!:).
+        -- run = "make install_jsregexp"
     }
 
 

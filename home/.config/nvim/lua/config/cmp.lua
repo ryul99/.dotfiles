@@ -65,13 +65,14 @@ function M.setup()
       }),
     },
     sources = {
+      { name = "nvim_lua" },
       { name = 'nvim_lsp', keyword_length = 3 },
       { name = 'nvim_lsp_signature_help' },
       { name = "treesitter" },
       { name = "buffer" },
-      { name = "nvim_lua" },
       { name = "path" },
       { name = "spell" },
+      { name = "luasnip" },
     },
     window = {
       documentation = cmp.config.window.bordered(),
