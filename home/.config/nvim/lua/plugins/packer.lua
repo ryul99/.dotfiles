@@ -152,6 +152,13 @@ return packer.startup(function(use)
         end,
     }
 
+    -- rust
+    use {
+        'mrcjkb/rustaceanvim',
+        version = '^4', -- Recommended
+        ft = { 'rust' },
+    }
+
     -- Snippet generation
     use {
         "hrsh7th/nvim-cmp",

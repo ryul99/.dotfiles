@@ -12,5 +12,6 @@ require('mason-lspconfig').setup({
   automatic_installation = true,
   handlers = {
     lsp_zero.default_setup,
+    rust_analyzer = lsp_zero.noop,
   },
 })
