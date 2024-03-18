@@ -7,6 +7,9 @@ local cmap = function(...) vim.keymap.set('c', ...) end
 -- Key Mappings
 --
 
+-- diagnostic
+nmap('<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
+
 -- Easy Indentation
 vmap('<Tab>', '>gv', {
     silent = true
