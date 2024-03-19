@@ -20,6 +20,8 @@
     "~/.tmux.conf" : "home/.tmux.conf",
 
     "~/.config/wezterm" : "home/.config/wezterm",
-    "~/.wezterm.lua" : "home/.wezterm.lua"
+    "~/.wezterm.lua" : "home/.wezterm.lua",
+
+    "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
 
