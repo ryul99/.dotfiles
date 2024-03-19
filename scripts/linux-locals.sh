@@ -68,11 +68,7 @@ for asset in J[0]['assets']:
   wget -O "$tmpdir/$filename" "$download_url"
 
   echo -e "${COLOR_YELLOW}Extracting to: $tmpdir${COLOR_NONE}"
-  cd $tmpdir && tar -xvzf $filename
-
-  if [[ -d $filename ]]; then
-    cd $filename
-  fi
+  cd $tmpdir && tar -xvzf $filename --strip-components=1
 
   echo -e "${COLOR_YELLOW}Copying ...${COLOR_NONE}"
 }
