@@ -56,8 +56,9 @@ J = json.load(sys.stdin);
 for asset in J[0]['assets']:
   if fnmatch.fnmatch(asset['name'], '$filename'):
     print(asset['browser_download_url'])
+    break
 ")
-  echo -e "${COLOR_YELLOW}download_url = ${COLOR_NONE}$download_url"
+  echo -e "${COLOR_YELLOW}download_url = ${COLOR_GREEN}$download_url${COLOR_NONE}"
   [[ -n $download_url ]]
   sleep 0.5
 
@@ -68,6 +69,10 @@ for asset in J[0]['assets']:
 
   echo -e "${COLOR_YELLOW}Extracting to: $tmpdir${COLOR_NONE}"
   cd $tmpdir && tar -xvzf $filename
+
+  if [[ -d $filename ]]; then
+    cd $filename
+  fi
 
   echo -e "${COLOR_YELLOW}Copying ...${COLOR_NONE}"
 }
