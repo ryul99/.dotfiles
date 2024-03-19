@@ -58,7 +58,7 @@ for asset in J[0]['assets']:
     print(asset['browser_download_url'])
 ")
   echo -e "${COLOR_YELLOW}download_url = ${COLOR_NONE}$download_url"
-  test -n $download_url
+  [[ -n $download_url ]]
   sleep 0.5
 
   local tmpdir="$DOTFILES_TMPDIR/$name"
@@ -118,7 +118,7 @@ install_git() {
   # installs a modern version of git locally.
 
   local GIT_LATEST_VERSION=$(_get_latest_version git git)  # e.g. "v2.38.1"
-  test  -n "$GIT_LATEST_VERSION"
+  [[ -n $GIT_LATEST_VERSION ]]
 
   local TMP_GIT_DIR="$DOTFILES_TMPDIR/git"; mkdir -p $TMP_GIT_DIR
   wget -N -O $TMP_GIT_DIR/git.tar.gz "https://github.com/git/git/archive/${GIT_LATEST_VERSION}.tar.gz"
@@ -241,7 +241,7 @@ install_bazel() {
 
   # install the 'latest' stable release (no pre-releases.)
   BAZEL_LATEST_VERSION=$(_get_latest_version bazelbuild bazel)
-  test -n $BAZEL_LATEST_VERSION
+  [[ -n BAZEL_LATEST_VERSION ]]
   BAZEL_VER="${BAZEL_LATEST_VERSION}"
   echo -e "${COLOR_YELLOW}Installing Bazel ${BAZEL_VER} ...${COLOR_NONE}"
 
@@ -310,7 +310,7 @@ install_vim() {
   # grab the lastest vim tarball and build it
   local TMP_VIM_DIR="$DOTFILES_TMPDIR/vim/"; mkdir -p $TMP_VIM_DIR
   local VIM_LATEST_VERSION=$(_get_latest_version vim vim)
-  test -n $VIM_LATEST_VERSION
+  [[ -n VIM_LATEST_VERSION ]]
   local VIM_LATEST_VERSION=${VIM_LATEST_VERSION/v/}    # (e.g) 8.0.1234
   echo -e "${COLOR_GREEN}Installing vim $VIM_LATEST_VERSION ...${COLOR_NONE}"
   sleep 1
@@ -347,7 +347,7 @@ install_neovim() {
   if [[ $NEOVIM_VERSION != "stable" ]] && [[ $NEOVIM_VERSION != v* ]]; then
     NEOVIM_VERSION="v$NEOVIM_VERSION"  # e.g. "0.7.0" -> "v0.7.0"
   fi
-  test -n "$NEOVIM_VERSION"
+  [[ -n NEOVIM_VERSION ]]
 
   local VERBOSE=""
   for arg in "$@"; do
@@ -431,7 +431,7 @@ install_fd() {
 install_ripgrep() {
   # install ripgrep
   RIPGREP_LATEST_VERSION=$(_get_latest_version BurntSushi ripgrep)
-  test -n $RIPGREP_LATEST_VERSION
+  [[ -n RIPGREP_LATEST_VERSION ]]
   echo -e "${COLOR_YELLOW}Installing ripgrep ${RIPGREP_LATEST_VERSION} ...${COLOR_NONE}"
   RIPGREP_VERSION="${RIPGREP_LATEST_VERSION}"
 
@@ -574,7 +574,7 @@ install_mujoco() {
   tar -xvzf "$filename" -C $tmpdir
 
   mv $tmpdir/mujoco-$mujoco_version $HOME/.mujoco/
-  test -d $MUJOCO_ROOT
+  [[ -d $MUJOCO_ROOT ]]
 
   $MUJOCO_ROOT/bin/testspeed $MUJOCO_ROOT/model/scene.xml 1000
   set +x
