@@ -763,6 +763,12 @@ install_glow () {
   cp -v ./glow $PREFIX/bin/
 }
 
+install_delta() {
+  _template_github_latest "delta" "dandavison/delta" "delta-*-$(_get_os_type)-unknown-linux-*.tar.gz"
+  [[ $(pwd) =~ ^$DOTFILES_TMPDIR/ ]]
+
+  cp -v ./delta $PREFIX/bin/
+}
 
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
