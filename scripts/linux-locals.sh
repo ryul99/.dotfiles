@@ -64,6 +64,46 @@ for asset in J[0]['assets']:
   echo -e "${COLOR_YELLOW}Copying ...${COLOR_NONE}"
 }
 
+_get_os_type() {
+  OS_type="$(uname -m)"
+  case "$OS_type" in
+    x86_64|amd64)
+      if [[ -z $1 ]]; then
+        # default value
+        OS_type='x86_64'
+      else
+        OS_type='amd64'
+      fi
+      ;;
+    i?86|x86)
+      OS_type='386'
+      ;;
+    aarch64|arm64)
+      if [[ -z $1 ]]; then
+        # default value
+        OS_type='aarch64'
+      else
+        OS_type='arm64'
+      fi
+      ;;
+    armv7*)
+      OS_type='arm-v7'
+      ;;
+    armv6*)
+      OS_type='arm-v6'
+      ;;
+    arm*)
+      OS_type='arm'
+      ;;
+    *)
+      echo 'OS type not supported'
+      exit 2
+      ;;
+  esac
+
+  echo "$OS_type"
+}
+
 #---------------------------------------------------------------------------------------------------
 
 install_git() {
@@ -105,7 +145,7 @@ install_gh() {
   # github CLI: https://github.com/cli/cli/releases
 
   local version="2.20.2"
-  local url="https://github.com/cli/cli/releases/download/v$version/gh_${version}_linux_amd64.tar.gz"
+  local url="https://github.com/cli/cli/releases/download/v$version/gh_${version}_linux_$(_get_os_type 1).tar.gz"
 
   local tmpdir="$DOTFILES_TMPDIR/gh"; mkdir -p $tmpdir
 
@@ -203,7 +243,7 @@ install_bazel() {
   BAZEL_VER="${BAZEL_LATEST_VERSION}"
   echo -e "${COLOR_YELLOW}Installing Bazel ${BAZEL_VER} ...${COLOR_NONE}"
 
-  BAZEL_URL="https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VER}/bazel-${BAZEL_VER}-installer-linux-x86_64.sh"
+  BAZEL_URL="https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VER}/bazel-${BAZEL_VER}-installer-linux-$(_get_os_type).sh"
 
   TMP_BAZEL_DIR="$DOTFILES_TMPDIR/bazel/"
   mkdir -p $TMP_BAZEL_DIR
@@ -227,26 +267,25 @@ install_bazel() {
 install_miniforge() {
   # Miniforge3.
   # https://github.com/conda-forge/miniforge
-  local URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+  local URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-$(_get_os_type).sh"
 
   local TMP_DIR="$DOTFILES_TMPDIR/miniforge/"; mkdir -p $TMP_DIR && cd ${TMP_DIR}
   wget -nc "$URL"
 
   local MINIFORGE_PREFIX="$HOME/.miniforge3"
-  bash "Miniforge3-Linux-x86_64.sh" -b -p ${MINIFORGE_PREFIX}
+  bash "Miniforge3-Linux-$(_get_os_type).sh" -b -p ${MINIFORGE_PREFIX}
   $MINIFORGE_PREFIX/bin/python3 --version
 }
 
 install_miniconda() {
   # installs Miniconda3. (Deprecated: Use miniforge3)
   # https://conda.io/miniconda.html
-  MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-
+  MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-$(_get_os_type).sh"
   TMP_DIR="$DOTFILES_TMPDIR/miniconda/"; mkdir -p $TMP_DIR && cd ${TMP_DIR}
   wget -nc $MINICONDA_URL
 
   MINICONDA_PREFIX="$HOME/.miniconda3/"
-  bash "Miniconda3-latest-Linux-x86_64.sh" -b -p ${MINICONDA_PREFIX}
+  bash "Miniconda3-latest-Linux-$(_get_os_type).sh" -b -p ${MINICONDA_PREFIX}
 
   # 3.9.5 as of Nov 2021
   $MINICONDA_PREFIX/bin/python3 --version
@@ -360,11 +399,11 @@ install_exa() {
   # https://github.com/ogham/exa/releases
   EXA_VERSION="0.10.1"
   EXA_BINARY_SHA1SUM="7bbd4be0bf44a0302970e7596f5753a0f31e85ac"
-  EXA_DOWNLOAD_URL="https://github.com/ogham/exa/releases/download/v$EXA_VERSION/exa-linux-x86_64-v$EXA_VERSION.zip"
+  EXA_DOWNLOAD_URL="https://github.com/ogham/exa/releases/download/v$EXA_VERSION/exa-linux-$(_get_os_type)-v$EXA_VERSION.zip"
   TMP_EXA_DIR="$DOTFILES_TMPDIR/exa/"
 
   wget -nc ${EXA_DOWNLOAD_URL} -P ${TMP_EXA_DIR} || exit 1;
-  cd ${TMP_EXA_DIR} && unzip -o "exa-linux-x86_64-v$EXA_VERSION.zip" || exit 1;
+  cd ${TMP_EXA_DIR} && unzip -o "exa-linux-$(_get_os_type)-v$EXA_VERSION.zip" || exit 1;
   if [[ "$EXA_BINARY_SHA1SUM" != "$(sha1sum bin/exa | cut -d' ' -f1)" ]]; then
       echo -e "${COLOR_RED}SHA1 checksum mismatch, aborting!${COLOR_NONE}"
       exit 1;
@@ -380,7 +419,7 @@ install_fd() {
   local FD_VERSION="v8.5.3"
 
   TMP_FD_DIR="$DOTFILES_TMPDIR/fd"; mkdir -p $TMP_FD_DIR
-  FD_DOWNLOAD_URL="https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+  FD_DOWNLOAD_URL="https://github.com/sharkdp/fd/releases/download/${FD_VERSION}/fd-${FD_VERSION}-$(_get_os_type)-unknown-linux-musl.tar.gz"
   echo $FD_DOWNLOAD_URL
 
   cd $TMP_FD_DIR
@@ -404,7 +443,7 @@ install_ripgrep() {
   RIPGREP_VERSION="${RIPGREP_LATEST_VERSION}"
 
   TMP_RIPGREP_DIR="$DOTFILES_TMPDIR/ripgrep"; mkdir -p $TMP_RIPGREP_DIR
-  RIPGREP_DOWNLOAD_URL="https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+  RIPGREP_DOWNLOAD_URL="https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep-${RIPGREP_VERSION}-$(_get_os_type)-unknown-linux-musl.tar.gz"
   echo $RIPGREP_DOWNLOAD_URL
 
   cd $TMP_RIPGREP_DIR
@@ -423,7 +462,7 @@ install_xsv() {
 
   set -x
   mkdir -p $PREFIX/bin && cd $PREFIX/bin
-  curl -L "https://github.com/BurntSushi/xsv/releases/download/${XSV_VERSION}/xsv-${XSV_VERSION}-x86_64-unknown-linux-musl.tar.gz" | tar zxf -
+  curl -L "https://github.com/BurntSushi/xsv/releases/download/${XSV_VERSION}/xsv-${XSV_VERSION}-$(_get_os_type)-unknown-linux-musl.tar.gz" | tar zxf -
   $PREFIX/bin/xsv
 }
 
@@ -433,7 +472,7 @@ install_bat() {
 
   set -x
   mkdir -p $PREFIX/bin && cd $PREFIX/bin
-  curl -L "https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat-v${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz" \
+  curl -L "https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat-v${BAT_VERSION}-$(_get_os_type)-unknown-linux-musl.tar.gz" \
     | tar zxf - --strip-components 1 --wildcards --no-anchored 'bat*'     # bat, bat.1
 
   $PREFIX/bin/bat --version
@@ -447,11 +486,11 @@ install_go() {
     exit 1;
   fi
 
-  GO_DOWNLOAD_URL="https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz"
+  GO_DOWNLOAD_URL="https://dl.google.com/go/go1.9.3.linux-$(_get_os_type 1).tar.gz"
   TMP_GO_DIR="$DOTFILES_TMPDIR/go/"
 
   wget -nc ${GO_DOWNLOAD_URL} -P ${TMP_GO_DIR} || exit 1;
-  cd ${TMP_GO_DIR} && tar -xvzf "go1.9.3.linux-amd64.tar.gz" || exit 1;
+  cd ${TMP_GO_DIR} && tar -xvzf "go1.9.3.linux-$(_get_os_type 1).tar.gz" || exit 1;
   mv go $HOME/.go
 
   echo ""
@@ -461,7 +500,7 @@ install_go() {
 
 install_duf() {
   # https://github.com/muesli/duf/releases
-  _template_github_latest "duf" "muesli/duf" "duf_*_linux_x86_64.tar.gz"
+  _template_github_latest "duf" "muesli/duf" "duf_*_linux_$(_get_os_type).tar.gz"
   [[ $(pwd) =~ ^"$DOTFILES_TMPDIR/" ]]
 
   cp -v "./duf" $PREFIX/bin
@@ -471,7 +510,7 @@ install_duf() {
 }
 
 install_lazydocker() {
-  _template_github_latest "lazydocker" "jesseduffield/lazydocker" "lazydocker_*_Linux_x86_64.tar.gz"
+  _template_github_latest "lazydocker" "jesseduffield/lazydocker" "lazydocker_*_Linux_$(_get_os_type).tar.gz"
   [[ $(pwd) =~ ^$DOTFILES_TMPDIR/ ]]
 
   cp -v "./lazydocker" $PREFIX/bin
@@ -481,7 +520,7 @@ install_lazydocker() {
 }
 
 install_lazygit() {
-  _template_github_latest "lazygit" "jesseduffield/lazygit" "lazygit_*_Linux_x86_64.tar.gz"
+  _template_github_latest "lazygit" "jesseduffield/lazygit" "lazygit_*_Linux_$(_get_os_type).tar.gz"
   [[ $(pwd) =~ ^$DOTFILES_TMPDIR/ ]]
 
   cp -v "./lazygit" $PREFIX/bin
@@ -536,7 +575,7 @@ install_mujoco() {
   mkdir -p $tmpdir && cd $tmpdir
   mkdir -p $HOME/.mujoco
 
-  local download_url="https://github.com/deepmind/mujoco/releases/download/${mujoco_version}/mujoco-${mujoco_version}-linux-x86_64.tar.gz"
+  local download_url="https://github.com/deepmind/mujoco/releases/download/${mujoco_version}/mujoco-${mujoco_version}-linux-$(_get_os_type).tar.gz"
   local filename="$(basename $download_url)"
   wget -N -O $tmpdir/$filename "$download_url"
   tar -xvzf "$filename" -C $tmpdir
@@ -672,32 +711,7 @@ install_rclone() {
       ;;
   esac
 
-  OS_type="$(uname -m)"
-  case "$OS_type" in
-    x86_64|amd64)
-      OS_type='amd64'
-      ;;
-    i?86|x86)
-      OS_type='386'
-      ;;
-    aarch64|arm64)
-      OS_type='arm64'
-      ;;
-    armv7*)
-      OS_type='arm-v7'
-      ;;
-    armv6*)
-      OS_type='arm-v6'
-      ;;
-    arm*)
-      OS_type='arm'
-      ;;
-    *)
-      echo 'OS type not supported'
-      exit 2
-      ;;
-  esac
-
+  OS_type="$(_get_os_type)"
 
   #download and unzip
   if [ -z "$install_beta" ]; then
@@ -766,8 +780,8 @@ install_glow () {
 
   local TMP_GLOW_DIR="$DOTFILES_TMPDIR/glow"
   mkdir -p $TMP_GLOW_DIR && cd $TMP_GLOW_DIR
-  wget "https://github.com/charmbracelet/glow/releases/download/${GLOW_LATEST_VERSION}/glow_Linux_x86_64.tar.gz"
-  tar xf glow_Linux_x86_64.tar.gz
+  wget "https://github.com/charmbracelet/glow/releases/download/${GLOW_LATEST_VERSION}/glow_Linux_$(_get_os_type).tar.gz"
+  tar xf glow_Linux_$(_get_os_type).tar.gz
   mv glow $PREFIX/bin/
 }
 
