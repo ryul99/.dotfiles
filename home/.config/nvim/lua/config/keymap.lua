@@ -7,6 +7,9 @@ local cmap = function(...) vim.keymap.set('c', ...) end
 -- Key Mappings
 --
 
+-- Toggle *conceallevel*
+nmap('<Leader>c', ":let &cole=(&cole == 2) ? 0 : 2 <bar> echo 'conceallevel ' . &cole <CR>")
+
 -- diagnostic
 nmap('<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 
