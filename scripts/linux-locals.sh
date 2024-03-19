@@ -607,16 +607,9 @@ install_poetry() {
 }
 
 install_btop() {
-  TMP_BTOP_DIR="/tmp/$USER/btop/"
-  mkdir -p $TMP_BTOP_DIR
-  cd $TMP_BTOP_DIR
-  curl --remote-name-all -o "$TMP_BTOP_DIR/btop.tbz" --location  $( \
-    curl -s https://api.github.com/repos/aristocratos/btop/releases/latest \
-    | grep "browser_download_url.*$(uname -m)-linux.*" \
-    | cut -d : -f 2,3 \
-    | tr -d \" )
-  tar xjf "$TMP_BTOP_DIR/btop.tbz"
-  cd btop
+  _template_github_latest "btop" "aristocratos/btop" "btop-$(_get_os_type)-linux-*.tbz"
+  [[ $(pwd) =~ ^$DOTFILES_TMPDIR/ ]]
+
   make install PREFIX="$HOME/.local"
 }
 
@@ -764,15 +757,10 @@ install_rclone() {
 }
 
 install_glow () {
-  set -x
+  _template_github_latest "glow" "charmbracelet/glow" "glow_Linux_$(_get_os_type).tar.gz"
+  [[ $(pwd) =~ ^$DOTFILES_TMPDIR/ ]]
 
-  GLOW_LATEST_VERSION=$(_get_latest_version charmbracelet glow)
-
-  local TMP_GLOW_DIR="$DOTFILES_TMPDIR/glow"
-  mkdir -p $TMP_GLOW_DIR && cd $TMP_GLOW_DIR
-  wget "https://github.com/charmbracelet/glow/releases/download/${GLOW_LATEST_VERSION}/glow_Linux_$(_get_os_type).tar.gz"
-  tar xf glow_Linux_$(_get_os_type).tar.gz
-  mv glow $PREFIX/bin/
+  cp -v ./glow $PREFIX/bin/
 }
 
 
