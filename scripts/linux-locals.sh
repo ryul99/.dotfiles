@@ -523,7 +523,7 @@ install_lazygit() {
 
   cp -v "./lazygit" $PREFIX/bin
 
-  echo -e "\n\n${COLOR_WHITE}$(which lazydocker)${COLOR_NONE}"
+  echo -e "\n\n${COLOR_WHITE}$(which lazygit)${COLOR_NONE}"
   $PREFIX/bin/lazygit --version
 }
 
