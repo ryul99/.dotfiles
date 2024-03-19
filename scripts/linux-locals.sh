@@ -53,10 +53,13 @@ _template_github_latest() {
     python3 -c "\
 import json, sys, fnmatch;
 J = json.load(sys.stdin);
+OUT = list()
 for asset in J[0]['assets']:
   if fnmatch.fnmatch(asset['name'], '$filename'):
-    print(asset['browser_download_url'])
-    break
+    OUT.append(asset['browser_download_url'])
+    if fnmatch.fnmatch('$filename', 'musl'):
+      break
+print(OUT[-1])
 ")
   echo -e "${COLOR_YELLOW}download_url = ${COLOR_GREEN}$download_url${COLOR_NONE}"
   [[ -n $download_url ]]
