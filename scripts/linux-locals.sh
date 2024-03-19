@@ -31,6 +31,14 @@ _version_check() {
   [ "$targetver" = "$(echo -e "$curver\n$targetver" | sort -V | head -n1)" ]
 }
 
+_get_latest_version() {
+  LATEST_VERSION=$(\
+    curl -L "https://api.github.com/repos/$1/$2/releases/latest" 2>/dev/null | \
+    python3 -c 'import json, sys; print(json.load(sys.stdin)["name"])'\
+  )
+  echo $LATEST_VERSION
+}
+
 _template_github_latest() {
   local name="$1"
   local repo="$2"
@@ -109,10 +117,7 @@ _get_os_type() {
 install_git() {
   # installs a modern version of git locally.
 
-  local GIT_LATEST_VERSION=$(\
-    curl -L https://api.github.com/repos/git/git/tags 2>/dev/null | \
-    python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["name"])'\
-  )  # e.g. "v2.38.1"
+  local GIT_LATEST_VERSION=$(_get_latest_version git git)  # e.g. "v2.38.1"
   test  -n "$GIT_LATEST_VERSION"
 
   local TMP_GIT_DIR="$DOTFILES_TMPDIR/git"; mkdir -p $TMP_GIT_DIR
@@ -235,10 +240,7 @@ install_tmux() {
 install_bazel() {
 
   # install the 'latest' stable release (no pre-releases.)
-  BAZEL_LATEST_VERSION=$(\
-    curl -L https://api.github.com/repos/bazelbuild/bazel/releases/latest 2>/dev/null | \
-    python3 -c 'import json, sys; print(json.load(sys.stdin)["name"])'\
-  )
+  BAZEL_LATEST_VERSION=$(_get_latest_version bazelbuild bazel)
   test -n $BAZEL_LATEST_VERSION
   BAZEL_VER="${BAZEL_LATEST_VERSION}"
   echo -e "${COLOR_YELLOW}Installing Bazel ${BAZEL_VER} ...${COLOR_NONE}"
@@ -307,10 +309,7 @@ install_vim() {
 
   # grab the lastest vim tarball and build it
   local TMP_VIM_DIR="$DOTFILES_TMPDIR/vim/"; mkdir -p $TMP_VIM_DIR
-  local VIM_LATEST_VERSION=$(\
-    curl -L https://api.github.com/repos/vim/vim/tags 2>/dev/null | \
-    python3 -c 'import json, sys; print(json.load(sys.stdin)[0]["name"])'\
-  )
+  local VIM_LATEST_VERSION=$(_get_latest_version vim vim)
   test -n $VIM_LATEST_VERSION
   local VIM_LATEST_VERSION=${VIM_LATEST_VERSION/v/}    # (e.g) 8.0.1234
   echo -e "${COLOR_GREEN}Installing vim $VIM_LATEST_VERSION ...${COLOR_NONE}"
@@ -342,10 +341,7 @@ install_neovim() {
   # [NEOVIM_VERSION=...] dotfiles install neovim
 
   # Otherwise, use the latest stable version.
-  local NEOVIM_LATEST_VERSION=$(\
-    curl -L https://api.github.com/repos/neovim/neovim/releases/latest 2>/dev/null | \
-    python3 -c 'import json, sys; print(json.load(sys.stdin)["tag_name"])'\
-  )   # usually "stable"
+  local NEOVIM_LATEST_VERSION=$(_get_latest_version neovim neovim)   # usually "stable"
   : "${NEOVIM_VERSION:=$NEOVIM_LATEST_VERSION}"
 
   if [[ $NEOVIM_VERSION != "stable" ]] && [[ $NEOVIM_VERSION != v* ]]; then
@@ -434,10 +430,7 @@ install_fd() {
 
 install_ripgrep() {
   # install ripgrep
-  RIPGREP_LATEST_VERSION=$(\
-      curl -L https://api.github.com/repos/BurntSushi/ripgrep/releases 2>/dev/null | \
-      python3 -c 'import json, sys; J = json.load(sys.stdin); assert J[0]["assets"][0]["name"].startswith("ripgrep"); print(J[0]["name"])'\
-  )
+  RIPGREP_LATEST_VERSION=$(_get_latest_version BurntSushi ripgrep)
   test -n $RIPGREP_LATEST_VERSION
   echo -e "${COLOR_YELLOW}Installing ripgrep ${RIPGREP_LATEST_VERSION} ...${COLOR_NONE}"
   RIPGREP_VERSION="${RIPGREP_LATEST_VERSION}"
@@ -622,10 +615,10 @@ install_btop() {
     | grep "browser_download_url.*$(uname -m)-linux.*" \
     | cut -d : -f 2,3 \
     | tr -d \" )
-      tar xjf "$TMP_BTOP_DIR/btop.tbz"
-      cd btop
-      make install PREFIX="$HOME/.local"
-    }
+  tar xjf "$TMP_BTOP_DIR/btop.tbz"
+  cd btop
+  make install PREFIX="$HOME/.local"
+}
 
   install_rbenv() {
     set -e
@@ -773,10 +766,7 @@ install_rclone() {
 install_glow () {
   set -x
 
-  GLOW_LATEST_VERSION=$(\
-    curl -L https://api.github.com/repos/charmbracelet/glow/releases/latest 2>/dev/null | \
-    python3 -c 'import json, sys; print(json.load(sys.stdin)["name"])'\
-  )
+  GLOW_LATEST_VERSION=$(_get_latest_version charmbracelet glow)
 
   local TMP_GLOW_DIR="$DOTFILES_TMPDIR/glow"
   mkdir -p $TMP_GLOW_DIR && cd $TMP_GLOW_DIR
