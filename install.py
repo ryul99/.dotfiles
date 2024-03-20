@@ -150,7 +150,7 @@ def check_submodule():
             try:
                 git_version = str(subprocess.check_output("""git --version | awk '{print $3}'""", shell=True))
                 if git_version >= '2.8': git_submodule_update_cmd += ' --jobs 8'
-            except Exception as ex:
+            except Exception:
                 pass
             log("Running: %s" % BLUE(git_submodule_update_cmd))
             subprocess.call(git_submodule_update_cmd, shell=True)
