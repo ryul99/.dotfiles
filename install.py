@@ -253,5 +253,5 @@ def main():
 
     sys.exit(exit_code)
 
-
-main()
+if __name__ == "__main__":
+    main()
