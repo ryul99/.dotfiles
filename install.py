@@ -91,6 +91,8 @@ def parsing_args():
                         help='If set, it will override existing symbolic links')
     parser.add_argument('--skip-nvim', action='store_true',
                         help='If set, do not update neovim plugins.')
+    parser.add_argument('--symlink', action='store_true',
+                        help='If set, only create symlinks.')
 
     args = parser.parse_args()
 
@@ -246,6 +248,8 @@ def main():
 
     args = parsing_args()
     create_symlink(args)
+    if args.symlink:
+        sys.exit()
     exit_code = run_post_actions(args)
 
     log("- Please restart shell (e.g. " + CYAN("`exec zsh`") + ") if necessary.")
