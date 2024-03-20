@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alias rm='rm -i'
 alias rmf='rm -f'
 alias rmr='rm -ir'
@@ -167,3 +169,7 @@ alias ktx=kubectx
 alias ktc="kubectx -c"
 alias kns=kubens
 
+# etc
+function rgd() {
+    rg --json "$@" | delta
+}
