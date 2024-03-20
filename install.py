@@ -20,7 +20,6 @@ import os
 import sys
 import subprocess
 
-from signal import signal, SIGPIPE, SIG_DFL
 from sys import stderr
 
 try:
@@ -206,6 +205,8 @@ def create_symlink(args):
 
 
 def run_post_actions(args):
+    from signal import signal, SIGPIPE, SIG_DFL
+
     post_actions = get_post_actions(args)
     errors = []
     for action in post_actions:
