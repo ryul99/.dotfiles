@@ -187,9 +187,11 @@ nmap('<leader>m', ':MundoToggle<CR>', {
 })
 
 -- telescope.nvim
-local telescope = require('telescope.builtin')
-nmap('<leader>ff', telescope.find_files, {})
-nmap('<leader>fg', telescope.live_grep, {})
-nmap('<leader>fb', telescope.buffers, {})
-nmap('<leader>fh', telescope.help_tags, {})
+local status_ok, telescope = pcall(require, "telescope.builtin")
+if status_ok then
+    nmap('<leader>ff', telescope.find_files, {})
+    nmap('<leader>fg', telescope.live_grep, {})
+    nmap('<leader>fb', telescope.buffers, {})
+    nmap('<leader>fh', telescope.help_tags, {})
+end
 
