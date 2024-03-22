@@ -188,14 +188,14 @@ install_git() {
 install_git_cliff() {
   # https://github.com/orhun/git-cliff/releases
   TAR_OPTIONS="--strip-components 1"
-  _template_github_latest "git-cliff" "orhun/git-cliff" 'git-cliff-*-x86_64-*-linux-gnu.tar.gz'
+  _template_github_latest "git-cliff" "orhun/git-cliff" "git-cliff-*-$(_get_os_type)-*-linux-gnu.tar.gz"
   cp -v git-cliff "$PREFIX/bin/"
   cp -v man/git-cliff.1 "$PREFIX/share/man/man1/"
 }
 
 install_gh() {
   # github CLI: https://github.com/cli/cli/releases
-  _template_github_latest "gh" "cli/cli" "gh_*_linux_amd64.tar.gz"
+  _template_github_latest "gh" "cli/cli" "gh_*_linux_$(_get_os_type 1).tar.gz"
 
   cp -v ./bin/gh $HOME/.local/bin/gh
   _which gh
@@ -289,7 +289,7 @@ install_bazel() {
   local BAZEL_VER="${BAZEL_LATEST_VERSION}"
   echo -e "${COLOR_YELLOW}Installing Bazel ${BAZEL_VER} ...${COLOR_NONE}"
 
-  local BAZEL_URL="https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VER}/bazel-${BAZEL_VER}-installer-linux-x86_64.sh"
+  local BAZEL_URL="https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VER}/bazel-${BAZEL_VER}-installer-linux-$(_get_os_type).sh"
 
   local TMP_BAZEL_DIR="$DOTFILES_TMPDIR/bazel/"
   mkdir -p $TMP_BAZEL_DIR
@@ -312,10 +312,10 @@ install_bazel() {
 install_mambaforge() {
   # Mambaforge.
   # https://conda-forge.org/miniforge/
-  _template_github_latest "mambaforge" "conda-forge/miniforge" "Mambaforge-Linux-x86_64.sh"
+  _template_github_latest "mambaforge" "conda-forge/miniforge" "Mambaforge-Linux-$(_get_os_type).sh"
 
   local MAMBAFORGE_PREFIX="$HOME/.mambaforge"
-  bash "Mambaforge-Linux-x86_64.sh" -b -p "${MAMBAFORGE_PREFIX}"
+  bash "Mambaforge-Linux-$(_get_os_type).sh" -b -p "${MAMBAFORGE_PREFIX}"
   _which $MAMBAFORGE_PREFIX/bin/python3
   $MAMBAFORGE_PREFIX/bin/python3 --version
 }
@@ -323,10 +323,10 @@ install_mambaforge() {
 install_miniforge() {
   # Miniforge3.
   # https://github.com/conda-forge/miniforge
-  _template_github_latest "mambaforge" "conda-forge/miniforge" "Miniforge3-Linux-x86_64.sh"
+  _template_github_latest "mambaforge" "conda-forge/miniforge" "Miniforge3-Linux-$(_get_os_type).sh"
 
   local MINIFORGE_PREFIX="$HOME/.miniforge3"
-  bash "Miniforge3-Linux-x86_64.sh" -b -p ${MINIFORGE_PREFIX}
+  bash "Miniforge3-Linux-$(_get_os_type).sh" -b -p ${MINIFORGE_PREFIX}
   _which $MINIFORGE_PREFIX/bin/python3
   $MINIFORGE_PREFIX/bin/python3 --version
 }
@@ -334,13 +334,13 @@ install_miniforge() {
 install_miniconda() {
   # installs Miniconda3. (Deprecated: Use miniforge3)
   # https://conda.io/miniconda.html
-  local MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+  local MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-$(_get_os_type).sh"
 
   local TMP_DIR="$DOTFILES_TMPDIR/miniconda/"; mkdir -p $TMP_DIR && cd ${TMP_DIR}
   wget -nc $MINICONDA_URL
 
   local MINICONDA_PREFIX="$HOME/.miniconda3/"
-  bash "Miniconda3-latest-Linux-x86_64.sh" -b -p ${MINICONDA_PREFIX}
+  bash "Miniconda3-latest-Linux-$(_get_os_type).sh" -b -p ${MINICONDA_PREFIX}
 
   # 3.9.5 as of Nov 2021
   $MINICONDA_PREFIX/bin/python3 --version
@@ -451,7 +451,7 @@ install_neovim() {
 
 install_just() {
   # https://github.com/casey/just/releases
-  _template_github_latest "just" "casey/just" 'just-*-x86_64-*-linux-musl.tar.gz'
+  _template_github_latest "just" "casey/just" "just-*-$(_get_os_type)-*-linux-musl.tar.gz"
 
   cp -v just "$PREFIX/bin/just"
   cp -v just.1 "$PREFIX/share/man/man1/"
@@ -461,7 +461,7 @@ install_just() {
 
 install_delta() {
   # https://github.com/dandavison/delta/releases
-  _template_github_latest "delta" "dandavison/delta" 'delta-*-x86_64-*-linux-musl.tar.gz'
+  _template_github_latest "delta" "dandavison/delta" "delta-*-$(_get_os_type)-*-linux-musl.tar.gz"
 
   cp -v "./delta" "$PREFIX/bin/delta"
   chmod +x "$PREFIX/bin/delta"
@@ -471,7 +471,7 @@ install_delta() {
 
 install_eza() {
   # https://github.com/eza-community/eza/releases
-  _template_github_latest "eza" "eza-community/eza" 'eza_x86_64-*linux-gnu*'
+  _template_github_latest "eza" "eza-community/eza" "eza_$(_get_os_type)-*linux-gnu*"
 
   cp -v "./eza" "$PREFIX/bin/eza"
   curl -fL "https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza" > \
@@ -482,7 +482,7 @@ install_eza() {
 
 install_fd() {
   # https://github.com/sharkdp/fd/releases
-  _template_github_latest "fd" "sharkdp/fd" "fd-*-x86_64-unknown-linux-musl.tar.gz"
+  _template_github_latest "fd" "sharkdp/fd" "fd-*-$(_get_os_type)-unknown-linux-musl.tar.gz"
   cp -v "./fd" $PREFIX/bin
   cp -v "./autocomplete/_fd" $PREFIX/share/zsh/site-functions
 
@@ -492,7 +492,7 @@ install_fd() {
 
 install_ripgrep() {
   # https://github.com/BurntSushi/ripgrep/releases
-  _template_github_latest "ripgrep" "BurntSushi/ripgrep" "ripgrep-*-x86_64-unknown-linux-musl.tar.gz"
+  _template_github_latest "ripgrep" "BurntSushi/ripgrep" "ripgrep-*-$(_get_os_type)-unknown-linux-musl.tar.gz"
   cp -v "./rg" $PREFIX/bin/
   cp -v "./complete/_rg" $PREFIX/share/zsh/site-functions
 
@@ -502,7 +502,7 @@ install_ripgrep() {
 
 install_xsv() {
   # https://github.com/BurntSushi/xsv/releases
-  _template_github_latest "xsv" "BurntSushi/xsv" "xsv-*-x86_64-unknown-linux-musl.tar.gz"
+  _template_github_latest "xsv" "BurntSushi/xsv" "xsv-*-$(_get_os_type)-unknown-linux-musl.tar.gz"
   cp -v "./xsv" $PREFIX/bin/
 
   _which xsv
@@ -511,7 +511,7 @@ install_xsv() {
 
 install_bat() {
   # https://github.com/sharkdp/bat/releases
-  _template_github_latest "bat" "sharkdp/bat" "bat-*-x86_64-unknown-linux-musl.tar.gz"
+  _template_github_latest "bat" "sharkdp/bat" "bat-*-$(_get_os_type)-unknown-linux-musl.tar.gz"
   cp -v "./bat" $PREFIX/bin/
   cp -v "./autocomplete/bat.zsh" $PREFIX/share/zsh/site-functions/_bat
 
@@ -530,11 +530,11 @@ install_go() {
   mkdir -p "$HOME/.go"
 
   local GO_VERSION="1.21.4"
-  local GO_DOWNLOAD_URL="https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz"
+  local GO_DOWNLOAD_URL="https://dl.google.com/go/go${GO_VERSION}.linux-$(_get_os_type 1).tar.gz"
   TMP_GO_DIR="$DOTFILES_TMPDIR/go/"
 
   wget -nc ${GO_DOWNLOAD_URL} -P ${TMP_GO_DIR} || exit 1;
-  cd ${TMP_GO_DIR} && tar -xvzf "go${GO_VERSION}.linux-amd64.tar.gz" || exit 1;
+  cd ${TMP_GO_DIR} && tar -xvzf "go${GO_VERSION}.linux-$(_get_os_type 1).tar.gz" || exit 1;
   mv go/* "$HOME/.go/"
 
   echo ""
@@ -544,9 +544,9 @@ install_go() {
 
 install_jq() {
   # https://github.com/jqlang/jq/releases
-  _template_github_latest "jq" "jqlang/jq" "jq-linux-amd64"
+  _template_github_latest "jq" "jqlang/jq" "jq-linux-$(_get_os_type 1)"
 
-  cp -v "./jq-linux-amd64" "$PREFIX/bin/jq"
+  cp -v "./jq-linux-$(_get_os_type 1)" "$PREFIX/bin/jq"
   chmod +x "$PREFIX/bin/jq"
   _which jq
   $PREFIX/bin/jq --version
@@ -554,7 +554,7 @@ install_jq() {
 
 install_duf() {
   # https://github.com/muesli/duf/releases
-  _template_github_latest "duf" "muesli/duf" "duf_*_linux_x86_64.tar.gz"
+  _template_github_latest "duf" "muesli/duf" "duf_*_linux_$(_get_os_type).tar.gz"
   cp -v "./duf" $PREFIX/bin
 
   _which duf
@@ -562,7 +562,7 @@ install_duf() {
 }
 
 install_lazydocker() {
-  _template_github_latest "lazydocker" "jesseduffield/lazydocker" "lazydocker_*_Linux_x86_64.tar.gz"
+  _template_github_latest "lazydocker" "jesseduffield/lazydocker" "lazydocker_*_Linux_$(_get_os_type).tar.gz"
   cp -v "./lazydocker" $PREFIX/bin
 
   _which lazydocker
@@ -570,7 +570,7 @@ install_lazydocker() {
 }
 
 install_lazygit() {
-  _template_github_latest "lazygit" "jesseduffield/lazygit" "lazygit_*_Linux_x86_64.tar.gz"
+  _template_github_latest "lazygit" "jesseduffield/lazygit" "lazygit_*_Linux_$(_get_os_type).tar.gz"
   cp -v "./lazygit" $PREFIX/bin
 
   _which lazygit
@@ -626,7 +626,7 @@ install_mujoco() {
   mkdir -p $tmpdir && cd $tmpdir
   mkdir -p $HOME/.mujoco
 
-  local download_url="https://github.com/deepmind/mujoco/releases/download/${mujoco_version}/mujoco-${mujoco_version}-linux-x86_64.tar.gz"
+  local download_url="https://github.com/deepmind/mujoco/releases/download/${mujoco_version}/mujoco-${mujoco_version}-linux-$(_get_os_type).tar.gz"
   local filename="$(basename $download_url)"
   wget -N -O $tmpdir/$filename "$download_url"
   tar -xvzf "$filename" -C $tmpdir
