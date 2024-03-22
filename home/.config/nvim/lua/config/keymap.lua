@@ -186,3 +186,10 @@ nmap('<leader>m', ':MundoToggle<CR>', {
     silent = true
 })
 
+-- telescope.nvim
+local telescope = require('telescope.builtin')
+nmap('<leader>ff', telescope.find_files, {})
+nmap('<leader>fg', telescope.live_grep, {})
+nmap('<leader>fb', telescope.buffers, {})
+nmap('<leader>fh', telescope.help_tags, {})
+
