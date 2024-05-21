@@ -246,6 +246,8 @@ def main():
     current_dir = os.path.abspath(os.path.dirname(__file__))
     os.chdir(current_dir)
 
+    check_submodule()
+
     args = parsing_args()
     create_symlink(args)
     if args.symlink:
