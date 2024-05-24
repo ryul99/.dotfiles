@@ -77,10 +77,10 @@ sys.stderr.write('ERROR: Cannot find a download matching \'$filename\'.\n'); sys
   curl -fSL --progress-bar "$download_url" -o "$tmpdir/$filename"
 
   cd "$tmpdir"
-  if [[ "$filename" == *.tar.gz ]]; then
+  if [[ "$filename" == *.tar.gz || "$filename" == *.tbz || "$filename" == *.tgz ]]; then
     echo -e "${COLOR_YELLOW}Extracting to: $tmpdir${COLOR_NONE}"
-    tar -xvzf "$filename" $TAR_OPTIONS
-    local extracted_folder="${filename%.tar.gz}"
+    tar -xvf "$filename" $TAR_OPTIONS
+    local extracted_folder="${filename%.*}"
     if [ -d "$extracted_folder" ]; then
       cd "$extracted_folder"
     fi
@@ -666,7 +666,7 @@ install_poetry() {
 
 install_btop() {
   _template_github_latest "btop" "aristocratos/btop" "btop-$(_get_os_type)-linux-*.tbz"
-
+  cd btop
   make install PREFIX="$HOME/.local"
 }
 
