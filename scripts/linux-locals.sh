@@ -81,6 +81,7 @@ sys.stderr.write('ERROR: Cannot find a download matching \'$filename\'.\n'); sys
     echo -e "${COLOR_YELLOW}Extracting to: $tmpdir${COLOR_NONE}"
     tar -xvf "$filename" $TAR_OPTIONS
     local extracted_folder="${filename%.*}"
+    if [[ "$extracted_folder" == *.tar ]]; then extracted_folder="${extracted_folder%.*}"; fi
     if [ -d "$extracted_folder" ]; then
       cd "$extracted_folder"
     fi
