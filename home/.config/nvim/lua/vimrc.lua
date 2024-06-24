@@ -19,7 +19,6 @@ vim.cmd([[
 o.encoding = 'utf-8'
 o.fileencoding = 'utf-8'
 o.shell = '/bin/bash'
-o.pastetoggle = '<F8>'
 o.scrolloff = 3
 o.startofline = true
 o.splitbelow = true
