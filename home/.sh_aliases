@@ -58,6 +58,8 @@ fi
 
 # neovim or vim
 if hash nvim 2>/dev/null; then
+    alias vi=nvim
+    alias vim=nvim
     alias nvi=nvim
 
     alias nvis="nvim -S Session.vim"

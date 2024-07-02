@@ -13,6 +13,7 @@ color_scheme = 'dimidium'
 -- visual
 config.font = wezterm.font('CaskaydiaMono Nerd Font')
 config.font_size = 18
+config.term = "wezterm"
 
 config.window_padding = {
     left = '0.5cell',
