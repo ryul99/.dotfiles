@@ -29,13 +29,12 @@ vim.g.strip_whitespace_confirm = false
 vim.g.mundo_right = 1
 
 -- theme
-vim.cmd([[colorscheme snazzy]])
-vim.g.SnazzyTransparent = 1
+vim.cmd("colorscheme kanagawa")
 
 -- lightline
 -- init lightline
 vim.g.lightline = {
-    colorscheme = 'snazzy',
+    colorscheme = 'kanagawa',
     active = {
         left = {{'mode', 'paste'}, {'filename', 'readonly'}, {'currentfunction'}, {'truncate_here'}},
         right = {{'lineinfo'}, {'percent'}, {'gitbranch', 'fileformat', 'fileencoding', 'filetype'}}

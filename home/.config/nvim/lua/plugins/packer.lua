@@ -71,7 +71,7 @@ return packer.startup(function(use)
     -- Visual
     use 'Yggdroot/indentLine'
     use 'ntpeters/vim-better-whitespace'
-    use 'connorholyday/vim-snazzy'
+    use 'rebelot/kanagawa.nvim'
     use 'preservim/tagbar'
     use 'stevearc/dressing.nvim'
     use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
