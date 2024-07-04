@@ -34,7 +34,7 @@ vim.cmd("colorscheme kanagawa")
 -- lightline
 -- init lightline
 vim.g.lightline = {
-    colorscheme = 'kanagawa',
+    colorscheme = 'wombat',
     active = {
         left = {{'mode', 'paste'}, {'filename', 'readonly'}, {'currentfunction'}, {'truncate_here'}},
         right = {{'lineinfo'}, {'percent'}, {'gitbranch', 'fileformat', 'fileencoding', 'filetype'}}
