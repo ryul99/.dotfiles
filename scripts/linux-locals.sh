@@ -820,12 +820,6 @@ install_glow () {
   cp -v ./glow $PREFIX/bin/
 }
 
-install_delta() {
-  _template_github_latest "delta" "dandavison/delta" "delta-*-$(_get_os_type)-unknown-linux-*.tar.gz"
-
-  cp -v ./delta $PREFIX/bin/
-}
-
 install_brew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
