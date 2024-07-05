@@ -830,7 +830,7 @@ install_nix-portable() {
 
   set -ex
 
-  cd .local/bin
+  cd $PREFIX/bin
 
   # Download nix-portable
   curl -L "https://github.com/DavHau/nix-portable/releases/latest/download/nix-portable-$(uname -m)" > ./nix-portable
