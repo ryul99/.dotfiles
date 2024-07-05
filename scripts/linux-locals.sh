@@ -671,11 +671,11 @@ install_btop() {
   make install PREFIX="$HOME/.local"
 }
 
-  install_rbenv() {
-    set -e
-    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-  }
+install_rbenv() {
+  set -e
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+}
 
 install_rclone() {
   # Origin from https://rclone.org/install.sh
@@ -824,6 +824,10 @@ install_delta() {
   _template_github_latest "delta" "dandavison/delta" "delta-*-$(_get_os_type)-unknown-linux-*.tar.gz"
 
   cp -v ./delta $PREFIX/bin/
+}
+
+install_brew() {
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 # entrypoint script
