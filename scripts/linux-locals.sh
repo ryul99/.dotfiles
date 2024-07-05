@@ -825,7 +825,7 @@ install_brew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
-install_nix-portable() {
+install_nix() {
   # ref: https://github.com/DavHau/nix-portable/issues/66#issuecomment-2067802826
 
   set -ex
