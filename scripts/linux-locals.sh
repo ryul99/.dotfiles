@@ -854,8 +854,8 @@ install_nix-portable() {
 
   # Init home-manager
   NP_RUNTIME=bwrap nix-portable nix shell nixpkgs#{bashInteractive,nix} <<EOF
-  nix run github:nix-community/home-manager -- init
-  EOF
+nix run github:nix-community/home-manager -- init
+EOF
 
   # Add home-manager to its own path
   echo 'Add the following in your home.nix file: `home.sessionVariables.PATH = "$HOME/.nix-profile/bin:$PATH";`'
@@ -863,28 +863,28 @@ install_nix-portable() {
 
   # home manager switch
   NP_RUNTIME=bwrap nix-portable nix shell nixpkgs#{bashInteractive,nix} <<EOF
-  nix run github:nix-community/home-manager -- switch
-  EOF
+nix run github:nix-community/home-manager -- switch
+EOF
 
   # Make new sessions use the shell automatically
   mv ~/.bashrc ~/.bashrc.old
   cat >~/.bashrc <<EOF
-  export PATH=\$PATH:\$HOME/.local/bin
+export PATH=\$PATH:\$HOME/.local/bin
 
-  if [ -z "\$__NIX_PORTABLE_ACTIVATED" ]; then
-          export __NIX_PORTABLE_ACTIVATED=1
-          NP_RUNTIME=bwrap nix-portable nix run nixpkgs#bashInteractive --offline
-          exit
-  else
-          . \$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-  fi
+if [ -z "\$__NIX_PORTABLE_ACTIVATED" ]; then
+        export __NIX_PORTABLE_ACTIVATED=1
+        NP_RUNTIME=bwrap nix-portable nix run nixpkgs#bashInteractive --offline
+        exit
+else
+        . \$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
 
-  # If not running interactively, don't do anything
-  [[ \$- != *i* ]] && return
+# If not running interactively, don't do anything
+[[ \$- != *i* ]] && return
 
-  # Set something for the cmd line
-  PS1='[\u@\h \W]\\\$ '
-  EOF
+# Set something for the cmd line
+PS1='[\u@\h \W]\\\$ '
+EOF
 
   echo 'Please remember to relogin so that the environment gets activated'
 }
