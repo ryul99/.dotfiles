@@ -165,8 +165,7 @@ return packer.startup(function(use)
     }
 
     -- jupyter
-    use { "kiyoon/jupynium.nvim", run = "pip3 install --user ." }
-    -- use { "kiyoon/jupynium.nvim", run = "conda run --no-capture-output -n jupynium pip install ." }
+    use { "kiyoon/jupynium.nvim" }
 
     -- Snippet generation
     use {
