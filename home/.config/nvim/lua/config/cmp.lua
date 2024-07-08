@@ -80,13 +80,12 @@ function M.setup()
     window = {
       documentation = cmp.config.window.bordered(),
     },
-
     sorting = {
       priority_weight = 1.0,
       comparators = {
-        compare.score,            -- Jupyter kernel completion shows prior to LSP
-        compare.recently_used,
-        compare.locality,
+        cmp.config.compare.score,            -- Jupyter kernel completion shows prior to LSP
+        cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
         -- ...
       },
     },
