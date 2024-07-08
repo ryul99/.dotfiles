@@ -74,9 +74,21 @@ function M.setup()
       { name = "calc" },
       { name = "spell" },
       { name = "luasnip" },
+      { name = "jupynium", priority = 1000 },  -- consider higher priority than LSP
+      { name = "nvim_lsp", priority = 100 },
     },
     window = {
       documentation = cmp.config.window.bordered(),
+    },
+
+    sorting = {
+      priority_weight = 1.0,
+      comparators = {
+        compare.score,            -- Jupyter kernel completion shows prior to LSP
+        compare.recently_used,
+        compare.locality,
+        -- ...
+      },
     },
     -- documentation = {
     --  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
