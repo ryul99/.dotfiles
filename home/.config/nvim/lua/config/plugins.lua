@@ -2,8 +2,6 @@
 -- Plugin Configs
 --
 
-vim.g.python3_host_prog = '/usr/bin/python'
-
 -- Persistent history
 if vim.fn.has('persistent_undo') then
     vim.cmd([[
