@@ -74,6 +74,7 @@ return packer.startup(function(use)
     use 'rebelot/kanagawa.nvim'
     use 'preservim/tagbar'
     use 'stevearc/dressing.nvim'
+    use { "rcarriga/nvim-notify" }
     use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
     use 'mg979/vim-visual-multi'
     use {
@@ -162,6 +163,10 @@ return packer.startup(function(use)
         version = '^4', -- Recommended
         ft = { 'rust' },
     }
+
+    -- jupyter
+    use { "kiyoon/jupynium.nvim", run = "pip3 install --user ." }
+    -- use { "kiyoon/jupynium.nvim", run = "conda run --no-capture-output -n jupynium pip install ." }
 
     -- Snippet generation
     use {
