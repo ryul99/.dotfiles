@@ -21,7 +21,6 @@
 
     "~/.config/wezterm" : "home/.config/wezterm",
     "~/.wezterm.lua" : "home/.wezterm.lua",
-    "~/.terminfo" : "home/.terminfo",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
