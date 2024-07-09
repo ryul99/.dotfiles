@@ -195,37 +195,3 @@ if status_ok then
     nmap('<leader>fh', telescope.help_tags, {})
 end
 
--- jupynium
-vim.keymap.set(
-  { "n", "x" },
-  "<localleader>x",
-  "<cmd>JupyniumExecuteSelectedCells<CR>",
-  { buffer = buf_id, desc = "Jupynium execute selected cells" }
-)
-vim.keymap.set(
-  { "n", "x" },
-  "<localleader>c",
-  "<cmd>JupyniumClearSelectedCellsOutputs<CR>",
-  { buffer = buf_id, desc = "Jupynium clear selected cells" }
-)
-vim.keymap.set(
-  { "n" },
-  "<localleader>K",
-  "<cmd>JupyniumKernelHover<cr>",
-  { buffer = buf_id, desc = "Jupynium hover (inspect a variable)" }
-)
-vim.keymap.set(
-  { "n", "x" },
-  "<localleader>js",
-  "<cmd>JupyniumScrollToCell<cr>",
-  { buffer = buf_id, desc = "Jupynium scroll to cell" }
-)
-vim.keymap.set(
-  { "n", "x" },
-  "<localleader>jo",
-  "<cmd>JupyniumToggleSelectedCellsOutputsScroll<cr>",
-  { buffer = buf_id, desc = "Jupynium toggle selected cell output scroll" }
-)
-vim.keymap.set("", "<PageUp>", "<cmd>JupyniumScrollUp<cr>", { buffer = buf_id, desc = "Jupynium scroll up" })
-vim.keymap.set("", "<PageDown>", "<cmd>JupyniumScrollDown<cr>", { buffer = buf_id, desc = "Jupynium scroll down" })
-

@@ -84,6 +84,7 @@ vim.diagnostic.config({
 require ('plugins/packer')
 require ('plugins/treesitter')
 require ('plugins/ufo')
+require ('plugins/jupynium')
 -- configs
 -- require ('config/cmp.lua') is already loaded
 require ('config/plugins')
