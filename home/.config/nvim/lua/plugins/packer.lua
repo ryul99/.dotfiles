@@ -165,7 +165,15 @@ return packer.startup(function(use)
     }
 
     -- jupyter
-    use { "kiyoon/jupynium.nvim" }
+    use {
+        "kiyoon/jupynium.nvim",
+        run = "pip3 install --user .",
+        config = function()
+            require("jupynium").setup({
+                use_default_keybindings = false,
+            })
+        end,
+    }
 
     -- Snippet generation
     use {
