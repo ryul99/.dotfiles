@@ -215,12 +215,12 @@ let g:mundo_right = 1
 nnoremap <silent> <leader>m :MundoToggle<CR>
 
 " theme
-colorscheme snazzy
-let g:SnazzyTransparent = 1
+" colorscheme snazzy
+" let g:SnazzyTransparent = 1
 
 " lightline
 let g:lightline = {}
-let g:lightline.colorscheme = 'snazzy'
+" let g:lightline.colorscheme = 'snazzy'
 let g:lightline.active = {
     \     'left': [
     \         [ 'mode', 'paste' ],
