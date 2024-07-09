@@ -190,6 +190,12 @@ return packer.startup(function(use)
             require("jupynium").setup({
                 use_default_keybindings = false,
             })
+            vim.cmd [[
+                hi! link JupyniumCodeCellSeparator CursorLine
+                hi! link JupyniumMarkdownCellSeparator CursorLine
+                hi! link JupyniumMarkdownCellContent CursorLine
+                hi! link JupyniumMagicCommand Keyword
+            ]]
         end,
     }
 
