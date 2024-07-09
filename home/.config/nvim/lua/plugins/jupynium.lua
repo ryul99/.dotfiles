@@ -13,7 +13,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   { "n" },
-  "<localleader>K",
+  "<localleader>k",
   "<cmd>JupyniumKernelHover<cr>",
   { buffer = buf_id, desc = "Jupynium hover (inspect a variable)" }
 )
@@ -28,6 +28,12 @@ vim.keymap.set(
   "<localleader>jo",
   "<cmd>JupyniumToggleSelectedCellsOutputsScroll<cr>",
   { buffer = buf_id, desc = "Jupynium toggle selected cell output scroll" }
+)
+vim.keymap.set(
+  { "n", "x" },
+  "<localleader>s",
+  "<cmd>JupyniumSaveIpynb<cr>",
+  { buffer = buf_id, desc = "Jupynium save ipynb" }
 )
 vim.keymap.set("", "<PageUp>", "<cmd>JupyniumScrollUp<cr>", { buffer = buf_id, desc = "Jupynium scroll up" })
 vim.keymap.set("", "<PageDown>", "<cmd>JupyniumScrollDown<cr>", { buffer = buf_id, desc = "Jupynium scroll down" })
