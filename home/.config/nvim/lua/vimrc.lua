@@ -83,6 +83,7 @@ vim.diagnostic.config({
 -- plugins
 require ('plugins/packer')
 require ('plugins/treesitter')
+require ('plugins/ufo')
 -- configs
 -- require ('config/cmp.lua') is already loaded
 require ('config/plugins')
