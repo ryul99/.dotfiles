@@ -22,6 +22,18 @@ COLOR_WHITE="\033[1;37m"
 
 #---------------------------------------------------------------------------------------------------
 
+install_font() {
+  set -ex
+  local TMP_DIR="$DOTFILES_TMPDIR/font"
+  mkdir -p "$TMP_DIR" && cd "$TMP_DIR"
+
+  curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.tar.xz
+  tar -xvf CascadiaMono.tar.xz
+  mv CaskaydiaMonoNerdFont* ~/.config/wezterm/fonts/
+}
+
+#---------------------------------------------------------------------------------------------------
+
 _glibc_version() {
   # https://stackoverflow.com/questions/71070969/how-to-extract-and-compare-the-libc-versions-at-runtime
   local libcfile="$(grep -azm1 '/libc.so.6$' /etc/ld.so.cache | tr -d '\0')"
