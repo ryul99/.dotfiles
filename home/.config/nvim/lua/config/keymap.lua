@@ -195,3 +195,7 @@ if status_ok then
     nmap('<leader>fh', telescope.help_tags, {})
 end
 
+-- blame.nvim
+nmap('<leader>bw', ':BlameToggle window<CR>', {})
+nmap('<leader>bv', ':BlameToggle virtual<CR>', {})
+

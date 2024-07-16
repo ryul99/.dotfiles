@@ -182,7 +182,9 @@ return packer.startup(function(use)
     use {
         "FabijanZulj/blame.nvim",
         config = function()
-            require("blame").setup()
+            require("blame").setup({
+                date_format = "%Y.%m.%d",
+            })
         end
     }
 
