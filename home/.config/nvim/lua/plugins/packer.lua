@@ -179,6 +179,12 @@ return packer.startup(function(use)
             require("copilot").setup({})
         end,
     }
+    use {
+        "FabijanZulj/blame.nvim",
+        config = function()
+            require("blame").setup()
+        end
+    }
 
     -- rust
     use {
