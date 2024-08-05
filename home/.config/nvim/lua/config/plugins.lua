@@ -3,16 +3,15 @@
 --
 
 -- Persistent history
-if vim.fn.has('persistent_undo') then
-    vim.cmd([[
-  let vimdir='$HOME/.vim'
-  let &runtimepath.=','.vimdir
-  let vimundodir=expand(vimdir.'/undodir')
-  call system('mkdir -p '.vimundodir)
+if vim.fn.has('persistent_undo') == 1 then
+    local vimdir = os.getenv('HOME') .. '/.vim'
+    vim.opt.runtimepath:append(vimdir)
 
-  let &undodir=vimundodir
-  set undofile
-]])
+    local vimundodir = vim.fn.expand(vimdir .. '/undodir')
+    os.execute('mkdir -p ' .. vimundodir)
+
+    vim.opt.undodir = vimundodir
+    vim.opt.undofile = true
 end
 
 -- indentLine
