@@ -1,3 +1,85 @@
+-----------------------------------------providerSelector-------------------------------------------
+local function selectProviderWithFt()
+    local ftMap = {
+        vim = 'indent',
+        python = {'indent'},
+        git = ''
+    }
+    require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+            -- return a table with string elements: 1st is name of main provider, 2nd is fallback
+            -- return a string type: use ufo inner providers
+            -- return a string in a table: like a string type above
+            -- return empty string '': disable any providers
+            -- return `nil`: use default value {'lsp', 'indent'}
+            -- return a function: it will be involved and expected return `UfoFoldingRange[]|Promise`
+
+            -- if you prefer treesitter provider rather than lsp,
+            -- return ftMap[filetype] or {'treesitter', 'indent'}
+            return ftMap[filetype]
+        end
+    })
+end
+
+-- lsp->treesitter->indent
+local function selectProviderWithChainByDefault()
+    local ftMap = {
+        vim = 'indent',
+        python = {'indent'},
+        git = ''
+    }
+
+    ---@param bufnr number
+    ---@return Promise
+    local function customizeSelector(bufnr)
+        local function handleFallbackException(err, providerName)
+            if type(err) == 'string' and err:match('UfoFallbackException') then
+                return require('ufo').getFolds(bufnr, providerName)
+            else
+                return require('promise').reject(err)
+            end
+        end
+
+        return require('ufo').getFolds(bufnr, 'lsp'):catch(function(err)
+            return handleFallbackException(err, 'treesitter')
+        end):catch(function(err)
+            return handleFallbackException(err, 'indent')
+        end)
+    end
+
+    require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+            return ftMap[filetype] or customizeSelector
+        end
+    })
+end
+
+local function selectProviderWithFunction()
+    ---@param bufnr number
+    ---@return UfoFoldingRange[]
+    local function customizeSelector(bufnr)
+        local res = {}
+        table.insert(res, {startLine = 1, endLine = 3})
+        table.insert(res, {startLine = 5, endLine = 10})
+        return res
+    end
+
+    local ftMap = {
+        vim = 'indent',
+        python = {'indent'},
+        git = customizeSelector
+    }
+
+    require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+            return ftMap[filetype]
+        end
+    })
+end
+
+-----------------------------------------providerSelector-------------------------------------------
+
+
 vim.cmd[[
     " hi default UfoFoldedFg guifg=Normal.foreground
     " hi default UfoFoldedBg guibg=Folded.background
