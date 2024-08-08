@@ -213,3 +213,12 @@ nmap('<leader>bv', ':BlameToggle virtual<CR>', {})
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 nmap('zR', require('ufo').openAllFolds, {})
 nmap('zM', require('ufo').closeAllFolds, {})
+
+-- conform.nvim
+nmap(
+    '<Leader>f',
+    function()
+        require('conform').format({ async = true, lsp_fallback = true })
+    end
+    , {}
+)
