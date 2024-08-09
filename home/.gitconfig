@@ -4,7 +4,7 @@
 	email = cmchoi9901@gmail.com
 	signingkey = A18BE3FEDDCFD4F9BC46D696C1C34851BA8B6E67
 [core]
-	editor = vim
+	editor = nvim
 	pager = less -+XF -Qc
 	excludesfile = ~/.gitexclude
 	fscache = yes
