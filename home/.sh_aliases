@@ -175,3 +175,13 @@ alias kns=kubens
 function rgd() {
     rg --json "$@" | delta
 }
+
+function run-parallel() {
+    MAX_JOBS=${MAX_JOBS:-6}
+
+    while [ $(jobs -r | wc -l) -ge $MAX_JOBS ]; do
+        sleep 1
+    done
+
+    $@ &
+}
