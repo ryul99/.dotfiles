@@ -83,13 +83,13 @@ alias bctl=bluetoothctl
 # Docker
 if groups | grep -qw docker; then
     alias dk="docker"
-    alias dc="docker-compose"
+    alias dc="docker compose"
     alias ds="docker service"
     alias dst="docker stack"
     alias dsw="docker swarm"
 else
     alias dk="sudo -E docker"
-    alias dc="sudo -E docker-compose"
+    alias dc="sudo -E docker compose"
     alias ds="sudo -E docker service"
     alias dst="sudo -E docker stack"
     alias dsw="sudo -E docker swarm"
