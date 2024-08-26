@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# acknowledgement:
+# https://chemicloud.com/blog/download-google-drive-files-using-wget/#how-to-download-google-drive-files-using-wget
+# https://stackoverflow.com/a/6174447
+
+function parse-url() {
+    # extract the protocol
+    proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+    # remove the protocol
+    url="$(echo ${1/$proto/})"
+    # extract the path (if any)
+    file_id="$(echo $url | grep / | cut -d/ -f4)"
+    echo $file_id
+}
+
+FILENAME=$2
+if [[ -z $FILENAME ]]; then
+    echo "File name is not set. Use 'google_file' as name"
+    FILENAME='google_file'
+fi
+
+FILEID=$(parse-url $1)
+CONFIRM=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate "https://docs.google.com/uc?export=download&id=$FILEID" -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')
+
+wget --load-cookies /tmp/cookies.txt \
+    "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$FILEID" \
+    -O $FILENAME && rm -rf /tmp/cookies.txt
