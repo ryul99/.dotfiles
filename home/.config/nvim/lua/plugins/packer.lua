@@ -184,14 +184,6 @@ return packer.startup(function(use)
         requires = "nvim-treesitter/nvim-treesitter",
     })
     use {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({})
-        end,
-    }
-    use {
         "FabijanZulj/blame.nvim",
         config = function()
             require("blame").setup({
@@ -257,6 +249,28 @@ return packer.startup(function(use)
         -- install jsregexp (optional!:).
         -- run = "make install_jsregexp"
     }
+
+    -- AI tool
+    -- use {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({})
+    --     end,
+    -- }
+    use({
+        "olimorris/codecompanion.nvim",
+        config = function()
+            require("codecompanion").setup()
+        end,
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-telescope/telescope.nvim", -- Optional
+            "stevearc/dressing.nvim" -- Optional: Improves the default Neovim UI
+        }
+    })
 
 
     if PACKER_BOOTSTRAP then
