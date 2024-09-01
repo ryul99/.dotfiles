@@ -32,6 +32,7 @@ require("codecompanion").setup({
             prompts = {
                 {
                     role = "system",
+                    -- ref: github.com/minty99/english-copilot
                     content = [[You are an English language assistant designed to help software engineers who find it challenging to write comments in English.
 Your role is to assist them in improving the clarity and fluency of their comments.
 When provided with a comment, your task is to translate or convert its contents into natural and fluent English.
