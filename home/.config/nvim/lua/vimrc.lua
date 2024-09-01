@@ -85,6 +85,7 @@ require ('plugins/packer')
 require ('plugins/treesitter')
 require ('plugins/ufo')
 require ('plugins/jupynium')
+require ('plugins/codecompanion')
 -- configs
 -- require ('config/cmp.lua') is already loaded
 require ('config/plugins')
