@@ -86,8 +86,8 @@ require("config.lazy")
 -- configs
 -- require ('config/cmp.lua') is already loaded
 require ('config/plugins')
-require ('config/keymaps')
 require ('config/treesitter')
 require ('config/ufo')
 require ('config/lsp')
 require ('config/cmp')
+require ('config/keymaps')
