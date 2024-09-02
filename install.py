@@ -75,7 +75,7 @@ def get_post_actions(args):
 
     if find_executable('nvim'):
         post_actions += [{
-             'update'  : "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'",
+             'update'  : '''nvim --headless "+Lazy! sync" +qa''',
              'none'    : "# (neovim update skipped)",
         }['update' if not args.skip_nvim else 'none']]
 
