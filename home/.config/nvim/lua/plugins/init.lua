@@ -227,26 +227,4 @@ return {
         priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
         config = true,
     },
-
-    -- AI tool
-    -- use {
-    --     "zbirenbaum/copilot.lua",
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("copilot").setup({})
-    --     end,
-    -- }
-    {
-        "olimorris/codecompanion.nvim",
-        config = function()
-            require("config.codecompanion")
-        end,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-telescope/telescope.nvim", -- Optional
-            "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
-        },
-    },
 }
