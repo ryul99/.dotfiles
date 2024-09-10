@@ -24,7 +24,7 @@ return {
                 })
             end,
         },
-        default_prompts = {
+        pre_defined_prompts = {
             ["English Commentor"] = {
                 strategy = "chat",
                 description = "Fix comments to be easy to understand",
