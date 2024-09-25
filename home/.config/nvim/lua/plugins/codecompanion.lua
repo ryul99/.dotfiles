@@ -24,7 +24,7 @@ return {
                 })
             end,
         },
-        pre_defined_prompts = {
+        prompts_library = {
             ["English Commentor"] = {
                 strategy = "chat",
                 description = "Fix comments to be easy to understand",
