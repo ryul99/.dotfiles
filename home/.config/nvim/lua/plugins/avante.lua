@@ -63,8 +63,9 @@ return {
             },
         },
     },
-    build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
+    build = "make", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
     dependencies = {
+        "nvim-treesitter/nvim-treesitter",
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
@@ -89,7 +90,7 @@ return {
             },
         },
         {
-            -- Make sure to setup it properly if you have lazy=true
+            -- Make sure to set this up properly if you have lazy=true
             'MeanderingProgrammer/render-markdown.nvim',
             opts = {
                 file_types = { "markdown", "Avante" },
