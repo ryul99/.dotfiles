@@ -5,6 +5,7 @@ return {
     opts = {
         -- add any opts here
         provider = "openai",
+        auto_suggestions_provider = "openai",
         openai = { model = "gpt-4o-mini" },
         vendors = {
             ---@type AvanteProvider
