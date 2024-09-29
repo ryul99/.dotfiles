@@ -7,6 +7,7 @@ return {
         provider = "openai",
         auto_suggestions_provider = "openai",
         openai = { model = "gpt-4o-mini" },
+        gemini = { model = "gemini-1.5-flash" },
         vendors = {
             ---@type AvanteProvider
             ollama = {
