@@ -4,8 +4,8 @@ return {
     lazy = false,
     opts = {
         -- add any opts here
-        provider = "openai",
-        auto_suggestions_provider = "openai",
+        provider = "deepseek",
+        auto_suggestions_provider = "deepseek",
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-1.5-flash" },
         vendors = {
@@ -13,7 +13,7 @@ return {
             ollama = {
                 ["local"] = true,
                 endpoint = "127.0.0.1:11434/v1",
-                model = "codegemma",
+                model = "qwen2.5-coder",
                 parse_curl_args = function(opts, code_opts)
                     return {
                         url = opts.endpoint .. "/chat/completions",
