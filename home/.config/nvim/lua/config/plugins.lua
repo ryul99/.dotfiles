@@ -197,6 +197,3 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "css",
     command = "setlocal sw=2 sts=2 et"
 })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
