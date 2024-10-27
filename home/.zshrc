@@ -244,9 +244,6 @@ fi
 # Etc
 #
 
-# add dummy key for the avante.nvim
-export OPENAI_API_KEY=""
-
 # >>> command completion >>>
 # autoload -U +X bashcompinit && bashcompinit
 # <<< command completion <<<
