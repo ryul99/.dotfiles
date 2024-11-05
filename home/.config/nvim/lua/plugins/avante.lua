@@ -24,7 +24,7 @@ return {
                         body = {
                             model = opts.model,
                             messages = require("avante.providers").copilot.parse_messages(code_opts), -- you can make your own message, but this is very advanced
-                            max_tokens = 2048,
+                            max_tokens = 8192,
                             stream = true,
                         },
                     }
