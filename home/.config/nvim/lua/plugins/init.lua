@@ -194,27 +194,6 @@ return {
             ]])
         end,
     },
-
-    -- Snippet generation
-    {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
-        lazy = true,
-        config = function()
-            require("config.cmp").setup()
-        end,
-        dependencies = {
-            "ray-x/cmp-treesitter",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-calc",
-            "hrsh7th/cmp-nvim-lua",
-            "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
-        },
-        enable = true,
-    },
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
