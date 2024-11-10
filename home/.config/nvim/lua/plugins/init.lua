@@ -194,6 +194,10 @@ return {
             ]])
         end,
     },
+
+    -- git-conflict
+    { 'akinsho/git-conflict.nvim', version = "*", config = true },
+
     {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
