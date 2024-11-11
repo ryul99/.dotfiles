@@ -133,6 +133,11 @@ conda() {
   conda "$@"
 }
 
+# rye settings
+if [ -d "$HOME/.rye" ]; then
+    source "$HOME/.rye/env"
+fi
+
 # rbenv settings
 if [ -d ~/.rbenv/bin ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
