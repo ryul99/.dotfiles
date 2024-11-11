@@ -234,8 +234,10 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
     zinit wait lucid for \
         light-mode zsh-users/zsh-completions \
         light-mode MenkeTechnologies/zsh-cargo-completion \
-        has"helm" id-as"helm-completion" as"completion" atclone"helm completion zsh > _helm" atpull"%atclone" run-atpull ryul99/zinit-null \
-        has"poetry" id-as"poetry-completion" as"completion" atclone"poetry completions zsh > _poetry" atpull"%atclone" run-atpull ryul99/zinit-null
+        has"helm" id-as"helm-completion" as"completion" atclone"helm completion zsh > _helm" atpull"%atclone" run-atpull pick"_helm" ryul99/zinit-null \
+        has"poetry" id-as"poetry-completion" as"completion" atclone"poetry completions zsh > _poetry" atpull"%atclone" run-atpull pick"_poetry" ryul99/zinit-null \
+        has"uv" id-as"uv-completion" as"completion" atclone"uv generate-shell-completion zsh > _uv" atpull"%atclone" run-atpull pick"_uv" nocompile ryul99/zinit-null \
+        has"uvx" id-as"uvx-completion" as"completion" atclone"uvx generate-shell-completion zsh > _uvx" atpull"%atclone" run-atpull pick"_uvx" nocompile ryul99/zinit-null
 
     # last group
     zinit wait lucid for \
