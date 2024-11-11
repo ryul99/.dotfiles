@@ -901,6 +901,14 @@ EOF
   echo 'Please remember to relogin so that the environment gets activated'
 }
 
+install_uv() {
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+}
+
+install_rye() {
+  curl -sSf https://rye.astral.sh/get | bash
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"
