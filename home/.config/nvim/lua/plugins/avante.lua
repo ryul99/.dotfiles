@@ -7,7 +7,7 @@ return {
         provider = "deepseek",
         auto_suggestions_provider = "deepseek",
         openai = { model = "gpt-4o-mini" },
-        gemini = { model = "gemini-1.5-flash" },
+        gemini = { model = "gemini-2.0-flash-exp" },
         vendors = {
             ---@type AvanteProvider
             ollama = {
@@ -19,29 +19,10 @@ return {
 
             ---@type AvanteProvider
             deepseek = {
-                endpoint = "https://api.deepseek.com/chat/completions",
-                model = "deepseek-coder",
+                __inherited_from = "openai",
                 api_key_name = "DEEPSEEK_API_KEY",
-                parse_curl_args = function(opts, code_opts)
-                    return {
-                        url = opts.endpoint,
-                        headers = {
-                            ["Accept"] = "application/json",
-                            ["Content-Type"] = "application/json",
-                            ["Authorization"] = "Bearer " .. os.getenv(opts.api_key_name),
-                        },
-                        body = {
-                            model = opts.model,
-                            messages = require("avante.providers").copilot.parse_messages(code_opts),
-                            temperature = 0,
-                            max_tokens = 4096,
-                            stream = true, -- this will be set by default.
-                        },
-                    }
-                end,
-                parse_response_data = function(data_stream, event_state, opts)
-                    require("avante.providers").openai.parse_response(data_stream, event_state, opts)
-                end,
+                endpoint = "https://api.deepseek.com",
+                model = "deepseek-coder",
             },
         },
     },
