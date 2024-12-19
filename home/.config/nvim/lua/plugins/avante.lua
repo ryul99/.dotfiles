@@ -4,8 +4,8 @@ return {
     lazy = false,
     opts = {
         -- add any opts here
-        provider = "deepseek",
-        auto_suggestions_provider = "deepseek",
+        provider = "gemini",
+        auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-2.0-flash-exp" },
         vendors = {
