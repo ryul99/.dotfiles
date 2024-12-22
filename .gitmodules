@@ -7,6 +7,6 @@
 [submodule "bin/is_mosh"]
 	path = bin/is_mosh
 	url = https://github.com/wookayin/is_mosh
-[submodule "home/.tmux/plugins/tpm"]
-	path = home/.tmux/plugins/tpm
+[submodule "home/tmux/plugins/tpm"]
+	path = home/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
