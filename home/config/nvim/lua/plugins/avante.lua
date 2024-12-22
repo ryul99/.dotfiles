@@ -7,7 +7,7 @@ return {
         provider = "gemini",
         auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
-        gemini = { model = "gemini-2.0-flash-exp" },
+        gemini = { model = "gemini-1.5-pro", max_tokens = 32768 },
         vendors = {
             ---@type AvanteProvider
             ollama = {
