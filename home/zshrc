@@ -20,8 +20,6 @@ fi
 # Configs
 #
 
-setopt auto_cd histignorealldups sharehistory
-
 export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
@@ -68,130 +66,6 @@ function __zshrc_zsh_history_substring_search_bindkey {
 # zsh-autosuggestions
 typeset -g ZSH_AUTOSUGGEST_USE_ASYNC=1
 typeset -g ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
-#
-# zshrc
-#
-
-# aliases
-if [ -f ~/.sh_aliases ]; then
-    source ~/.sh_aliases
-fi
-
-if [ -f ~/.zsh_aliases ]; then
-    source ~/.zsh_aliases
-fi
-
-# Path
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
-export PATH="$HOME/.local/bin:$PATH"
-
-if (( $+commands[nvim] )); then
-    export EDITOR=nvim
-else
-    export EDITOR=vim
-fi
-
-# ssh forward agent
-if test -e "$(readlink -f $HOME/.ssh/ssh_auth_sock)" ; then
-    export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
-elif ! test "$SSH_AUTH_SOCK" ; then
-    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-fi
-
-
-# TIME FMT
-export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
-
-### >>> External Programs >>>
-# pyenv settings
-if [ -d ~/.pyenv ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-fi
-
-if [ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]; then
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-fi
-
-# Anaconda3
-# see ~/.zshenv for $CONDA_EXE detection
-function _conda_initialize() {
-if [ -n "${CONDA_EXE}" ]; then
-  ${CONDA_EXE} config --set auto_activate_base false
-  __conda_setup="$(${CONDA_EXE} 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  fi
-  unset __conda_setup
-fi
-}
-# Note: conda initialize is slow (0.3 sec), so execute lazily
-conda() {
-  unfunction conda
-  _conda_initialize
-  conda "$@"
-}
-
-# rye settings
-if [ -d "$HOME/.rye" ]; then
-    source "$HOME/.rye/env"
-fi
-
-# rbenv settings
-if [ -d ~/.rbenv/bin ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-# nodenv settings
-if [ -d ~/.nodenv/bin ]; then
-  export PATH="$HOME/.nodenv/bin:$PATH"
-  eval "$(nodenv init -)"
-fi
-
-# scala setting (coursier install dir)
-if [ -d ~/.local/share/coursier/bin ]; then
-    export PATH="$PATH:/home/ryul99/.local/share/coursier/bin"
-fi
-
-# OPAM configuration
-if [ -f ~/.opam/opam-init/init.zsh ]; then
-    source ~/.opam/opam-init/init.zsh
-fi
-
-# fzf setting
-if [ -f ~/.fzf.zsh ]; then
-    export PATH="$PATH:$HOME/.fzf/bin"
-    source ~/.fzf.zsh
-fi
-
-# cargo
-if [ -d ~/.cargo/bin ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# npm global
-if [ -d ~/.npm-global/bin ]; then
-    export PATH="$HOME/.npm-global/bin:$PATH"
-fi
-
-# perl
-if [ -d ~/perl5/bin ]; then
-    export PATH="$HOME/perl5/bin:$PATH"
-    export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
-    export PERL_LOCAL_LIB_ROOT="$HOME/perl5:$PERL_LOCAL_LIB_ROOT"
-    export PERL_MB_OPT="--install_base \"$HOME/perl5\"";
-    export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
-fi
-
-# ruby
-if which ruby >/dev/null && which gem >/dev/null; then
-    export GEM_HOME=$HOME/.gem
-    export GEM_PATH=$HOME/.gem
-fi
-
-### <<< End of External Programs <<<
 
 #
 # Zinit
