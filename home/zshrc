@@ -40,6 +40,7 @@ bindkey '^[f' forward-word # for mac
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;3D' backward-word
 bindkey '^[b' backward-word # for mac
+bindkey '^[^?' vi-backward-kill-word
 bindkey -r '^D'
 
 # zsh-substring-completion
