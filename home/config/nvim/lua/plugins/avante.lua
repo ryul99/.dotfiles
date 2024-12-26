@@ -4,8 +4,8 @@ return {
     lazy = false,
     opts = {
         -- add any opts here
-        provider = "gemini",
-        auto_suggestions_provider = "gemini",
+        provider = "deepseek",
+        auto_suggestions_provider = "deepseek",
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-1.5-pro", max_tokens = 32768 },
         vendors = {
@@ -22,7 +22,8 @@ return {
                 __inherited_from = "openai",
                 api_key_name = "DEEPSEEK_API_KEY",
                 endpoint = "https://api.deepseek.com",
-                model = "deepseek-coder",
+                model = "deepseek-chat",
+                max_tokens = 8192,
             },
         },
     },
