@@ -4,10 +4,10 @@ return {
     lazy = false,
     opts = {
         -- add any opts here
-        provider = "deepseek",
-        auto_suggestions_provider = "deepseek",
+        provider = "gemini",
+        auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
-        gemini = { model = "gemini-1.5-pro", max_tokens = 32768 },
+        gemini = { model = "gemini-2.0-flash-exp", max_tokens = 8192 },
         vendors = {
             ---@type AvanteProvider
             ollama = {
