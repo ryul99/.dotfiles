@@ -1,4 +1,5 @@
 home/vim
 home/tmux/plugins
 home/config/nvim/plugin
+home/config/wezterm/fonts/*
 lazy-lock.json
