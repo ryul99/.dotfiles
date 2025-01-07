@@ -11,7 +11,7 @@ local config = wezterm.config_builder()
 color_scheme = 'dimidium'
 
 -- visual
-config.font_dirs = { '~/.config/wezterm/fonts' }
+config.font_dirs = { wezterm.home_dir .. '/.config/wezterm/fonts' }
 config.font = wezterm.font('CaskaydiaMono Nerd Font')
 config.font_size = 18
 
