@@ -12,7 +12,8 @@ return {
         end
 
         cmp.setup({
-            completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
+            preselect = cmp.PreselectMode.None,
+            completion = { completeopt = "menu,menuone,noinsert,noselect", keyword_length = 1 },
             experimental = { native_menu = false, ghost_text = false },
             formatting = {
                 format = function(entry, vim_item)
