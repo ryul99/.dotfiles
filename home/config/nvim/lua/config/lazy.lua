@@ -53,4 +53,5 @@ require("lazy").setup({
     opts = {
         colorscheme = "kanagawa",
     },
+    rocks = { enabled = false },
 })
