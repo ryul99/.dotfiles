@@ -23,6 +23,7 @@ return {
                 api_key_name = '',
                 endpoint = "127.0.0.1:11433/v1",
                 model = "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
+                max_tokens = 16384,
             },
 
             ---@type AvanteProvider
