@@ -22,7 +22,7 @@ return {
                 __inherited_from = "openai",
                 api_key_name = '',
                 endpoint = "127.0.0.1:11433/v1",
-                model = "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+                model = "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
             },
 
             ---@type AvanteProvider
