@@ -18,6 +18,14 @@ return {
             },
 
             ---@type AvanteProvider
+            mlx = {
+                __inherited_from = "openai",
+                api_key_name = '',
+                endpoint = "127.0.0.1:11433/v1",
+                model = "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+            },
+
+            ---@type AvanteProvider
             deepseek = {
                 __inherited_from = "openai",
                 api_key_name = "DEEPSEEK_API_KEY",
