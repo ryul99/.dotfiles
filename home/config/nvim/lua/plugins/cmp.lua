@@ -67,6 +67,7 @@ return {
                     "s",
                     "c",
                 }),
+                ["<A-y>"] = require('minuet').make_cmp_map(),
             },
             sources = {
                 { name = "nvim_lua" },
@@ -80,6 +81,7 @@ return {
                 { name = "luasnip" },
                 { name = "jupynium",               priority = 1000 }, -- consider higher priority than LSP
                 { name = "nvim_lsp",               priority = 100 },
+                { name = "minuet" },
             },
             window = {
                 documentation = cmp.config.window.bordered(),
@@ -97,6 +99,14 @@ return {
             --  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
             --  winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
             -- },
+
+            performance = {
+                -- It is recommended to increase the timeout duration due to
+                -- the typically slower response speed of LLMs compared to
+                -- other completion sources. This is not needed when you only
+                -- need manual completion.
+                fetching_timeout = 2000,
+            },
         })
 
         -- Use buffer source for `/`
