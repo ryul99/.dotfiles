@@ -244,6 +244,22 @@ return {
                         },
                     },
                 },
+                virtualtext = {
+                    auto_trigger_ft = { "python" },
+                    keymap = {
+                        -- accept whole completion
+                        accept = '<A-A>',
+                        -- accept one line
+                        accept_line = '<A-a>',
+                        -- accept n lines (prompts for number)
+                        accept_n_lines = '<A-z>',
+                        -- Cycle to prev completion item, or manually invoke completion
+                        prev = '<A-k>',
+                        -- Cycle to next completion item, or manually invoke completion
+                        next = '<A-j>',
+                        dismiss = '<A-e>',
+                    },
+                },
             }
         end,
         dependencies = { 'nvim-lua/plenary.nvim' },
