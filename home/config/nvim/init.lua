@@ -80,6 +80,12 @@ vim.diagnostic.config({
     },
 })
 
+-- Configure neovim python host.
+-- This can be executed lazily after entering vim, to save startup time.
+vim.schedule(function() require 'utils.pynvim' end)
+require('utils.fixfnkeys')
+require('utils.compat')
+
 require("config.lazy")
 -- require("lazy").setup("configs")
 --
