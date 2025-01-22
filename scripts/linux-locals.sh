@@ -909,6 +909,10 @@ install_rye() {
   curl -sSf https://rye.astral.sh/get | bash
 }
 
+install_ollama() {
+  curl -fsSL https://ollama.com/install.sh | sh
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"
