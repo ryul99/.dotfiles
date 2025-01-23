@@ -86,7 +86,7 @@ return {
                     "filesystem", -- Neotree filesystem source
                     "buffers",
                     "git_status",
-                    "netman.ui.neo-tree",
+                    -- "netman.ui.neo-tree",
                 },
                 source_selector = {
                     winbar = true,
@@ -96,13 +96,13 @@ return {
                         { source = "git_status" },
                         -- Any other items you had in your source selector
                         -- Just add the netman source as well
-                        { source = "remote" },
+                        -- { source = "remote" },
                     },
                 },
             })
         end,
     },
-    "miversen33/netman.nvim",
+    -- "miversen33/netman.nvim",
     {
         "kevinhwang91/nvim-ufo",
         dependencies = {
