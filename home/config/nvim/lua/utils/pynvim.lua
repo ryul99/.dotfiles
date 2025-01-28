@@ -31,7 +31,7 @@ local function notify_later(msg, level)
     level = level or vim.log.levels.WARN
     vim.schedule(function()
         vim.notify(msg, level, {
-            title = '~/.config/nvim/lua/config/pynvim.lua',
+            title = '~/.config/nvim/lua/utils/pynvim.lua',
             timeout = 10000,
             markdown = true,
         })
@@ -250,5 +250,5 @@ else
 end
 
 -- Return true iff python3 is available.
--- Instead of calling has('python3'), use require('config.pynvim').
+-- Instead of calling has('python3'), use require('utils.pynvim').
 return OK_PYNVIM
