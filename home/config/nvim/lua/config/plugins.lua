@@ -25,9 +25,6 @@ vim.g.strip_whitespace_confirm = false
 -- mundo.vim
 vim.g.mundo_right = 1
 
--- -- theme
--- vim.cmd("colorscheme kanagawa")
-
 -- lightline
 -- init lightline
 vim.g.lightline = {
