@@ -1,17 +1,6 @@
---- config/pynvim
----@return fun(): boolean
+--- utils/pynvim
 -- Set the g:python3_host_prog variable to path to python3 in $PATH.
 -- pynvim package will be automatically installed if it was missing.
-
--- This config must be sourced before any first call of has('python3'), py3eval, etc.
--- Note: An invocation of has('python3'), py3, py3eval triggers provider#python3#Call()
--- See also $VIMRUNTIME/autoload/provider/python3.vim that provides python3 host
--- See also $VIMRUNTIME/autoload/provider/pythonx.vim for python host detection logic
--- See also $DOTVIM/ftplugin/python.vim to ensure config.pynvim on startup
-
--- for future has('python3') like use
-local OK_PYNVIM = function() return true end
-local NO_PYNVIM = function() return false end
 
 -- Utility: Run a shell command and capture the output.
 local function system(command)
@@ -50,7 +39,7 @@ end
 
 if vim.g.python3_host_prog == "" or not vim.g.python3_host_prog then
     warning "ERROR: You don't have python3 on your $PATH. Check $PATH or $SHELL. Most features are disabled."
-    return NO_PYNVIM
+    return
 end
 
 -- Note: should not use py3eval here because python3 provider is slow, and may not work!
@@ -204,51 +193,4 @@ local function python3_version_check()
     return false
 end
 
--- Make a dummy call first, to workaround a bug neovim/neovim#14438 and neovim/pynvim#496
--- At this point the python3 provider will be loaded. py3eval() may throw if python3 host cannot be loaded.
--- NOTE: This takes some init time (~50ms), but is necessary otherwise other python plugins will fail
-pcall(vim.fn.py3eval, "1") -- TODO: Remove this workaround once pynvim 0.5 is out.
-
-if vim.F.npcall(vim.fn.py3eval, "1") ~= 1 then
-    -- python3 host has failed to load.
-    local py_version = python3_version_check()
-    if not py_version then
-        return NO_PYNVIM
-    end
-
-    -- pynvim is missing, try installing it
-    xpcall(autoinstall_pynvim, function(err)
-        local msg = debug.traceback(err, 1)
-        vim.notify(msg, vim.log.levels.ERROR)
-    end)
-
-    -- Disable autocmds from already-generated rplugins manifest,
-    -- which will emit annoying errors on CmdlineEnter, VimLeave, etc.
-    vim.schedule(function()
-        xpcall(function()
-            local groups = vim.fn.split(vim.fn.execute('augroup'))
-            for _, augroup in ipairs(groups) do
-                if vim.startswith(augroup, "RPC_DEFINE_AUTOCMD_GROUP_") then
-                    vim.cmd(([[ autocmd! %s ]]):format(augroup))
-                end
-            end
-        end, function(err)
-            local msg = err -- no need stacktrace here
-            vim.api.nvim_err_writeln(msg)
-        end)
-    end)
-
-    -- Still need to disable python3 provider, it's already broken
-    vim.g.loaded_python3_provider = 1 -- Disable has('python3')
-    return NO_PYNVIM
-else
-    -- pynvim already there, check versions lazily
-    vim.schedule(function()
-        autoinstall_pynvim()
-        python3_version_check()
-    end)
-end
-
--- Return true iff python3 is available.
--- Instead of calling has('python3'), use require('utils.pynvim').
-return OK_PYNVIM
+return autoinstall_pynvim() and python3_version_check()
