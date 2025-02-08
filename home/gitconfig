@@ -43,3 +43,5 @@
 	g = "log --graph --pretty=\"format:%C(auto)%h%d %s%x1b[38;5;022m% GS%x1b[0m\""
 [url "ssh://git@github.com/"]
     pushInsteadOf = https://github.com/
+[safe]
+	directory = *
