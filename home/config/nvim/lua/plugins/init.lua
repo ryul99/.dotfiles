@@ -99,6 +99,7 @@ return {
                         -- { source = "remote" },
                     },
                 },
+                window = { width = 25 },
             })
         end,
     },
