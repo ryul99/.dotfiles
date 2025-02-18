@@ -47,14 +47,6 @@ return {
         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
         -- "zbirenbaum/copilot.lua", -- for providers='copilot'
         {
-            "zbirenbaum/copilot.lua",
-            cmd = "Copilot",
-            event = "InsertEnter",
-            config = function()
-                require("copilot").setup({})
-            end,
-        },
-        {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
             event = "VeryLazy",

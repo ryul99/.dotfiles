@@ -22,6 +22,7 @@ return {
                         nvim_lua = "[Lua]",
                         treesitter = "[Treesitter]",
                         nvim_lsp = "[LSP]",
+                        copilot = "[copilot]",
                     })[entry.source.name]
                     return vim_item
                 end,
@@ -81,6 +82,7 @@ return {
                 { name = "luasnip" },
                 { name = "jupynium",               priority = 1000 }, -- consider higher priority than LSP
                 { name = "nvim_lsp",               priority = 100 },
+                { name = "copilot" },
                 -- { name = "minuet" },
             },
             window = {
@@ -134,6 +136,23 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+            dependencies = {
+                "zbirenbaum/copilot.lua",
+                cmd = "Copilot",
+                event = "InsertEnter",
+                config = function()
+                    require("copilot").setup({
+                        suggestion = { enabled = false },
+                        panel = { enabled = false },
+                    })
+                end,
+            },
+        }
     },
     enable = true,
 }
