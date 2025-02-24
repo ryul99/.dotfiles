@@ -82,6 +82,8 @@ return {
         -- this will make it so the output shows up below the \`\`\` cell delimiter
         vim.g.molten_virt_lines_off_by_1 = true
 
+        vim.g.molten_split_size = 20
+
         vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>",
         { silent = true, desc = "Initialize the plugin" })
 
