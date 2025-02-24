@@ -8,13 +8,14 @@ local cmap = function(...) vim.keymap.set('c', ...) end
 --
 
 -- lsp
-nmap('K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+nmap('H', '<cmd>lua vim.lsp.buf.hover()<cr>')
 nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
 nmap('go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 nmap('gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 nmap('gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+nmap('<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 nmap('[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 nmap(']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
@@ -156,8 +157,8 @@ nmap('<leader><Tab>', ':Files<CR>')
 nmap('<leader><leader><Tab>', ':Files!<CR>')
 nmap('<leader>q', ':Buffers<CR>')
 nmap('<leader><leader>q', ':Buffers!<CR>')
-nmap('<leader>r', ':Rg<space>')
-nmap('<leader><leader>r', ':Rg!<space>')
+-- nmap('<leader>r', ':Rg<space>')
+-- nmap('<leader><leader>r', ':Rg!<space>')
 
 -- gv
 nmap('<leader>g', ':GV<CR>')
