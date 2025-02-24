@@ -194,6 +194,14 @@ return {
         },
         opts = {},
     },
+    {
+        "boltlessengineer/sense.nvim",
+        config = function()
+            vim.g.sense_nvim = {
+                _log_level = vim.log.levels.ERROR,
+            }
+        end,
+    },
 
     -- rust
     {

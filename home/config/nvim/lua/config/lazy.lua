@@ -53,5 +53,5 @@ require("lazy").setup({
     opts = {
         colorscheme = "tokyonight",
     },
-    rocks = { enabled = false },
+    rocks = { enabled = true, hererocks = true },
 })
