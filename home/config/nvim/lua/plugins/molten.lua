@@ -101,7 +101,10 @@ return {
         vim.keymap.set("n", "<localleader>rr", ":MoltenReevaluateCell<CR>", { desc = "re-eval cell", silent = true })
 
         -- if you work with html outputs:
-        vim.keymap.set("n", "<localleader>mx", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
+        vim.keymap.set("n", "<localleader>mo", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
+
+        -- if you work with html outputs:
+        vim.keymap.set("n", "<localleader>mx", ":MoltenInterrupt<CR>", { desc = "Interrupt Kernel", silent = true })
 
         -- automatically import output chunks from a jupyter notebook
         -- tries to find a kernel that matches the kernel in the jupyter notebook
