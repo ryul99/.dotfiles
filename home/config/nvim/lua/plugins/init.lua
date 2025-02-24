@@ -187,6 +187,13 @@ return {
             require("conform").setup()
         end,
     },
+    {
+        'jmbuhr/otter.nvim',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+        },
+        opts = {},
+    },
 
     -- rust
     {
@@ -196,21 +203,21 @@ return {
     },
 
     -- jupyter
-    {
-        "kiyoon/jupynium.nvim",
-        build = "pip3 install --user .",
-        config = function()
-            require("jupynium").setup({
-                use_default_keybindings = false,
-            })
-            vim.cmd([[
-            hi! link JupyniumCodeCellSeparator CursorLine
-            hi! link JupyniumMarkdownCellSeparator CursorLine
-            hi! link JupyniumMarkdownCellContent CursorLine
-            hi! link JupyniumMagicCommand Keyword
-            ]])
-        end,
-    },
+    -- {
+    --     "kiyoon/jupynium.nvim",
+    --     build = "pip3 install --user .",
+    --     config = function()
+    --         require("jupynium").setup({
+    --             use_default_keybindings = false,
+    --         })
+    --         vim.cmd([[
+    --         hi! link JupyniumCodeCellSeparator CursorLine
+    --         hi! link JupyniumMarkdownCellSeparator CursorLine
+    --         hi! link JupyniumMarkdownCellContent CursorLine
+    --         hi! link JupyniumMagicCommand Keyword
+    --         ]])
+    --     end,
+    -- },
 
     -- git-conflict
     { 'akinsho/git-conflict.nvim', version = "*", config = true },
@@ -235,5 +242,5 @@ return {
                 show_info = 0,
             }
         end,
-    }
+    },
 }
