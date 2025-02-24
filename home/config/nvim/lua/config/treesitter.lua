@@ -25,6 +25,10 @@ require'nvim-treesitter.configs'.setup {
     -- disable = { "c", "rust" },
     -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
     disable = function(lang, buf)
+        -- jupyter notebook
+        if vim.bo.filetype == "markdown" then
+            return false
+        end
         local max_filesize = 1024 * 1024 -- Byte
         local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
         if ok and stats and stats.size > max_filesize then
