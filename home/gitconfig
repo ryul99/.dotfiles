@@ -1,4 +1,3 @@
-# vim: noexpandtab sw=8
 [user]
     name = Changmin Choi
     email = cmchoi9901@gmail.com
@@ -47,5 +46,5 @@
 [gpg]
     format = ssh
 [gpg "ssh"]
-    allowedkeyids = "SHA256:mx7NrXbdI8zugK6vUkFZ3a4vDkpPrt47sU3/SBa/gso"
+    allowedkeyids = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF03Y5jSH8Iige7YH5pu9+YR7gUNnr3AKSloEFYotu9Z"
     defaultKeyCommand = ssh-add -L
