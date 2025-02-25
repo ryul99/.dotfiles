@@ -1,47 +1,51 @@
 # vim: noexpandtab sw=8
 [user]
-	name = Changmin Choi
-	email = cmchoi9901@gmail.com
-	signingkey = A18BE3FEDDCFD4F9BC46D696C1C34851BA8B6E67
+    name = Changmin Choi
+    email = cmchoi9901@gmail.com
 [core]
-	editor = nvim
-	pager = less -+XF -Qc
-	excludesfile = ~/.gitexclude
-	fscache = yes
-	autocrlf = no
-	quotepath = no
-	precomposeunicode = yes
+    editor = nvim
+    pager = less -+XF -Qc
+    excludesfile = ~/.gitexclude
+    fscache = yes
+    autocrlf = no
+    quotepath = no
+    precomposeunicode = yes
 [log]
-	date = iso8601
+    date = iso8601
 [color]
-	ui = auto
+    ui = auto
 [diff]
-	renames = copies
-	tool = vimdiff
+    renames = copies
+    tool = vimdiff
 [difftool]
-	prompt = no
+    prompt = no
 [fetch]
-	prune = yes
+    prune = yes
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [push]
-	default = simple
+    default = simple
 [pull]
-	rebase = false
+    rebase = false
 [merge]
-	tool = vimdiff
-	conflictstyle = diff3
+    tool = vimdiff
+    conflictstyle = diff3
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 [credential "https://github.com"]
-	username = ryul99
+    username = ryul99
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 [alias]
-	g = "log --graph --pretty=\"format:%C(auto)%h%d %s%x1b[38;5;022m% GS%x1b[0m\""
+    g = "log --graph --pretty=\"format:%C(auto)%h%d %s%x1b[38;5;022m% GS%x1b[0m\""
 [url "ssh://git@github.com/"]
     pushInsteadOf = https://github.com/
 [safe]
-	directory = *
+    directory = *
+[gpg]
+    format = ssh
+[gpg "ssh"]
+    allowedkeyids = "SHA256:mx7NrXbdI8zugK6vUkFZ3a4vDkpPrt47sU3/SBa/gso"
+    defaultKeyCommand = ssh-add -L
