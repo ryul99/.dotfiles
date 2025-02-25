@@ -8,7 +8,7 @@ return {
         auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-2.0-flash", max_tokens = 16384 },
-        copilot = { model = "o3-mini", max_tokens = 16384 },
+        copilot = { model = "claude-3.5-sonnet", max_tokens = 16384 },
         vendors = {
             ---@type AvanteProvider
             ollama = {
@@ -35,6 +35,9 @@ return {
                 model = "deepseek-chat",
                 max_tokens = 8192,
             },
+        },
+        behavior = {
+            enable_cursor_planning_mode = true,
         },
     },
     build = "make", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
