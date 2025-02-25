@@ -201,6 +201,12 @@ return {
                 _log_level = vim.log.levels.ERROR,
             }
         end,
+        enabled = function()
+            if vim.fn.executable("luarocks") == 0 then
+                return false
+            end
+            return true
+        end,
     },
 
     -- rust
