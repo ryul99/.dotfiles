@@ -1,6 +1,7 @@
 [user]
     name = Changmin Choi
     email = cmchoi9901@gmail.com
+    signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF03Y5jSH8Iige7YH5pu9+YR7gUNnr3AKSloEFYotu9Z"
 [core]
     editor = nvim
     pager = less -+XF -Qc
@@ -46,5 +47,4 @@
 [gpg]
     format = ssh
 [gpg "ssh"]
-    allowedkeyids = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF03Y5jSH8Iige7YH5pu9+YR7gUNnr3AKSloEFYotu9Z"
     defaultKeyCommand = ssh-add -L
