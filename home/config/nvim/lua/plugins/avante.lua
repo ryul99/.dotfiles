@@ -4,11 +4,11 @@ return {
     lazy = false,
     opts = {
         -- add any opts here
-        provider = "gemini",
+        provider = "copilot",
         auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-2.0-flash", max_tokens = 16384 },
-        copilot = { model = "claude-3.5-sonnet", max_tokens = 16384 },
+        copilot = { model = "claude-3.7-sonnet", max_tokens = 16384 },
         vendors = {
             ---@type AvanteProvider
             ollama = {
