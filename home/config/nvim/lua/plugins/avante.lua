@@ -7,8 +7,8 @@ return {
         provider = "copilot",
         auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
-        gemini = { model = "gemini-2.0-flash", max_tokens = 16384 },
-        copilot = { model = "claude-3.7-sonnet", max_tokens = 16384 },
+        gemini = { model = "gemini-2.0-flash", max_tokens = 32768 },
+        copilot = { model = "claude-3.7-sonnet", max_tokens = 32768 },
         vendors = {
             ---@type AvanteProvider
             ollama = {
@@ -33,7 +33,7 @@ return {
                 api_key_name = "DEEPSEEK_API_KEY",
                 endpoint = "https://api.deepseek.com",
                 model = "deepseek-chat",
-                max_tokens = 8192,
+                max_tokens = 32768,
             },
         },
         behavior = {
