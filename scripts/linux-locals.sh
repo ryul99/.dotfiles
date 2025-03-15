@@ -441,7 +441,7 @@ install_neovim() {
   local TMP_NVIM_DIR="$DOTFILES_TMPDIR/neovim"; mkdir -p $TMP_NVIM_DIR
   if _version_check "$NEOVIM_VERSION" "v0.10.4"; then
     NVIM_APPIMAGE="nvim-linux-x86_64.appimage"
-    if [[ -eq "$(_get_os_type)" "aarch64" ]]; then
+    if [[ "$(_get_os_type)" == "aarch64" ]]; then
       NVIM_APPIMAGE="nvim-linux-arm64.appimage"
     fi
   else
