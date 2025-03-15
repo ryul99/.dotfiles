@@ -439,15 +439,23 @@ install_neovim() {
   sleep 1;  # allow users to read above comments
 
   local TMP_NVIM_DIR="$DOTFILES_TMPDIR/neovim"; mkdir -p $TMP_NVIM_DIR
-  local NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/nvim.appimage"
+  if _version_check "$NEOVIM_VERSION" "v0.10.4"; then
+    NVIM_APPIMAGE="nvim-linux-x86_64.appimage"
+    if [[ -eq "$(_get_os_type)" "aarch64" ]]; then
+      NVIM_APPIMAGE="nvim-linux-arm64.appimage"
+    fi
+  else
+    NVIM_APPIMAGE="nvim.appimage"
+  fi
+  local NVIM_DOWNLOAD_URL="https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/$NVIM_APPIMAGE"
 
   set -x
   cd $TMP_NVIM_DIR
   wget --backups=1 $NVIM_DOWNLOAD_URL      # always overwrite, having only one backup
 
-  chmod +x nvim.appimage
+  chmod +x "$NVIM_APPIMAGE"
   rm -rf "$TMP_NVIM_DIR/squashfs-root"
-  ./nvim.appimage --appimage-extract >/dev/null   # into ./squashfs-root
+  "./$NVIM_APPIMAGE" --appimage-extract >/dev/null   # into ./squashfs-root
 
   # Install into ~/.local/neovim/ and put a symlink into ~/.local/bin
   local NEOVIM_DEST="$HOME/.local/neovim"
