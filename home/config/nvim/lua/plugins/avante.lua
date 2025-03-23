@@ -9,7 +9,7 @@ return {
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-2.0-flash", max_tokens = 32768 },
         copilot = { model = "claude-3.7-sonnet", max_tokens = 32768 },
-        ollama = { model = "gemma3:12b", max_tokens = 32768 },
+        ollama = { model = "gemma3:12b", max_tokens = 32768, endpoint = "http://127.0.0.1:11434" },
         vendors = {
             ---@type AvanteProvider
             mlx = {
