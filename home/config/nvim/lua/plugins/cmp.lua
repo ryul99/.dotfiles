@@ -44,30 +44,30 @@ return {
                     --     end
                     -- end,
                 },
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif has_words_before() then
-                        cmp.complete()
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i",
-                    "s",
-                    "c",
-                }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i",
-                    "s",
-                    "c",
-                }),
+                -- ["<Tab>"] = cmp.mapping(function(fallback)
+                --     if cmp.visible() then
+                --         cmp.select_next_item()
+                --     elseif has_words_before() then
+                --         cmp.complete()
+                --     else
+                --         fallback()
+                --     end
+                -- end, {
+                --     "i",
+                --     "s",
+                --     "c",
+                -- }),
+                -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+                --     if cmp.visible() then
+                --         cmp.select_prev_item()
+                --     else
+                --         fallback()
+                --     end
+                -- end, {
+                --     "i",
+                --     "s",
+                --     "c",
+                -- }),
                 -- ["<A-y>"] = require('minuet').make_cmp_map(),
             },
             sources = {
