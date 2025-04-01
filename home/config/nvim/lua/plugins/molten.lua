@@ -4,7 +4,10 @@ return {
     dependencies = {
         {
             'willothy/wezterm.nvim',
-            config = true
+            config = true,
+            cond = function()
+                return vim.env.TERM == "wezterm"
+            end,
         },
         {
             "quarto-dev/quarto-nvim",
@@ -70,7 +73,11 @@ return {
         -- a keybind for `:noautocmd MoltenEnterOutput` to open the output again
         vim.g.molten_auto_open_output = false
 
-        vim.g.molten_image_provider = "wezterm"
+        if vim.env.TERM == "wezterm" then
+            vim.g.molten_image_provider = "wezterm"
+        else
+            vim.g.molten_image_provider = "image.nvim"
+        end
 
         -- optional, I like wrapping. works for virt text and the output window
         vim.g.molten_wrap_output = true
