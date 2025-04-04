@@ -33,6 +33,11 @@ return {
         behavior = {
             enable_cursor_planning_mode = true,
         },
+        mappings = {
+            sidebar = {
+                close = {},
+            },
+        },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
