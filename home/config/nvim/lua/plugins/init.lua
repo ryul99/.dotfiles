@@ -254,6 +254,10 @@ return {
         init = function()
             vim.g.llama_config = {
                 show_info = 0,
+                keymap_trigger = "",
+                keymap_accept_full = "<C-Enter>",
+                keymap_accept_line = "<C-;>",
+                keymap_accept_word = "<C-B>",
             }
         end,
     },
