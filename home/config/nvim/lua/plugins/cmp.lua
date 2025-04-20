@@ -22,7 +22,7 @@ return {
                         nvim_lua = "[Lua]",
                         treesitter = "[Treesitter]",
                         nvim_lsp = "[LSP]",
-                        -- copilot = "[copilot]",
+                        copilot = "[copilot]",
                     })[entry.source.name]
                     return vim_item
                 end,
@@ -82,7 +82,7 @@ return {
                 { name = "luasnip" },
                 { name = "jupynium",               priority = 1000 }, -- consider higher priority than LSP
                 { name = "nvim_lsp",               priority = 100 },
-                -- { name = "copilot" },
+                { name = "copilot" },
                 -- { name = "minuet" },
             },
             window = {
@@ -91,6 +91,8 @@ return {
             sorting = {
                 priority_weight = 1.0,
                 comparators = {
+                    require("copilot_cmp.comparators").prioritize,
+
                     cmp.config.compare.score, -- Jupyter kernel completion shows prior to LSP
                     cmp.config.compare.recently_used,
                     cmp.config.compare.locality,
@@ -136,13 +138,13 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        -- {
-        --     "zbirenbaum/copilot-cmp",
-        --     config = function()
-        --         require("copilot_cmp").setup()
-        --     end,
-        --     dependencies = { "zbirenbaum/copilot.lua" },
-        -- }
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+            dependencies = { "zbirenbaum/copilot.lua" },
+        }
     },
     enable = true,
 }
