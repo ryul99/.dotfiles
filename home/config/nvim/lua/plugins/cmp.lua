@@ -89,7 +89,7 @@ return {
                 documentation = cmp.config.window.bordered(),
             },
             sorting = {
-                priority_weight = 1.0,
+                priority_weight = 2.0,
                 comparators = {
                     require("copilot_cmp.comparators").prioritize,
 
