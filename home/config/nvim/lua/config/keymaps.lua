@@ -193,11 +193,6 @@ nmap('=', '<C-^>')
 nmap('<leader>v', ':Vista!!<CR>')
 nmap('<leader><leader>v', ':Vista finder<CR>')
 
--- mundo
-nmap('<leader>m', ':MundoToggle<CR>', {
-    silent = true
-})
-
 -- telescope.nvim
 local status_ok, telescope = pcall(require, "telescope.builtin")
 if status_ok then
