@@ -78,9 +78,14 @@ def update(fast=False,
         cd ~/.dotfiles
         git fetch origin
         git stash push -m "DOTFILES_UPDATE"
-        git merge --ff-only && \
-            { git stash list | grep "DOTFILES_UPDATE" && git stash pop --index -q || true; } && \
-            python3 install.py %s || { ret=$?; }
+        git merge --ff-only
+
+        if git stash list | grep -q "DOTFILES_UPDATE"; then
+            git stash pop --index -q || { ret=$?; }
+        fi
+
+        python3 install.py %s || { ret=$?; }
+
         exit $ret;
     ''' % install_args
 
