@@ -220,23 +220,23 @@ return {
         })
 
         -- Remap Ctrl-S to :MoltenSave
-        vim.api.nvim_create_autocmd("BufEnter", {
-            pattern = "*.ipynb",
-            callback = function(args)
-                local bufnr = args.buf -- current buffer number
-
-                vim.keymap.set({'n'}, '<C-s>', ':MoltenSave<CR>', {
-                    buffer = bufnr,
-                    noremap = true,
-                    silent = true,
-                })
-
-                vim.keymap.set({'i'}, '<C-s>', '<ESC>:MoltenSave<CR>', {
-                    buffer = bufnr,
-                    noremap = true,
-                    silent = true,
-                })
-            end,
-        })
+        -- vim.api.nvim_create_autocmd("BufEnter", {
+        --     pattern = "*.ipynb",
+        --     callback = function(args)
+        --         local bufnr = args.buf -- current buffer number
+        --
+        --         vim.keymap.set({'n'}, '<C-s>', ':MoltenSave<CR>', {
+        --             buffer = bufnr,
+        --             noremap = true,
+        --             silent = true,
+        --         })
+        --
+        --         vim.keymap.set({'i'}, '<C-s>', '<ESC>:MoltenSave<CR>', {
+        --             buffer = bufnr,
+        --             noremap = true,
+        --             silent = true,
+        --         })
+        --     end,
+        -- })
     end,
 }
