@@ -22,6 +22,8 @@
     "~/.config/wezterm" : "home/config/wezterm",
     "~/.wezterm.lua" : "home/wezterm.lua",
 
+    "~/.config/aichat" : "home/config/aichat",
+
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
 
