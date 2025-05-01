@@ -7,6 +7,10 @@ local cmap = function(...) vim.keymap.set('c', ...) end
 -- Key Mappings
 --
 
+-- disable default mappings
+nmap('J', '<Nop>')
+nmap('<C-a>', '<Nop>')
+
 -- lsp
 nmap('H', '<cmd>lua vim.lsp.buf.hover()<cr>')
 nmap('gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
