@@ -62,14 +62,14 @@ if hash nvim 2>/dev/null; then
     alias vim=nvim
     alias nvi=nvim
 
-    alias nvis="nvim -S Session.vim"
-    alias vis="nvim -S Session.vim"
+    # alias nvis="nvim -S Session.vim"
+    # alias vis="nvim -S Session.vim"
 
     alias snvi="sudo -E nvim"
     alias svi="sudo -E nvim"
 elif hash vim 2>/dev/null; then
     alias vi=vim
-    alias vis="vim -S Session.vim"
+    # alias vis="vim -S Session.vim"
 
     alias svi="sudo -E vim"
 fi
