@@ -6,6 +6,7 @@ return {
     opts = {
         -- add any opts here
         provider = "copilot",
+        mode = "legacy",
         auto_suggestions_provider = "gemini",
         openai = { model = "gpt-4o-mini" },
         gemini = { model = "gemini-2.0-flash", max_tokens = 32768 },
