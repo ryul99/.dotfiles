@@ -1,5 +1,5 @@
 # ---- llm ----
-model: github:gpt-4o             # Specify the LLM to use
+model: copilot:gpt-4.1           # Specify the LLM to use
 temperature: null                # Set default temperature parameter (0, 1)
 top_p: null                      # Set default top-p parameter, with a range of (0, 1) or (0, 2) depending on the model
 
@@ -170,14 +170,13 @@ clients:
   # See https://github.com/marketplace/models
   - type: openai-compatible
     name: copilot
-    api_base: https://api.github.com/copilot/v1/chat/completions
+    api_base: https://api.githubcopilot.com
     patch:
       chat_completions:
         '.*':
           headers:
             Copilot-Integration-Id: vscode-chat
-            Editor-Version: Neovim-0.10.0
-            User-Agent: aichat
+            Editor-Version: Neovim/0.9.0
 
   # See https://deepinfra.com/docs
   - type: openai-compatible

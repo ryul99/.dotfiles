@@ -172,6 +172,18 @@ alias ktc="kubectx -c"
 alias kns=kubens
 
 # etc
+if hash aichat 2>/dev/null; then
+    alias aic="aichat"
+fi
+
+function aimc() {
+    if hash aichat 2>/dev/null; then
+        git diff --cached | aichat -e "These are staged code differences. Make a commit for this change. Follow the 'Conventional Commit' format."
+    else
+        echo "aichat not found"
+    fi
+}
+
 function rgd() {
     rg --json "$@" | delta
 }
