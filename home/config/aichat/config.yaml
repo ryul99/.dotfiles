@@ -116,7 +116,6 @@ clients:
   # See https://platform.openai.com/docs/quickstart
   - type: openai
     api_base: https://api.openai.com/v1               # Optional
-    organization_id: org-xxx                          # Optional
 
   # For any platform compatible with OpenAI's API
   - type: openai-compatible
