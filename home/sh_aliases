@@ -1,15 +1,15 @@
 #!/bin/bash
 
 alias rm='rm -i'
-alias rmf='rm -f'
-alias rmr='rm -ir'
-alias rmrf='rm -rf'
+# alias rmf='rm -f'
+# alias rmr='rm -ir'
+# alias rmrf='rm -rf'
 alias cp='cp -i'
-alias cpr='cp -ir'
-alias cpf='cp -f'
-alias cprf='cp -rf'
+# alias cpr='cp -ir'
+# alias cpf='cp -f'
+# alias cprf='cp -rf'
 alias mv='mv -i'
-alias mvf='mv -f'
+# alias mvf='mv -f'
 
 # color=auto
 alias grep='grep --color=auto'
@@ -99,67 +99,68 @@ fi
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 
 # rustdoc
-rd() {
-    cargo doc
-    PORT=${*:-8080}
-    BASENAME=$(basename "$PWD")
-    if ! docker ps | grep $BASENAME-doc > /dev/null; then
-        docker run \
-            --rm -itd \
-            -p $PORT:8080 \
-            -v $PWD/target/doc:/tmp \
-            --name $BASENAME-doc \
-            svenstaro/miniserve:alpine /tmp
-    fi
-    xdg-open http://localhost:$PORT/$(echo $BASENAME | sed -e 's/-/_/g')/index.html || true
-}
+# rd() {
+#     cargo doc
+#     PORT=${*:-8080}
+#     BASENAME=$(basename "$PWD")
+#     if ! docker ps | grep $BASENAME-doc > /dev/null; then
+#         docker run \
+#             --rm -itd \
+#             -p $PORT:8080 \
+#             -v $PWD/target/doc:/tmp \
+#             --name $BASENAME-doc \
+#             svenstaro/miniserve:alpine /tmp
+#     fi
+#     xdg-open http://localhost:$PORT/$(echo $BASENAME | sed -e 's/-/_/g')/index.html || true
+# }
 
 # pcmanfm
-alias p.='pcmanfm . &'
+# alias p.='pcmanfm . &'
 
 # zathura
-za() {
-    zathura $* &
-}
+# za() {
+#     zathura $* &
+# }
 
 # arch package managers
-alias ya=yay
-alias pc="sudo pacman"
+# alias ya=yay
+# alias pc="sudo pacman"
 
 # vscode
-alias c.='code . &'
+# alias c.='code . &'
 
 # micro
-alias mi=micro
+# alias mi=micro
 
 # amp
-alias am=amp
+# alias am=amp
 
 # hangul-misstypings
 alias ㅊㅇ=cd
 alias ㅣㄴ=ls
 
 # git
-function git_current_branch {
-    git branch | grep \* | cut -d ' ' -f2
-}
+alias gdhh='git diff HEAD^ HEAD'
+# function git_current_branch {
+#     git branch | grep \* | cut -d ' ' -f2
+# }
 
-alias gdo='git diff origin/$(git_current_branch)'
-alias gpsup='git push -u origin $(git_current_branch)'
-alias gc!!='git commit -v --amend --no-verify'
-alias gca!!='git commit -v -a --amend --no-verify'
-alias gp!!='git push --force-with-lease --no-verify'
-alias grh1='git reset HEAD~1'
-alias grhs='git reset --soft'
-alias grhs1='git reset --soft HEAD~1'
-alias grhsd='git reset --soft HEAD'
-alias gsm='git switch master'
-alias grbo='git rebase origin/$(git_current_branch)'
-alias grbu='git rebase upstream/$(git_current_branch)'
-alias grbum='git rebase upstream/master'
-alias grbud='git rebase upstream/develop'
-alias grbim='git rebase -i master'
-alias grbium='git rebase -i upstream/master'
+# alias gdo='git diff origin/$(git_current_branch)'
+# alias gpsup='git push -u origin $(git_current_branch)'
+# alias gc!!='git commit -v --amend --no-verify'
+# alias gca!!='git commit -v -a --amend --no-verify'
+# alias gp!!='git push --force-with-lease --no-verify'
+# alias grh1='git reset HEAD~1'
+# alias grhs='git reset --soft'
+# alias grhs1='git reset --soft HEAD~1'
+# alias grhsd='git reset --soft HEAD'
+# alias gsm='git switch master'
+# alias grbo='git rebase origin/$(git_current_branch)'
+# alias grbu='git rebase upstream/$(git_current_branch)'
+# alias grbum='git rebase upstream/master'
+# alias grbud='git rebase upstream/develop'
+# alias grbim='git rebase -i master'
+# alias grbium='git rebase -i upstream/master'
 
 # python
 alias py=python
