@@ -190,6 +190,10 @@ if hash aichat 2>/dev/null; then
             esac
         done
     }
+
+    function aimck() {
+        aimc 'Also, write commit message in Korean' $@
+    }
 fi
 
 function rgd() {
