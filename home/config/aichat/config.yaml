@@ -181,3 +181,7 @@ clients:
   - type: openai-compatible
     name: deepinfra
     api_base: https://api.deepinfra.com/v1/openai
+    models:
+      - name: Qwen/Qwen3-30B-A3B
+        temperature: 0.6
+        top_p: 0.95

@@ -179,8 +179,10 @@ if hash aichat 2>/dev/null; then
     export AICHAT_CONFIG_FILE=$HOME/.config/aichat/config.yaml
 
     function aimc() {
-        local out_cmd=$(aichat -f '`git diff --cached`' -r %shell% "These are staged code differences. Make a commit for this change. Do not add files. Follow the 'Conventional Commit' format." $@)
+        local out_cmd=$(aichat -f '`git diff --cached`' -r %shell% "These are staged code differences. Make a commit for this change. Do not use 'git add' because files are already staged. Follow the 'Conventional Commit' format." $@)
         # ask user to confirm
+        out_cmd="${out_cmd//<think>*<\/think>/}"
+        out_cmd=$(sed 's/^[ \t]*//; s/[ \t]*$//; /^$/d' <<< "$out_cmd")
         echo -e "$out_cmd\n\n"
 
         select yn in "Yes" "No"; do
