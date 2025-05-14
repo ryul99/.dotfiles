@@ -2,4 +2,5 @@ home/vim
 home/tmux/plugins
 home/config/nvim/plugin
 home/config/wezterm/fonts/*
-home/config/aichat
+home/config/aichat/*
+!home/config/aichat/config.yaml
