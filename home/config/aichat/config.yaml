@@ -121,7 +121,11 @@ clients:
   - type: openai-compatible
     name: ollama
     api_base: http://localhost:11434/v1
-    # models:
+    models:
+      - name: qwen3:14b
+        temperature: 0.6
+        top_p: 0.95
+        max_tokens: 16384
     #   - name: deepseek-r1
     #     max_input_tokens: 131072
     #   - name: llama3.1
@@ -185,3 +189,4 @@ clients:
       - name: Qwen/Qwen3-30B-A3B
         temperature: 0.6
         top_p: 0.95
+        max_tokens: 16384
