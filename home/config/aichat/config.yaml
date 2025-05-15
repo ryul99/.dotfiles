@@ -126,6 +126,10 @@ clients:
         temperature: 0.6
         top_p: 0.95
         max_tokens: 16384
+      - name: hf.co/unsloth/Qwen3-14B-GGUF:UD-Q4_K_XL
+        temperature: 0.6
+        top_p: 0.95
+        max_tokens: 16384
     #   - name: deepseek-r1
     #     max_input_tokens: 131072
     #   - name: llama3.1
