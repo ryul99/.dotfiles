@@ -146,14 +146,14 @@ vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
     pattern = "*.yaml.example",
     command = "set ft=yaml"
 })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "json",
-    command = "setlocal sw=2 sts=2 et"
-})
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "yaml",
-    command = "setlocal sw=2 sts=2 et"
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "json",
+--     command = "setlocal sw=2 sts=2 et"
+-- })
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "yaml",
+--     command = "setlocal sw=2 sts=2 et"
+-- })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "yaml",
     command = "setlocal indentkeys-=<:>"
@@ -162,10 +162,10 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "yaml",
     command = "setlocal indentkeys-=:"
 })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "sql",
-    command = "setlocal sw=2 sts=2 et"
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "sql",
+--     command = "setlocal sw=2 sts=2 et"
+-- })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     command = "setlocal indentkeys-=<:>"
@@ -186,11 +186,11 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     command = "DisableStripWhitespaceOnSave"
 })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "scss",
-    command = "setlocal sw=2 sts=2 et"
-})
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "css",
-    command = "setlocal sw=2 sts=2 et"
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "scss",
+--     command = "setlocal sw=2 sts=2 et"
+-- })
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "css",
+--     command = "setlocal sw=2 sts=2 et"
+-- })
