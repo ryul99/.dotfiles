@@ -1,5 +1,5 @@
 # ---- llm ----
-model: openai:gpt-4.1            # Specify the LLM to use
+model: github:openai/gpt-4.1     # Specify the LLM to use
 temperature: null                # Set default temperature parameter (0, 1)
 top_p: null                      # Set default top-p parameter, with a range of (0, 1) or (0, 2) depending on the model
 
@@ -172,7 +172,7 @@ clients:
   # See https://github.com/marketplace/models
   - type: openai-compatible
     name: github
-    api_base: https://models.inference.ai.azure.com
+    api_base: https://models.github.ai/inference
 
   # See https://github.com/marketplace/models
   - type: openai-compatible
