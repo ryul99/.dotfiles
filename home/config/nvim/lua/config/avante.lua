@@ -32,13 +32,13 @@ local avante_code_readability_analysis = [[
   Only list lines with readability issues, in the format <line_num>|<issue and proposed solution>
   If there's no issues with code respond with only: <OK>
 ]]
-local avante_optimize_code = 'Optimize the following code'
+-- local avante_optimize_code = 'Optimize the following code'
 local avante_summarize = 'Summarize the following text'
 local avante_translate = 'Translate this into Korean, but keep any code blocks inside intact'
 local avante_explain_code = 'Explain the following code'
 local avante_complete_code = 'Complete the following codes written in ' .. vim.bo.filetype
 local avante_add_docstring = 'Add docstring to the following codes'
-local avante_fix_bugs = 'Fix the bugs inside the following codes if any'
+-- local avante_fix_bugs = 'Fix the bugs inside the following codes if any'
 local avante_add_tests = 'Implement tests for the following code'
 
 require('which-key').add {
@@ -66,13 +66,13 @@ require('which-key').add {
       end,
       desc = 'Code Readability Analysis(ask)',
     },
-    {
-      '<leader>ao',
-      function()
-        require('avante.api').ask { question = avante_optimize_code }
-      end,
-      desc = 'Optimize Code(ask)',
-    },
+    -- {
+    --   '<leader>ao',
+    --   function()
+    --     require('avante.api').ask { question = avante_optimize_code }
+    --   end,
+    --   desc = 'Optimize Code(ask)',
+    -- },
     {
       '<leader>am',
       function()
@@ -108,13 +108,13 @@ require('which-key').add {
       end,
       desc = 'Docstring(ask)',
     },
-    {
-      '<leader>ab',
-      function()
-        require('avante.api').ask { question = avante_fix_bugs }
-      end,
-      desc = 'Fix Bugs(ask)',
-    },
+    -- {
+    --   '<leader>ab',
+    --   function()
+    --     require('avante.api').ask { question = avante_fix_bugs }
+    --   end,
+    --   desc = 'Fix Bugs(ask)',
+    -- },
     {
       '<leader>au',
       function()
@@ -143,13 +143,13 @@ require('which-key').add {
       end,
       desc = 'Keywords',
     },
-    {
-      '<leader>aO',
-      function()
-        prefill_edit_window(avante_optimize_code)
-      end,
-      desc = 'Optimize Code(edit)',
-    },
+    -- {
+    --   '<leader>aO',
+    --   function()
+    --     prefill_edit_window(avante_optimize_code)
+    --   end,
+    --   desc = 'Optimize Code(edit)',
+    -- },
     {
       '<leader>aC',
       function()
@@ -164,13 +164,13 @@ require('which-key').add {
       end,
       desc = 'Docstring(edit)',
     },
-    {
-      '<leader>aB',
-      function()
-        prefill_edit_window(avante_fix_bugs)
-      end,
-      desc = 'Fix Bugs(edit)',
-    },
+    -- {
+    --   '<leader>aB',
+    --   function()
+    --     prefill_edit_window(avante_fix_bugs)
+    --   end,
+    --   desc = 'Fix Bugs(edit)',
+    -- },
     {
       '<leader>aU',
       function()
