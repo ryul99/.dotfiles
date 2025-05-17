@@ -71,38 +71,6 @@ return {
         dependencies = { { "nvim-lua/plenary.nvim" } },
     },
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        },
-        config = function()
-            require("neo-tree").setup({
-                sources = {
-                    "filesystem", -- Neotree filesystem source
-                    "buffers",
-                    "git_status",
-                    -- "netman.ui.neo-tree",
-                },
-                source_selector = {
-                    winbar = true,
-                    sources = {
-                        { source = "filesystem" },
-                        { source = "buffers" },
-                        { source = "git_status" },
-                        -- Any other items you had in your source selector
-                        -- Just add the netman source as well
-                        -- { source = "remote" },
-                    },
-                },
-                window = { width = 25 },
-            })
-        end,
-    },
-    {
         "debugloop/telescope-undo.nvim",
         dependencies = { -- note how they're inverted to above example
             {
