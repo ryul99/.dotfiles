@@ -17,15 +17,26 @@ return {
             experimental = { native_menu = false, ghost_text = false },
             formatting = {
                 format = function(entry, vim_item)
-                    vim_item.menu = ({
-                        buffer = "[Buffer]",
-                        nvim_lua = "[Lua]",
-                        treesitter = "[Treesitter]",
-                        nvim_lsp = "[LSP]",
-                        copilot = "[Copilot]",
-                        codeium = "[Windsurf]",
-                    })[entry.source.name]
-                    return vim_item
+                    local lspkind_ok, lspkind = pcall(require, "lspkind")
+                    if lspkind_ok then
+                        return lspkind.cmp_format({
+                            mode = "symbol_text",
+                            max_width = 30,
+                            symbol_map = { Copilot = "", Codeium = "" },
+                            -- ellipsis_char = "",
+                        })(entry, vim_item)
+                    else
+                        vim_item.menu = ({
+                            buffer = "[Buffer]",
+                            nvim_lua = "[Lua]",
+                            treesitter = "[Treesitter]",
+                            nvim_lsp = "[LSP]",
+                            copilot = "[Copilot]",
+                            codeium = "[Windsurf]",
+                        })[entry.source.name]
+                        vim_item.abbr = string.sub(vim_item.abbr, 1, 30)
+                        return vim_item
+                    end
                 end,
             },
             mapping = {
@@ -146,7 +157,8 @@ return {
                 require("copilot_cmp").setup()
             end,
             dependencies = { "zbirenbaum/copilot.lua" },
-        }
+        },
+        "onsails/lspkind.nvim",
     },
     enable = true,
 }
