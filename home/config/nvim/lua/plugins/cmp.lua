@@ -14,6 +14,16 @@ return {
         cmp.setup({
             preselect = cmp.PreselectMode.None,
             completion = { completeopt = "menu,menuone,noinsert,noselect", keyword_length = 1 },
+            window = {
+                documentation = {
+                    border = "rounded",
+                    winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+                },
+                completion = {
+                    border = "rounded",
+                    winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+                },
+            },
             experimental = { native_menu = false, ghost_text = false },
             formatting = {
                 format = function(entry, vim_item)
@@ -98,9 +108,6 @@ return {
                 { name = "codeium" },
                 -- { name = "minuet" },
             },
-            window = {
-                documentation = cmp.config.window.bordered(),
-            },
             sorting = {
                 priority_weight = 2.0,
                 comparators = {
@@ -112,10 +119,6 @@ return {
                     -- ...
                 },
             },
-            -- documentation = {
-            --  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-            --  winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-            -- },
 
             -- performance = {
             --     -- It is recommended to increase the timeout duration due to
