@@ -22,7 +22,8 @@ return {
                         nvim_lua = "[Lua]",
                         treesitter = "[Treesitter]",
                         nvim_lsp = "[LSP]",
-                        copilot = "[copilot]",
+                        copilot = "[Copilot]",
+                        codeium = "[Windsurf]",
                     })[entry.source.name]
                     return vim_item
                 end,
@@ -83,6 +84,7 @@ return {
                 { name = "jupynium",               priority = 1000 }, -- consider higher priority than LSP
                 { name = "nvim_lsp",               priority = 100 },
                 { name = "copilot" },
+                { name = "codeium" },
                 -- { name = "minuet" },
             },
             window = {
