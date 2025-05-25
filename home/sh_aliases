@@ -198,6 +198,16 @@ if hash aichat 2>/dev/null; then
     }
 fi
 
+if hash codex 2>/dev/null; then
+    function comc() {
+        codex "Read the staged git diff from this project and make a commit for this change. Do not use 'git add' because files are already staged. Follow the 'Conventional Commit' format." $@
+    }
+
+    function comck() {
+        aimc 'Also, write commit message in Korean' $@
+    }
+fi
+
 function rgd() {
     rg --json "$@" | delta
 }
