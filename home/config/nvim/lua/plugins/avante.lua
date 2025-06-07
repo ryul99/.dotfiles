@@ -8,27 +8,29 @@ return {
         provider = "copilot",
         mode = "legacy",
         auto_suggestions_provider = "gemini",
-        openai = { model = "gpt-4o-mini" },
-        gemini = { model = "gemini-2.0-flash", max_tokens = 32768 },
-        copilot = { model = "gpt-4.1", max_tokens = 32768 },
-        ollama = { model = "gemma3:12b", max_tokens = 32768, endpoint = "http://127.0.0.1:11434" },
-        vendors = {
-            ---@type AvanteProvider
+        providers = {
+            openai = {
+                model = "gpt-4.1",
+            },
+            gemini = {
+                model = "gemini-2.5-flash",
+                extra_request_body = { max_tokens = 32768 },
+            },
+            copilot = {
+                model = "gpt-4.1",
+                extra_request_body = { max_tokens = 32768 },
+            },
+            ollama = {
+                model = "gemma3:12b",
+                endpoint = "http://127.0.0.1:11434",
+                extra_request_body = { max_tokens = 32768 },
+            },
             mlx = {
                 __inherited_from = "openai",
                 api_key_name = '',
                 endpoint = "127.0.0.1:11433/v1",
                 model = "mlx-community/Qwen2.5-Coder-7B-Instruct-4bit",
-                max_tokens = 16384,
-            },
-
-            ---@type AvanteProvider
-            deepseek = {
-                __inherited_from = "openai",
-                api_key_name = "DEEPSEEK_API_KEY",
-                endpoint = "https://api.deepseek.com",
-                model = "deepseek-chat",
-                max_tokens = 32768,
+                extra_request_body = { max_tokens = 16384 },
             },
         },
         behavior = {
