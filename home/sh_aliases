@@ -217,7 +217,7 @@ if hash codex 2>/dev/null; then
     }
 fi
 
-if hash codex 2>/dev/null; then
+if hash gemini 2>/dev/null; then
     function gemc() {
         local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
         gemini -p "$prompt"
@@ -231,6 +231,23 @@ if hash codex 2>/dev/null; then
     function gerv() {
         local prompt="$REVIEW_PROMPT $@"
         gemini -p "$prompt"
+    }
+fi
+
+if hash claude 2>/dev/null; then
+    function clmc() {
+        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        claude "$prompt"
+    }
+
+    function clmck() {
+        local prompt="Also, write commit message in Korean. $@"
+        clmc "$prompt"
+    }
+
+    function clrv() {
+        local prompt="$REVIEW_PROMPT $@"
+        claude "$prompt"
     }
 fi
 
