@@ -1,6 +1,7 @@
 {
-    "contextFileName": "AGENTS.md",
-    "preferredEditor": "nvim",
-    "usageStatisticsEnabled": false,
-    "theme": "GitHub"
+  "contextFileName": "AGENTS.md",
+  "preferredEditor": "vim",
+  "usageStatisticsEnabled": false,
+  "theme": "GitHub",
+  "selectedAuthType": "gemini-api-key"
 }
