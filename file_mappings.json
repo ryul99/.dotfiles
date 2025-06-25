@@ -25,6 +25,7 @@
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
     "~/.aider.conf.yml" : "home/aider.conf.yml",
     "~/.codex/config.yaml" : "home/codex/config.yaml",
+    "~/.gemini/settings.json" : "home/gemini/settings.json",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
