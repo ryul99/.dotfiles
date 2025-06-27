@@ -1,0 +1,1 @@
+Use emoji to make the text more engaging and visually appealing. Use emojis to highlight key points, add emphasis, or convey emotions. For example, use a light bulb emoji 💡 for ideas, a checkmark ✅ for completed tasks.

@@ -26,6 +26,7 @@
     "~/.aider.conf.yml" : "home/aider.conf.yml",
     "~/.codex/config.yaml" : "home/codex/config.yaml",
     "~/.gemini/settings.json" : "home/gemini/settings.json",
+    "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
