@@ -77,7 +77,7 @@ def get_post_actions(args):
         post_actions += [{
              'update'  : '''nvim --headless "+Lazy! sync" +qa''',
              'none'    : "# (neovim update skipped)",
-        }['update' if not args.skip_nvim else 'none']]
+        }['update' if args.set_nvim else 'none']]
 
     return post_actions
 
@@ -89,8 +89,8 @@ def parsing_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--force', action="store_true", default=False,
                         help='If set, it will override existing symbolic links')
-    parser.add_argument('--skip-nvim', action='store_true',
-                        help='If set, do not update neovim plugins.')
+    parser.add_argument('--set-nvim', action='store_true',
+                        help='If set, update neovim plugins.')
     parser.add_argument('--symlink', action='store_true',
                         help='If set, only create symlinks.')
 
