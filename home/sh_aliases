@@ -174,7 +174,7 @@ alias kns=kubens
 
 # etc
 COMMIT_PROMPT="Make a commit for this change. Do not use 'git add' because files are already staged. Follow the 'Conventional Commit' format."
-REVIEW_PROMPT='Read the staged git diff from this project and let me know your review. Also check for the possible issue.'
+REVIEW_PROMPT='Read the staged git diff from this project and let me know your review. Also check for the possible issue. You can use file reading tools.'
 if hash aichat 2>/dev/null; then
     alias aic="aichat"
     export AICHAT_CONFIG_DIR=$HOME/.config/aichat
