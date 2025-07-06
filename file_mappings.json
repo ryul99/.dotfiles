@@ -25,6 +25,7 @@
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
     "~/.aider.conf.yml" : "home/aider.conf.yml",
     "~/.codex/config.yaml" : "home/codex/config.yaml",
+    "~/.codex/AGENTS.md" : "home/claude/CLAUDE.md",
     "~/.gemini/settings.json" : "home/gemini/settings.json",
     "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
 
