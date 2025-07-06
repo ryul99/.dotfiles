@@ -52,6 +52,7 @@ _which() {
 }
 
 # _template_github_latest <name> <namespace/repo> <file *pattern* to match>
+# Downloads the latest release from GitHub, extracts it
 _template_github_latest() {
   local name="$1"
   local repo="$2"
@@ -101,6 +102,7 @@ sys.stderr.write('ERROR: Cannot find a download matching \'$filename\'.\n'); sys
   fi
   echo -e "\n${COLOR_YELLOW}PWD = $(pwd)${COLOR_NONE}"
 
+  # Copy the main binary to $PREFIX/bin by caller
   echo -e "${COLOR_YELLOW}Copying into $PREFIX ...${COLOR_NONE}"
 }
 
@@ -920,6 +922,12 @@ install_rye() {
 
 install_ollama() {
   curl -fsSL https://ollama.com/install.sh | sh
+}
+
+install_codex() {
+  _template_github_latest "codex" "openai/codex" "codex-$(_get_os_type)-unknown-linux-musl.tar.gz"
+
+  cp -v "./codex-$(_get_os_type)-unknown-linux-musl" $PREFIX/bin/codex
 }
 
 # entrypoint script
