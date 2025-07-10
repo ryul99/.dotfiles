@@ -24,9 +24,13 @@
 
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
     "~/.aider.conf.yml" : "home/aider.conf.yml",
+
     "~/.codex/config.toml" : "home/codex/config.toml",
     "~/.codex/instructions.md" : "home/claude/CLAUDE.md",
+
     "~/.gemini/settings.json" : "home/gemini/settings.json",
+    "~/.gemini/GEMINI.md" : "home/claude/CLAUDE.md",
+
     "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"

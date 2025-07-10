@@ -2,5 +2,5 @@
   "preferredEditor": "vim",
   "usageStatisticsEnabled": false,
   "theme": "GitHub",
-  "selectedAuthType": "gemini-api-key"
+  "selectedAuthType": "oauth-personal"
 }
