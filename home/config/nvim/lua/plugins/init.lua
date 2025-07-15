@@ -178,8 +178,24 @@ return {
             require("dapui").setup()
         end,
     },
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    {
+        "mason-org/mason.nvim",
+        opts = {}
+    },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            automatic_enable = {
+                exclude = {
+                    "rust_analyzer",
+                }
+            }
+        },
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
     {
         "nvim-treesitter/nvim-treesitter",
         build = function()
