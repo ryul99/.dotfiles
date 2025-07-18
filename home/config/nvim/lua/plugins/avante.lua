@@ -67,9 +67,17 @@ return {
                 disable_tools = disable_tools,
                 extra_request_body = { max_tokens = 16384 },
             },
+            morph = {
+                __inherited_from = "openai",
+                -- endpoint = "https://api.morphllm.com/v1",
+                endpoint = "http://127.0.0.1:11432/v1",
+                model = "auto",
+                -- api_key_name = "MORPH_API_KEY",
+            },
         },
         behavior = {
             enable_cursor_planning_mode = true,
+            enable_fastapply = false,
         },
         mappings = {
             sidebar = {
