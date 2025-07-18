@@ -45,6 +45,14 @@ return {
                 disable_tools = disable_tools,
                 extra_request_body = { max_tokens = 32768 },
             },
+            openrouter = {
+                __inherited_from = "openai",
+                model = "openai/codex-mini",
+                endpoint = "https://openrouter.ai/api/v1",
+                api_key_name = "OPENROUTER_API_KEY",
+                disable_tools = disable_tools,
+                extra_request_body = { max_tokens = 32768 },
+            },
             ollama = {
                 model = "gemma3:12b",
                 disable_tools = disable_tools,
