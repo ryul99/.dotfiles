@@ -19,6 +19,7 @@ Code should be clear and professional without any additional embellishments. Use
 
 ## When you write commit messages
 
-YOU MUST follow the conventional commit format.
-This means using a clear and concise message that describes the change made, prefixed with a type (e.g., feat, fix, docs, style, refactor, perf, test, chore).
-Also, I prefer not to write the body of the commit message unless necessary.
+- YOU MUST follow the conventional commit format.
+  - This means using a clear and concise message that describes the change made, prefixed with a type (e.g., feat, fix, docs, style, refactor, perf, test, chore).
+- YOU SHOULD NOT write commit messages that are too long.
+  - A good commit message is typically one line long.
