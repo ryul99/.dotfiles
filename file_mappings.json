@@ -32,6 +32,7 @@
     "~/.gemini/GEMINI.md" : "home/claude/CLAUDE.md",
 
     "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
+    "~/.claude/settings.json" : "home/claude/settings.json",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
