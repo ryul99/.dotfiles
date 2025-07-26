@@ -34,6 +34,9 @@
     "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
     "~/.claude/settings.json" : "home/claude/settings.json",
 
+    "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
+    "~/.config/opencode/AGENTS.md" : "home/claude/CLAUDE.md",
+
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
 

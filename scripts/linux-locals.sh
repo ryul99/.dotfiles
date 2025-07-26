@@ -930,6 +930,10 @@ install_codex() {
   cp -v "./codex-$(_get_os_type)-unknown-linux-musl" $PREFIX/bin/codex
 }
 
+install_opencode() {
+  curl -fsSL https://opencode.ai/install | bash
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"

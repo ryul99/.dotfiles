@@ -196,6 +196,11 @@ if which ruby >/dev/null && which gem >/dev/null; then
     export GEM_PATH=$HOME/.gem
 fi
 
+# opencode
+if [ -d /home/ryul99/.opencode/bin ]; then
+  export PATH=/home/ryul99/.opencode/bin:$PATH
+fi
+
 ### <<< End of External Programs <<<
 
 # rust (cargo)

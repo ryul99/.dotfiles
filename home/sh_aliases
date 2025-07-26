@@ -251,6 +251,21 @@ if hash claude 2>/dev/null; then
     }
 fi
 
+if hash opencode 2>/dev/null; then
+    function ocmc() {
+        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        opencode run "$prompt"
+    }
+    function ocmck() {
+        local prompt="Also, write commit message in Korean. $@"
+        ocmc "$prompt"
+    }
+    function ocrv() {
+        local prompt="$REVIEW_PROMPT $@"
+        opencode run "$prompt"
+    }
+fi
+
 function rgd() {
     rg --json "$@" | delta
 }
