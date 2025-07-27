@@ -22,6 +22,7 @@
     "~/.config/wezterm" : "home/config/wezterm",
     "~/.wezterm.lua" : "home/wezterm.lua",
 
+    "~/.config/litellm_config.yaml" : "home/config/litellm_config.yaml",
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
     "~/.aider.conf.yml" : "home/aider.conf.yml",
 
