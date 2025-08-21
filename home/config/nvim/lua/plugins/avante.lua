@@ -27,7 +27,7 @@ return {
     lazy = false,
     opts = {
         -- add any opts here
-        provider = "copilot",
+        provider = "gemini",
         mode = "legacy",
         auto_suggestions_provider = "gemini",
         providers = {
@@ -41,7 +41,7 @@ return {
                 extra_request_body = { max_tokens = 32768 },
             },
             copilot = {
-                model = "gpt-4.1",
+                model = "gpt-5",
                 disable_tools = disable_tools,
                 extra_request_body = { max_tokens = 32768 },
             },
