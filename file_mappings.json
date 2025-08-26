@@ -27,7 +27,7 @@
     "~/.aider.conf.yml" : "home/aider.conf.yml",
 
     "~/.codex/config.toml" : "home/codex/config.toml",
-    "~/.codex/instructions.md" : "home/claude/CLAUDE.md",
+    "~/.codex/AGENTS.md" : "home/claude/CLAUDE.md",
 
     "~/.gemini/settings.json" : "home/gemini/settings.json",
     "~/.gemini/GEMINI.md" : "home/claude/CLAUDE.md",
