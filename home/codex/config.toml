@@ -1,6 +1,6 @@
 model = "gpt-5"
 model_provider = "openai"
-# model_reasoning_effort = "high"
+model_reasoning_effort = "low"
 
 [model_providers.openrouter]
 name = "OpenRouter"
