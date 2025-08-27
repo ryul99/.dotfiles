@@ -1,4 +1,13 @@
 model_list:
+  - model_name: "github_copilot/*"
+    litellm_params:
+      model: "github_copilot/*"
+      extra_headers: {
+        "editor-version": "vscode/1.85.1",
+        "Copilot-Integration-Id": "vscode-chat"
+      }
+
+  # fallback
   - model_name: "*"
     litellm_params:
       model: "*"
