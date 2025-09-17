@@ -19,6 +19,7 @@ vim.cmd([[
 o.encoding = 'utf-8'
 o.fileencoding = 'utf-8'
 o.shell = '/bin/bash'
+o.scroll = math.min(20, o.scroll:get())
 o.scrolloff = 3
 o.startofline = true
 o.splitbelow = true
