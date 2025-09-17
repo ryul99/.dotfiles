@@ -1,4 +1,4 @@
-model = "gpt-5"
+model = "gpt-5-codex"
 model_provider = "openai"
 model_reasoning_effort = "low"
 
