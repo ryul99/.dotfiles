@@ -22,7 +22,7 @@ return {
     "tpope/vim-fugitive",
     "tpope/vim-sensible",
     "tpope/vim-obsession",
-    "tpope/vim-vinegar",
+    -- "tpope/vim-vinegar",
     "tpope/vim-commentary",
 
     -- Visual

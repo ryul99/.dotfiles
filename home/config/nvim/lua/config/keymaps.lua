@@ -142,6 +142,8 @@ else
     cmap('w!!', 'w !sudo tee %')
 end
 
+-- switch between last two files
+nmap('=', '<C-^>')
 
 -- Plugins
 
@@ -189,9 +191,6 @@ nmap('<leader>.', ":call AltCommand(expand('%'), ':e')<cr>")
 -- vim-commentary
 nmap('<C-/>', 'gcc')
 imap('<C-/>', '<ESC>gcca')
-
--- vim-vinegar
-nmap('=', '<C-^>')
 
 -- vista
 nmap('<leader>v', ':Vista!!<CR>')
