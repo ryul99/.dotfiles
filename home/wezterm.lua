@@ -22,6 +22,9 @@ config.window_padding = {
     bottom = '0cell',
 }
 
+config.initial_rows = 32
+config.initial_cols = 96
+
 -- keymaps Copy & Paste
 table.insert( keymaps, { key = 'C', mods = 'SHIFT|CTRL', action =
 wezterm.action.CopyTo 'ClipboardAndPrimarySelection', })
