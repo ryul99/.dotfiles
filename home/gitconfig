@@ -40,6 +40,11 @@
     smudge = git-lfs smudge -- %f
 [alias]
     g = "log --graph --pretty=\"format:%C(auto)%h%d %s%x1b[38;5;022m% ae%x1b[0m\""
+
+    # difftastic
+    dfl = -c diff.external=difft log -p --ext-diff
+    dfs = -c diff.external=difft show --ext-diff
+    dfd = -c diff.external=difft diff
 [url "ssh://git@github.com/"]
     pushInsteadOf = https://github.com/
 [safe]
