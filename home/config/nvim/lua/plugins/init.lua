@@ -247,10 +247,6 @@ return {
         end,
     },
     {
-        "zapling/mason-conform.nvim",
-        dependencies = { "mason.nvim", "conform.nvim" },
-    },
-    {
         'jmbuhr/otter.nvim',
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
