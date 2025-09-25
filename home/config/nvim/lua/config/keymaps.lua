@@ -213,15 +213,6 @@ nmap('<leader>bv', ':BlameToggle virtual<CR>', {})
 nmap('zR', require('ufo').openAllFolds, {})
 nmap('zM', require('ufo').closeAllFolds, {})
 
--- conform.nvim
-nmap(
-    '<Leader>f',
-    function()
-        require('conform').format({ async = true, lsp_fallback = true })
-    end
-    , {}
-)
-
 -- jupynium
 local status_ok, telescope = pcall(require, "jupynium")
 if status_ok then
