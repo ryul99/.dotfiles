@@ -1610,7 +1610,7 @@
 
   function p10k-on-post-prompt() {
     # Hide the empty line and the first prompt line.
-    p10k display 'empty_line|1/left/vcs'=hide
+    p10k display 'empty_line'=hide
   }
 
   # Instant prompt mode.
