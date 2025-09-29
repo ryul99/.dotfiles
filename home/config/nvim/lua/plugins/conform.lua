@@ -21,6 +21,7 @@ return {
 
         local formatters = {}
         local formatters_by_ft = {}
+        local mason_install = require("mason-core.installer.InstallLocation").global()
 
         -- add diff langue vs filetype
         local lang_map = {
@@ -53,11 +54,10 @@ return {
                         -- the actual value may not be the absolute path
                         -- in some cases
                         local bin = next(pkg.spec.bin or {})
-                        -- Use mason-core.path for bin prefix
-                        local prefix = require("mason-core.path").bin_prefix(pkg.name)
+                        local command = bin and mason_install:bin(bin) or pkg.spec.name
 
                         formatters[pkg.spec.name] = {
-                            command = prefix .. bin,
+                            command = command,
                             args = { "$FILENAME" },
                             stdin = true,
                             require_cwd = false,
