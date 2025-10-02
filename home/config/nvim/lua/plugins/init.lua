@@ -308,7 +308,7 @@ return {
                 panel = { enabled = false },
                 filetypes = { yaml = true, markdown = true },
                 copilot_model = "gpt-4o-copilot",
-                nes = { enabled = true, auto_trigger = true, }
+                nes = { enabled = true }
             })
         end,
     },

@@ -1,167 +1,126 @@
--- Snippet generation
 return {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     lazy = true,
-    config = function()
-        local cmp = require("cmp")
-
-        local has_words_before = function()
-            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-            return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
-        end
-
-        cmp.setup({
-            preselect = cmp.PreselectMode.None,
-            completion = { completeopt = "menu,menuone,noinsert,noselect", keyword_length = 1 },
-            window = {
-                documentation = {
-                    border = "rounded",
-                    winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-                },
-                completion = {
-                    border = "rounded",
-                    winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-                },
-            },
-            experimental = { native_menu = false, ghost_text = false },
-            formatting = {
-                format = function(entry, vim_item)
-                    local lspkind_ok, lspkind = pcall(require, "lspkind")
-                    if lspkind_ok then
-                        return lspkind.cmp_format({
-                            mode = "symbol_text",
-                            max_width = 30,
-                            symbol_map = { Copilot = "", Codeium = "" },
-                            -- ellipsis_char = "",
-                        })(entry, vim_item)
-                    else
-                        vim_item.menu = ({
-                            buffer = "[Buffer]",
-                            nvim_lua = "[Lua]",
-                            treesitter = "[Treesitter]",
-                            nvim_lsp = "[LSP]",
-                            copilot = "[Copilot]",
-                            codeium = "[Windsurf]",
-                        })[entry.source.name]
-                        vim_item.abbr = string.sub(vim_item.abbr, 1, 30)
-                        return vim_item
-                    end
-                end,
-            },
-            mapping = {
-                ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-                ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-                ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-                ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-                ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-                ["<C-e>"] = cmp.mapping { i = cmp.mapping.close(), c = cmp.mapping.close() },
-                ["<CR>"] = cmp.mapping {
-                    i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
-                    -- c = function(fallback)
-                    --     if cmp.visible() then
-                    --         cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
-                    --     else
-                    --         fallback()
-                    --     end
-                    -- end,
-                },
-                -- ["<Tab>"] = cmp.mapping(function(fallback)
-                --     if cmp.visible() then
-                --         cmp.select_next_item()
-                --     elseif has_words_before() then
-                --         cmp.complete()
-                --     else
-                --         fallback()
-                --     end
-                -- end, {
-                --     "i",
-                --     "s",
-                --     "c",
-                -- }),
-                -- ["<S-Tab>"] = cmp.mapping(function(fallback)
-                --     if cmp.visible() then
-                --         cmp.select_prev_item()
-                --     else
-                --         fallback()
-                --     end
-                -- end, {
-                --     "i",
-                --     "s",
-                --     "c",
-                -- }),
-                -- ["<A-y>"] = require('minuet').make_cmp_map(),
-            },
-            sources = {
-                { name = "nvim_lua" },
-                { name = 'nvim_lsp',               keyword_length = 3 },
-                { name = 'nvim_lsp_signature_help' },
-                { name = "treesitter" },
-                { name = "buffer" },
-                { name = "path" },
-                { name = "calc" },
-                { name = "spell" },
-                { name = "luasnip" },
-                { name = "jupynium",               priority = 1000 }, -- consider higher priority than LSP
-                { name = "nvim_lsp",               priority = 100 },
-                { name = "copilot" },
-                { name = "codeium" },
-                -- { name = "minuet" },
-            },
-            sorting = {
-                priority_weight = 2.0,
-                comparators = {
-                    require("copilot_cmp.comparators").prioritize,
-
-                    cmp.config.compare.score, -- Jupyter kernel completion shows prior to LSP
-                    cmp.config.compare.recently_used,
-                    cmp.config.compare.locality,
-                    -- ...
-                },
-            },
-
-            -- performance = {
-            --     -- It is recommended to increase the timeout duration due to
-            --     -- the typically slower response speed of LLMs compared to
-            --     -- other completion sources. This is not needed when you only
-            --     -- need manual completion.
-            --     fetching_timeout = 2000,
-            -- },
-        })
-
-        -- Use buffer source for `/`
-        cmp.setup.cmdline("/", {
-            sources = {
-                { name = "buffer" },
-            }
-        })
-
-        -- Use cmdline & path source for ':'
-        cmp.setup.cmdline(":", {
-            sources = cmp.config.sources({
-                { name = "path" },
-            }, {
-                { name = "cmdline" },
-            }),
-        })
-    end,
+    version = "1.*",
     dependencies = {
-        "ray-x/cmp-treesitter",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-calc",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "xzbdmw/colorful-menu.nvim",
+        "rafamadriz/friendly-snippets",
+        "onsails/lspkind.nvim",
+        "zbirenbaum/copilot.lua",
         {
-            "zbirenbaum/copilot-cmp",
-            config = function()
-                require("copilot_cmp").setup()
-            end,
+            "giuxtaposition/blink-cmp-copilot",
             dependencies = { "zbirenbaum/copilot.lua" },
         },
-        "onsails/lspkind.nvim",
+    },
+    opts = {
+        keymap = {
+            preset = "none",
+            ["<C-k>"] = { "select_prev", "fallback" },
+            ["<C-j>"] = { "select_next", "fallback" },
+            ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+            ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+            ["<C-e>"] = { "show", "hide", "fallback" },
+            ["<CR>"] = { "accept", "fallback" },
+            ["<Tab>"] = {
+                function() -- sidekick next edit suggestion
+                    return require("sidekick").nes_jump_or_apply()
+                end,
+                -- function() -- if you are using Neovim's native inline completions
+                --     return vim.lsp.inline_completion.get()
+                -- end,
+                "fallback",
+            },
+        },
+
+        appearance = {
+            nerd_font_variant = "mono",
+        },
+
+        completion = {
+            documentation = {
+                auto_show = true,
+                auto_show_delay_ms = 0,
+                window = {
+                    border = "rounded",
+                    winhighlight = "Normal:NormalFloat,FloatBorder:TelescopeBorder",
+                },
+            },
+            menu = {
+                border = "rounded",
+                winhighlight = "Normal:NormalFloat,FloatBorder:TelescopeBorder",
+                draw = {
+                    columns = {
+                        { "label", "label_description", gap = 1 },
+                        { "kind_icon", "kind" },
+                    },
+                    components = {
+                        label = {
+                            text = function(ctx)
+                                return require("colorful-menu").blink_components_text(ctx)
+                            end,
+                            highlight = function(ctx)
+                                return require("colorful-menu").blink_components_highlight(ctx)
+                            end,
+                        },
+                        kind_icon = {
+                            text = function(ctx)
+                                local lspkind_ok, lspkind = pcall(require, "lspkind")
+                                if lspkind_ok then
+                                    local symbol_map = { Copilot = ""}
+                                    local icon = symbol_map[ctx.kind] or lspkind.symbolic(ctx.kind, { mode = "symbol" })
+                                    return icon .. " "
+                                end
+                                return ctx.icon_gap .. ctx.icon
+                            end,
+                        },
+                        source_name = {
+                            text = function(ctx)
+                                local source_names = {
+                                    buffer = "[Buffer]",
+                                    nvim_lua = "[Lua]",
+                                    lsp = "[LSP]",
+                                    path = "[Path]",
+                                    snippets = "[Snippet]",
+                                    luasnip = "[LuaSnip]",
+                                    copilot = "[Copilot]",
+                                }
+                                return source_names[ctx.source_name] or "[" .. ctx.source_name .. "]"
+                            end,
+                        },
+                    },
+                    treesitter = { "lsp" },
+                },
+            },
+            ghost_text = { enabled = false },
+        },
+
+        signature = {
+            enabled = true,
+            window = {
+                border = "rounded",
+            },
+        },
+
+        cmdline = {
+            keymap = { preset = 'inherit' },
+            completion = { menu = { auto_show = false } },
+        },
+        sources = {
+            default = { "lsp", "path", "snippets", "buffer", "copilot" },
+            providers = {
+                lsp = {
+                    min_keyword_length = 3,
+                    fallbacks = {},
+                },
+                copilot = {
+                    name = "copilot",
+                    module = "blink-cmp-copilot",
+                    score_offset = 100,
+                    async = true,
+                },
+            },
+        },
     },
     enable = true,
 }
