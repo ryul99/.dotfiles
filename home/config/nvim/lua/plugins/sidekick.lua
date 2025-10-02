@@ -29,7 +29,7 @@ return {
                 -- fall back to normal tab
                 return "<tab>"
             end,
-            mode = { "n" },
+            mode = { "n", "i" },
             expr = true,
             desc = "Goto/Apply Next Edit Suggestion",
         },
