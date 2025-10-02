@@ -297,6 +297,9 @@ return {
     },
     {
         "zbirenbaum/copilot.lua",
+        dependencies = {
+            "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+        },
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
@@ -305,6 +308,7 @@ return {
                 panel = { enabled = false },
                 filetypes = { yaml = true, markdown = true },
                 copilot_model = "gpt-4o-copilot",
+                nes = { enabled = true, auto_trigger = true, }
             })
         end,
     },
