@@ -30,12 +30,12 @@ nmap('<Leader>c', ":let &cole=(&cole == 2) ? 0 : 2 <bar> echo 'conceallevel ' . 
 nmap('<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 
 -- Easy Indentation
-vmap('<Tab>', '>gv', {
-    silent = true
-})
-vmap('<S-Tab>', '<gv', {
-    silent = true
-})
+-- vmap('<Tab>', '>gv', {
+--     silent = true
+-- })
+-- vmap('<S-Tab>', '<gv', {
+--     silent = true
+-- })
 
 -- Easy Splitting
 nmap('<C-_>', ':split<CR>', {
@@ -114,10 +114,10 @@ imap('<S-Down>', '<Esc>:m+<CR>', {
     silent = true
 })
 
--- Buffer Navigations
-nmap('<Tab><Tab>', ':b #<CR>', {
-    silent = true
-})
+-- -- Buffer Navigations
+-- nmap('<Tab><Tab>', ':b #<CR>', {
+--     silent = true
+-- })
 
 -- Remove highlight
 nmap(',<Space>', ':noh<CR>', {
