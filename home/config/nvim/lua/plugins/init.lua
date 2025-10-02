@@ -165,7 +165,31 @@ return {
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
     },
-
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        opts = {
+            sections = {
+                lualine_c = {
+                    {
+                        "filename",
+                        color = function()
+                            local status = require("sidekick.status").get()
+                            if status then
+                                return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or
+                                "Special"
+                            end
+                        end,
+                        cond = function()
+                            local status = require("sidekick.status")
+                            return status.get() ~= nil
+                        end,
+                    },
+                },
+            },
+            options = { theme = "tokyonight" },
+        },
+    },
     -- Language server and Auto completion
     "liuchengxu/vista.vim",
     "neovim/nvim-lspconfig",
