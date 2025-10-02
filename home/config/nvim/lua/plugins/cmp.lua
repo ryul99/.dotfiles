@@ -73,21 +73,24 @@ return {
                                 end
                                 return ctx.icon_gap .. ctx.icon
                             end,
-                        },
-                        source_name = {
-                            text = function(ctx)
-                                local source_names = {
-                                    buffer = "[Buffer]",
-                                    nvim_lua = "[Lua]",
-                                    lsp = "[LSP]",
-                                    path = "[Path]",
-                                    snippets = "[Snippet]",
-                                    luasnip = "[LuaSnip]",
-                                    copilot = "[Copilot]",
-                                }
-                                return source_names[ctx.source_name] or "[" .. ctx.source_name .. "]"
+                            highlight = function(ctx)
+                                return require("colorful-menu").blink_components_highlight(ctx)
                             end,
                         },
+                        -- source_name = {
+                        --     text = function(ctx)
+                        --         local source_names = {
+                        --             buffer = "[Buffer]",
+                        --             nvim_lua = "[Lua]",
+                        --             lsp = "[LSP]",
+                        --             path = "[Path]",
+                        --             snippets = "[Snippet]",
+                        --             luasnip = "[LuaSnip]",
+                        --             copilot = "[Copilot]",
+                        --         }
+                        --         return source_names[ctx.source_name] or "[" .. ctx.source_name .. "]"
+                        --     end,
+                        -- },
                     },
                     treesitter = { "lsp" },
                 },
