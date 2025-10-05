@@ -20,6 +20,9 @@ Host github
     HostName github.com
     User git
 
+Host *
+    ForwardAgent yes
+
 # SNUCSE Servers
 
 Host martini
