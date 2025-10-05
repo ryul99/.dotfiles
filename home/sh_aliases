@@ -251,6 +251,23 @@ if hash claude 2>/dev/null; then
     }
 fi
 
+if hash copilot 2>/dev/null; then
+    function cpmc() {
+        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        copilot -p "$prompt"
+    }
+
+    function cpmck() {
+        local prompt="Also, write commit message in Korean. $@"
+        cpmc "$prompt"
+    }
+
+    function cprv() {
+        local prompt="$REVIEW_PROMPT $@"
+        copilot -p "$prompt"
+    }
+fi
+
 if hash opencode 2>/dev/null; then
     function ocmc() {
         local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
