@@ -934,6 +934,11 @@ install_opencode() {
   curl -fsSL https://opencode.ai/install | bash
 }
 
+install_mise() {
+  curl https://mise.run | sh
+  mise use -g usage
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"
