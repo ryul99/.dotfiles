@@ -939,6 +939,20 @@ install_mise() {
   mise use -g usage
 }
 
+install_difftastic() {
+  local os_type="$(_get_os_type)"
+  local variant="musl"
+
+  # aarch64 only has gnu variant available
+  if [[ "$os_type" == "aarch64" ]]; then
+    variant="gnu"
+  fi
+
+  _template_github_latest "difftastic" "Wilfred/difftastic" "difft-${os_type}-unknown-linux-${variant}.tar.gz"
+
+  cp -v ./difft $PREFIX/bin/
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"
