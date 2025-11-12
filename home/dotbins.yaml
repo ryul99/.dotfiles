@@ -17,8 +17,16 @@ platforms:
 # Tool definitions
 # Format: tool_name: owner/repo or detailed configuration
 tools:
-  # Essential CLI tools with minimal configuration
-  fzf: junegunn/fzf          # Fuzzy finder for the terminal
+  btop: aristocratos/btop
+  difft: Wilfred/difftastic
+  fd: sharkdp/fd
+  fzf: junegunn/fzf
+  git-lfs: git-lfs/git-lfs
+  jq: jqlang/jq
+  neovim: neovim/neovim
+  rg: BurntSushi/ripgrep
+  tldr: tealdeer-rs/tealdeer
+  yazi: sxyazi/yazi
 
   # Example with shell customization
   # starship:
