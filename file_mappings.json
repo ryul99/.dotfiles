@@ -15,6 +15,7 @@
     "~/.p10k.zsh" : "home/p10k.zsh",
 
     "~/.local/bin/dotfiles" : "bin/dotfiles",
+    "~/.dotbins.yaml": "home/dotbins.yaml",
 
     "~/.tmux" : "home/tmux",
     "~/.tmux.conf" : "home/tmux.conf",
@@ -23,6 +24,7 @@
     "~/.wezterm.lua" : "home/wezterm.lua",
 
     "~/.config/litellm_config.yaml" : "home/config/litellm_config.yaml",
+
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
     "~/.aider.conf.yml" : "home/aider.conf.yml",
 

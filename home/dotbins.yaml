@@ -1,0 +1,30 @@
+# See https://github.com/basnijholt/dotbins for more information
+
+# Directory where tool binaries will be stored
+tools_dir: ~/.dotbins
+
+# Target platforms and architectures for which to download binaries
+# These determine which system binaries will be downloaded and managed
+platforms:
+  linux:
+    - amd64  # x86_64
+    - arm64  # aarch64
+  macos:
+    - arm64  # Apple Silicon
+  windows:
+    - amd64  # 64-bit Windows
+
+# Tool definitions
+# Format: tool_name: owner/repo or detailed configuration
+tools:
+  # Essential CLI tools with minimal configuration
+  fzf: junegunn/fzf          # Fuzzy finder for the terminal
+
+  # Example with shell customization
+  # starship:
+  #   repo: starship/starship
+  #   shell_code: |
+  #     eval "$(starship init bash)"  # Change to your shell
+
+# For more configuration options, visit:
+# https://github.com/basnijholt/dotbins#gear-configuration
