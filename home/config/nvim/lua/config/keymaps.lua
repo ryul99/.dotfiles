@@ -9,7 +9,8 @@ local cmap = function(...) vim.keymap.set('c', ...) end
 
 -- disable default mappings
 nmap('J', '<Nop>')
-nmap('<C-a>', '<Nop>')
+nmap('<C-a>', '<Nop>') -- increase number
+nmap('<C-x>', '<Nop>') -- decrease number
 
 -- lsp
 nmap('H', '<cmd>lua vim.lsp.buf.hover()<cr>')
