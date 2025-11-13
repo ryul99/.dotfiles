@@ -21,7 +21,7 @@ return {
             ["<C-b>"] = { "scroll_documentation_up", "fallback" },
             ["<C-f>"] = { "scroll_documentation_down", "fallback" },
             ["<C-e>"] = { "show", "hide", "fallback" },
-            ["<CR>"] = { "accept", "fallback" },
+            ["<C-CR>"] = { "accept", "fallback" },
             ["<Tab>"] = {
                 function() -- sidekick next edit suggestion
                     return require("sidekick").nes_jump_or_apply()
