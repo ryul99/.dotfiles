@@ -17,7 +17,9 @@ platforms:
 # Tool definitions
 # Format: tool_name: owner/repo or detailed configuration
 tools:
+  bandwhich: imsnif/bandwhich
   btop: aristocratos/btop
+  croc: schollz/croc
   difft: Wilfred/difftastic
   fd: sharkdp/fd
   fzf: junegunn/fzf
