@@ -23,7 +23,7 @@ tools:
   fzf: junegunn/fzf
   git-lfs: git-lfs/git-lfs
   jq: jqlang/jq
-  neovim: neovim/neovim
+  nvim: neovim/neovim
   rg: BurntSushi/ripgrep
   tldr: tealdeer-rs/tealdeer
   yazi: sxyazi/yazi
