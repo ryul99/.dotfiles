@@ -1,6 +1,16 @@
 {
-  "preferredEditor": "vim",
-  "usageStatisticsEnabled": false,
-  "theme": "GitHub",
-  "selectedAuthType": "oauth-personal"
+  "general": {
+    "preferredEditor": "neovim"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "GitHub"
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  }
 }
