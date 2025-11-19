@@ -924,10 +924,20 @@ install_ollama() {
   curl -fsSL https://ollama.com/install.sh | sh
 }
 
-install_codex() {
-  _template_github_latest "codex" "openai/codex" "codex-$(_get_os_type)-unknown-linux-musl.tar.gz"
+install_claude() {
+  curl -fsSL https://claude.ai/install.sh | bash
+}
 
-  cp -v "./codex-$(_get_os_type)-unknown-linux-musl" $PREFIX/bin/codex
+install_codex() {
+  npm install -g @openai/codex
+}
+
+install_gemini() {
+  npm install -g @google/gemini-cli
+}
+
+install_copilot() {
+  npm install -g @github/copilot
 }
 
 install_opencode() {
