@@ -1,6 +1,9 @@
 {
   "general": {
-    "preferredEditor": "neovim"
+    "preferredEditor": "neovim",
+    "previewFeatures": true,
+    "enablePromptCompletion": true,
+    "vimMode": true
   },
   "security": {
     "auth": {
@@ -8,7 +11,10 @@
     }
   },
   "ui": {
-    "theme": "GitHub"
+    "theme": "GitHub",
+    "footer": {
+      "hideContextPercentage": false
+    }
   },
   "privacy": {
     "usageStatisticsEnabled": false
