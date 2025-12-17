@@ -272,15 +272,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Disable dot files in archive
 export COPYFILE_DISABLE=true
 
-# aliases
-if [ -f ~/.sh_aliases ]; then
-    source ~/.sh_aliases
-fi
-
-if [ -f ~/.zsh_aliases ]; then
-    source ~/.zsh_aliases
-fi
-
 if [ -f "$HOME/.zshenv.local" ]; then
   source "$HOME/.zshenv.local"
 fi

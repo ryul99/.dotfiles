@@ -132,6 +132,15 @@ fi
 # autoload -U +X bashcompinit && bashcompinit
 # <<< command completion <<<
 
+# aliases
+if [ -f ~/.sh_aliases ]; then
+    source ~/.sh_aliases
+fi
+
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
+fi
+
 # local settings
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
