@@ -1,14 +1,14 @@
 #!/bin/bash
 
-alias rm='rm -i'
+# alias rm='rm -i'
 # alias rmf='rm -f'
 # alias rmr='rm -ir'
 # alias rmrf='rm -rf'
-alias cp='cp -i'
+# alias cp='cp -i'
 # alias cpr='cp -ir'
 # alias cpf='cp -f'
 # alias cprf='cp -rf'
-alias mv='mv -i'
+# alias mv='mv -i'
 # alias mvf='mv -f'
 
 # color=auto
@@ -74,29 +74,29 @@ elif hash vim 2>/dev/null; then
     alias svi="sudo -E vim"
 fi
 
-# systemctl
-alias sctl='sudo systemctl'
-alias usctl='systemctl --user'
-alias jctl='sudo journalctl'
-alias bctl=bluetoothctl
+# # systemctl
+# alias sctl='sudo systemctl'
+# alias usctl='systemctl --user'
+# alias jctl='sudo journalctl'
+# alias bctl=bluetoothctl
 
-# Docker
-if groups | grep -qw docker; then
-    alias dk="docker"
-    alias dc="docker compose"
-    alias ds="docker service"
-    alias dst="docker stack"
-    alias dsw="docker swarm"
-else
-    alias dk="sudo -E docker"
-    alias dc="sudo -E docker compose"
-    alias ds="sudo -E docker service"
-    alias dst="sudo -E docker stack"
-    alias dsw="sudo -E docker swarm"
-fi
+# # Docker
+# if groups | grep -qw docker; then
+#     alias dk="docker"
+#     alias dc="docker compose"
+#     alias ds="docker service"
+#     alias dst="docker stack"
+#     alias dsw="docker swarm"
+# else
+#     alias dk="sudo -E docker"
+#     alias dc="sudo -E docker compose"
+#     alias ds="sudo -E docker service"
+#     alias dst="sudo -E docker stack"
+#     alias dsw="sudo -E docker swarm"
+# fi
 
-# dockviz
-alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
+# # dockviz
+# alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 
 # rustdoc
 # rd() {
@@ -163,14 +163,14 @@ alias gdhh='git diff HEAD^ HEAD'
 # alias grbium='git rebase -i upstream/master'
 
 # python
-alias py=python
+# alias py=python
 alias pyvenv="pyenv virtualenv"
 
-# kubernetes
-alias k=kubectl
-alias ktx=kubectx
-alias ktc="kubectx -c"
-alias kns=kubens
+# # kubernetes
+# alias k=kubectl
+# alias ktx=kubectx
+# alias ktc="kubectx -c"
+# alias kns=kubens
 
 # etc
 COMMIT_PROMPT="Make a commit for this change. Do not use 'git add' because files are already staged. Follow the 'Conventional Commit' format."
