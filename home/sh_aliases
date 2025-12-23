@@ -213,7 +213,7 @@ if hash codex 2>/dev/null; then
 
     function corv() {
         local prompt="$REVIEW_PROMPT $@"
-        codex "$prompt"
+        codex -c "model_reasoning_effort=medium" "$prompt"
     }
 fi
 
