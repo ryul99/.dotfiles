@@ -36,6 +36,7 @@
 
     "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
     "~/.claude/settings.json" : "home/claude/settings.json",
+    "~/.claude/statusline.sh" : "home/claude/statusline.sh",
 
     "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
     "~/.config/opencode/AGENTS.md" : "home/claude/CLAUDE.md",

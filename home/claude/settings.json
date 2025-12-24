@@ -1,4 +1,8 @@
 {
   "includeCoAuthoredBy": false,
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
 }
