@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# ref: https://github.com/fatih/dotfiles/blob/main/claude/statusline-git.sh
+
 # Read JSON input from stdin
 input=$(cat)
 
