@@ -30,6 +30,9 @@ tools:
   tldr: tealdeer-rs/tealdeer
   yazi: sxyazi/yazi
 
+  # custom
+  witr: pranshuparmar/witr
+
   # Example with shell customization
   # starship:
   #   repo: starship/starship
