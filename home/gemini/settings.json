@@ -5,6 +5,13 @@
     "enablePromptCompletion": true,
     "vimMode": true
   },
+  "tools": {
+    "allowed": [
+      "run_shell_command(git status)",
+      "run_shell_command(git diff)",
+      "run_shell_command(git log)"
+    ]
+  },
   "security": {
     "auth": {
       "selectedType": "oauth-personal"
