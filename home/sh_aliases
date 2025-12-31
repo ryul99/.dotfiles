@@ -173,41 +173,18 @@ alias pyvenv="pyenv virtualenv"
 # alias kns=kubens
 
 # etc
-COMMIT_PROMPT="Make a commit for the staged changes. Do not use 'git add' because the changes I want are already staged. Follow the 'Conventional Commit' format."
+COMMIT_PROMPT="Read staged changes and make a commit for the changes. Do not use 'git add' because the changes I want are already staged. Follow the 'Conventional Commit' format."
+COMMIT_KOREAN_PROMPT="Also, write commit message in Korean."
 REVIEW_PROMPT='Read the staged git diff from this project and let me know your review. Also check for possible issues.'
-if hash aichat 2>/dev/null; then
-    alias aic="aichat"
-    export AICHAT_CONFIG_DIR=$HOME/.config/aichat
-    export AICHAT_CONFIG_FILE=$HOME/.config/aichat/config.yaml
-
-    function aimc() {
-        local out_cmd=$(aichat -f '`git diff --cached`' -r %shell% "These are staged code differences. $COMMIT_PROMPT" $@)
-        # ask user to confirm
-        out_cmd="${out_cmd//<think>*<\/think>/}"
-        out_cmd=$(sed 's/^[ \t]*//; s/[ \t]*$//; /^$/d' <<< "$out_cmd")
-        echo -e "$out_cmd\n\n"
-
-        select yn in "Yes" "No"; do
-            case $yn in
-                Yes ) eval "$out_cmd"; break;;
-                * ) break;;
-            esac
-        done
-    }
-
-    function aimck() {
-        aimc 'Also, write commit message in Korean' $@
-    }
-fi
 
 if hash codex 2>/dev/null; then
     function comc() {
-        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        local prompt="$COMMIT_PROMPT $@"
         codex -c "model_reasoning_effort=low" "$prompt"
     }
 
     function comck() {
-        local prompt="Also, write commit message in Korean. $@"
+        local prompt="$COMMIT_KOREAN_PROMPT $@"
         comc "$prompt"
     }
 
@@ -219,29 +196,29 @@ fi
 
 if hash gemini 2>/dev/null; then
     function gemc() {
-        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
-        gemini -p "$prompt"
+        local prompt="$COMMIT_PROMPT $@"
+        gemini -i "$prompt"
     }
 
     function gemck() {
-        local prompt="Also, write commit message in Korean. $@"
+        local prompt="$COMMIT_KOREAN_PROMPT $@"
         gemc "$prompt"
     }
 
     function gerv() {
         local prompt="$REVIEW_PROMPT $@"
-        gemini -p "$prompt"
+        gemini -i "$prompt"
     }
 fi
 
 if hash claude 2>/dev/null; then
     function clmc() {
-        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        local prompt="$COMMIT_PROMPT $@"
         claude "$prompt"
     }
 
     function clmck() {
-        local prompt="Also, write commit message in Korean. $@"
+        local prompt="$COMMIT_KOREAN_PROMPT $@"
         clmc "$prompt"
     }
 
@@ -253,12 +230,12 @@ fi
 
 if hash copilot 2>/dev/null; then
     function cpmc() {
-        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        local prompt="$COMMIT_PROMPT $@"
         copilot -p "$prompt"
     }
 
     function cpmck() {
-        local prompt="Also, write commit message in Korean. $@"
+        local prompt="$COMMIT_KOREAN_PROMPT $@"
         cpmc "$prompt"
     }
 
@@ -270,11 +247,11 @@ fi
 
 if hash opencode 2>/dev/null; then
     function ocmc() {
-        local prompt="Read the staged git diff from this project. Then, $COMMIT_PROMPT $@"
+        local prompt="$COMMIT_PROMPT $@"
         opencode run "$prompt"
     }
     function ocmck() {
-        local prompt="Also, write commit message in Korean. $@"
+        local prompt="$COMMIT_KOREAN_PROMPT $@"
         ocmc "$prompt"
     }
     function ocrv() {
