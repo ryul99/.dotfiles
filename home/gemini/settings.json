@@ -3,7 +3,7 @@
     "preferredEditor": "neovim",
     "previewFeatures": true,
     "enablePromptCompletion": true,
-    "vimMode": true
+    "vimMode": false
   },
   "tools": {
     "allowed": [
