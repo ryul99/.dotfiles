@@ -213,9 +213,8 @@ fi
 
 if hash claude 2>/dev/null; then
     function clmc() {
-        local MAX_THINKING_TOKENS=2048
         local prompt="$COMMIT_PROMPT $@"
-        claude "$prompt"
+        MAX_THINKING_TOKENS=2048 claude "$prompt"
     }
 
     function clmck() {
@@ -224,9 +223,8 @@ if hash claude 2>/dev/null; then
     }
 
     function clrv() {
-        local MAX_THINKING_TOKENS=16384
         local prompt="$REVIEW_PROMPT $@"
-        claude "$prompt"
+        MAX_THINKING_TOKENS=16384 claude "$prompt"
     }
 fi
 
