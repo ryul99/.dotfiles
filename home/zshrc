@@ -98,7 +98,6 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
         if"[ -d ~/.pyenv/plugins/pyenv-virtualenv/ ]" id-as"pyenv-virtualenv" atclone"pyenv virtualenv-init - zsh > pyenv-virtualenv.zsh" atpull"%atclone" run-atpull pick"pyenv-virtualenv.zsh" nocompile"!" ryul99/zinit-null \
         rupa/z \
         if"[ -f ~/.asdf/asdf.sh ]" id-as"asdf" src"~/.asdf/asdf.sh" nocompile ryul99/zinit-null \
-        if"[ -f ~/.dotbins/shell/zsh.sh ]" id-as"dotbins" src"$HOME/.dotbins/shell/zsh.sh" nocompile ryul99/zinit-null
         # has"fzf" id-as"fzf" multisrc"(completion|key-bindings).zsh" compile"(completion|key-bindings).zsh" svn https://github.com/junegunn/fzf/trunk/shell
 
     # aliases
@@ -120,6 +119,7 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
     zinit wait lucid for \
         atload"__zshrc_zsh_history_substring_search_bindkey" zsh-users/zsh-history-substring-search \
         atload"zicompinit; zicdreplay" blockf zsh-users/zsh-autosuggestions \
+        atload"zicompinit; zicdreplay" if"[ -f ~/.dotbins/shell/zsh.sh ]" id-as"dotbins" src"$HOME/.dotbins/shell/zsh.sh" nocompile ryul99/zinit-null \
         zdharma-continuum/fast-syntax-highlighting
 fi
 ### End of Zinit plugins
