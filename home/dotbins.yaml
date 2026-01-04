@@ -33,7 +33,9 @@ tools:
   # custom
   witr: pranshuparmar/witr
   codex: openai/codex
-  opencode: anomalyco/opencode
+  opencode:
+    repo: anomalyco/opencode
+    shell_code: source <(opencode completion)
   bun:
     repo: oven-sh/bun
     shell_code:
