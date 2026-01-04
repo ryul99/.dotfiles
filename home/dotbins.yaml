@@ -33,6 +33,7 @@ tools:
   # custom
   witr: pranshuparmar/witr
   codex: openai/codex
+  opencode: anomalyco/opencode
 
   # Example with shell customization
   # starship:

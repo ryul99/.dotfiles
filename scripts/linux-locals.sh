@@ -944,6 +944,10 @@ install_opencode() {
   curl -fsSL https://opencode.ai/install | bash
 }
 
+install_omo() {
+  npx oh-my-opencode install
+}
+
 install_mise() {
   curl https://mise.run | sh
   mise use -g usage
