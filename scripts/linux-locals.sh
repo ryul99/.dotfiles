@@ -283,6 +283,10 @@ install_node() {
   $HOME/.local/bin/npm install -g http-server diff-so-fancy || true;
 }
 
+install_bun() {
+  curl -fsSL https://bun.sh/install | bash
+}
+
 install_tmux() {
   # tmux: use tmux-appimage to avoid all the libevents/ncurses hassles
   # see https://github.com/nelsonenzo/tmux-appimage

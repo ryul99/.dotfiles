@@ -34,6 +34,11 @@ tools:
   witr: pranshuparmar/witr
   codex: openai/codex
   opencode: anomalyco/opencode
+  bun:
+    repo: oven-sh/bun
+    shell_code:
+      zsh: source <(SHELL=zsh bun completions "$(mktemp -d)" | cat)
+      bash: source <(SHELL=bash bun completions "$(mktemp -d)" | cat)
 
   # Example with shell customization
   # starship:
