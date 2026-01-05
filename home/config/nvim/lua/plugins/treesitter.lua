@@ -1,7 +1,19 @@
+local function is_tree_sitter_cli_working()
+    -- Redirect output to void to avoid error messages in the UI
+    local cmd = "tree-sitter --version > /dev/null 2>&1"
+
+    vim.fn.system(cmd)
+    return vim.v.shell_error == 0
+end
+
 -- install only when 1. not installed and 2. stable language
 local function need_install(lang)
     local ok, _ = pcall(vim.treesitter.get_string_parser, "", lang)
     if ok then
+        return false
+    end
+
+    if not is_tree_sitter_cli_working() then
         return false
     end
 
