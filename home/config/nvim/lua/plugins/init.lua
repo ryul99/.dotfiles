@@ -222,6 +222,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
         build = function()
             local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
             ts_update()
@@ -229,6 +230,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
         dependencies = "nvim-treesitter/nvim-treesitter",
     },
     {
