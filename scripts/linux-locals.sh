@@ -971,6 +971,10 @@ install_difftastic() {
   cp -v ./difft $PREFIX/bin/
 }
 
+install_treesitter() {
+  cargo install --locked tree-sitter-cli
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"
