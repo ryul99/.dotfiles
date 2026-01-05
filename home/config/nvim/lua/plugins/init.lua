@@ -221,17 +221,6 @@ return {
         },
     },
     {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "main",
-        lazy = false,
-        build = ':TSUpdate',
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        branch = "main",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-    },
-    {
         "FabijanZulj/blame.nvim",
         config = function()
             require("blame").setup({

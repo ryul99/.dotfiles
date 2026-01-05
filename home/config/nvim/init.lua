@@ -92,7 +92,6 @@ require("config.lazy")
 --
 -- configs
 require ('config/plugins')
-require ('config/treesitter')
 require ('config/ufo')
 require ('config/keymaps')
 require ('config/avante')
