@@ -77,6 +77,14 @@ def update(fast=False,
         ret=0
         cd ~/.dotfiles
         git fetch origin
+
+        # Detect if lazy-lock.json has updates in remote (comparing HEAD vs upstream)
+        # If so, discard local changes to lazy-lock.json to accept remote version unconditionally
+        if ! git diff --quiet HEAD..@{u} -- home/config/nvim/lazy-lock.json 2>/dev/null; then
+             echo "Remote update for lazy-lock.json detected. Discarding local changes."
+             git checkout HEAD -- home/config/nvim/lazy-lock.json || true
+        fi
+
         git stash push -m "DOTFILES_UPDATE"
         git merge --ff-only
 
