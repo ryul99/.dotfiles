@@ -32,12 +32,11 @@ return {
                 end
             end
 
-            local lang = vim.treesitter.language.get_lang(vim.bo.filetype) or vim.bo.filetype
-
             -- auto install
             vim.api.nvim_create_autocmd("FileType", {
                 group = vim.api.nvim_create_augroup("TreesitterAutoInstall", { clear = true }),
-                callback = function(_)
+                callback = function(args)
+                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
                     if not lang then
                         return
                     end
@@ -59,7 +58,9 @@ return {
                         return
                     end
 
-                    if pcall(vim.treesitter.get_parser, args.buf, lang) then
+                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+                    if lang and pcall(vim.treesitter.get_parser, args.buf, lang) then
+                        -- vim.notify("Treesitter highlighting enabled for " .. lang, vim.log.levels.INFO)
                         vim.treesitter.start()
                     end
 
