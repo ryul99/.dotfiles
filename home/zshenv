@@ -171,9 +171,12 @@ if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
 
-# cargo
-if [ -d ~/.cargo/bin ]; then
+# rust (cargo)
+if [ -d $HOME/.cargo/bin/ ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
+fi
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
 fi
 
 # npm global
@@ -202,15 +205,6 @@ if [ -d /home/ryul99/.opencode/bin ]; then
 fi
 
 ### <<< End of External Programs <<<
-
-# rust (cargo)
-if [ -d $HOME/.cargo/bin/ ]; then
-  path=( $path $HOME/.cargo/bin )
-fi
-if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
-fi
-
 
 #
 # Less
