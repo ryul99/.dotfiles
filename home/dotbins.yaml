@@ -41,6 +41,7 @@ tools:
     shell_code:
       zsh: source <(SHELL=zsh bun completions "$(mktemp -d)" | cat)
       bash: source <(SHELL=bash bun completions "$(mktemp -d)" | cat)
+  tree-sitter: tree-sitter/tree-sitter
 
   # Example with shell customization
   # starship:
