@@ -41,7 +41,6 @@ tools:
       amd64: x64
       arm64: aarch64
     asset_patterns: opencode-{platform}-{arch}.zip
-    shell_code: source <(opencode completion)
   bun:
     repo: oven-sh/bun
     platform_map:
@@ -50,9 +49,6 @@ tools:
       amd64: x64
       arm64: aarch64
     asset_patterns: bun-{platform}-{arch}.zip
-    shell_code:
-      zsh: source <(SHELL=zsh bun completions "$(mktemp -d)" | cat)
-      bash: source <(SHELL=bash bun completions "$(mktemp -d)" | cat)
   tree-sitter: tree-sitter/tree-sitter
 
   # Example with shell customization
