@@ -84,10 +84,6 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
 
     zinit depth=1 light-mode for romkatv/powerlevel10k
 
-    function __zshrc_kubectl_aliases_patch {
-        sed 's/alias k\(\w*\)a\(\w\?\)=/alias k\1ap\2=/g' .kubectl_aliases > .kubectl_aliases_mod
-    }
-
     function __zshrc_pyenv_atload {
         eval "$(pyenv init --path zsh)"
         command pyenv rehash >/dev/null &!
@@ -102,8 +98,7 @@ if [[ -f "${ZINIT_HOME}/zinit.zsh" ]]; then
 
     # aliases
     zinit wait lucid for \
-        light-mode simnalamburt/cgitc \
-        light-mode ahmetb/kubectl-aliases
+        light-mode simnalamburt/cgitc
 
     # completions
     zinit wait lucid for \
