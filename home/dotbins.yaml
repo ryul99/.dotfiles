@@ -39,7 +39,9 @@ tools:
       macos: darwin
     arch_map:
       amd64: x64
-    asset_patterns: opencode-{platform}-{arch}.tar.gz
+    asset_patterns:
+      linux: opencode-{platform}-{arch}.tar.gz
+      macos: opencode-{platform}-{arch}.zip
   bun:
     repo: oven-sh/bun
     platform_map:
