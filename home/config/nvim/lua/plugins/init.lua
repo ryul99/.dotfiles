@@ -301,10 +301,10 @@ return {
         init = function()
             vim.g.llama_config = {
                 show_info = 0,
-                keymap_trigger = "",
-                keymap_accept_full = "",
-                keymap_accept_line = "<C-l>",
-                keymap_accept_word = "<C-B>",
+                keymap_fim_trigger = "",
+                keymap_fim_accept_full = "",
+                keymap_fim_accept_line = "<C-l>",
+                keymap_fim_accept_word = "<C-B>",
             }
         end,
     },
