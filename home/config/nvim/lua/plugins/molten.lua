@@ -2,7 +2,7 @@ return {
     "benlubas/molten-nvim",
     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
     dependencies = {
-        "3rd/image.nvim",
+        -- "3rd/image.nvim",
         {
             'willothy/wezterm.nvim',
             config = true,
@@ -76,8 +76,8 @@ return {
 
         if vim.env.TERM == "wezterm" then
             vim.g.molten_image_provider = "wezterm"
-        else
-            vim.g.molten_image_provider = "image.nvim"
+        -- else
+        --     vim.g.molten_image_provider = "image.nvim"
         end
 
         -- optional, I like wrapping. works for virt text and the output window
