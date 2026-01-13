@@ -112,6 +112,8 @@ return {
                     },
                     -- required for Windows users
                     use_absolute_path = true,
+                    -- disable automatic image download from URLs
+                    download_images = false,
                 },
             },
         },
