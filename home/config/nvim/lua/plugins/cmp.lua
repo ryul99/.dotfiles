@@ -68,7 +68,7 @@ return {
                                 local lspkind_ok, lspkind = pcall(require, "lspkind")
                                 if lspkind_ok then
                                     local symbol_map = { Copilot = ""}
-                                    local icon = symbol_map[ctx.kind] or lspkind.symbolic(ctx.kind, { mode = "symbol" })
+                                    local icon = symbol_map[ctx.kind] or lspkind.symbol_map[ctx.kind]
                                     return icon .. " "
                                 end
                                 return ctx.icon_gap .. ctx.icon
