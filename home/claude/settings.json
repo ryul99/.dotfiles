@@ -4,5 +4,17 @@
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/english-lecturer.sh"
+          }
+        ]
+      }
+    ]
   }
 }

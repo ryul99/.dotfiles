@@ -37,7 +37,7 @@
     "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
     "~/.claude/settings.json" : "home/claude/settings.json",
     "~/.claude/statusline.sh" : "home/claude/statusline.sh",
-    "~/.claude/prompt-rewriter.sh": "home/claude/prompt-rewriter.sh",
+    "~/.claude/english-lecturer.sh": "home/claude/english-lecturer.sh",
 
     "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
     "~/.config/opencode/AGENTS.md" : "home/claude/CLAUDE.md",
