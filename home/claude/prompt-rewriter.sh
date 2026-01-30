@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INPUT_PROMPT="$(echo "$1" | jq '.prompt')"
+INPUT_PROMPT="$(cat | jq '.prompt')"
 
 JSON_SCHEMA='
 {
