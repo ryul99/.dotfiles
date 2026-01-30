@@ -12,6 +12,13 @@ return {
     -- stylua: ignore
     keys = {
         {
+            "<leader>ns",
+            function()
+                require("sidekick.nes").update()
+            end,
+            desc = "Request NES suggestions",
+        },
+        {
             "<tab>",
             function()
                 -- if there is a next edit, jump to it, otherwise apply it if any
