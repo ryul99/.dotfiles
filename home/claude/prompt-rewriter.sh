@@ -1,23 +1,43 @@
 #!/bin/bash
 
-INPUT_PROMPT="$(cat $1 | jq .prompt)"
+INPUT_PROMPT="$(echo "$1" | jq '.prompt')"
 
 JSON_SCHEMA='
 {
     "type": "object",
     "properties": {
-        "enhanced_prompt": { "type": "string" },
-        "reason": { "type": "string" }
+        "enhanced_prompt": { "type": "string" }
     }
 }
 '
 
-PROMPT="\
+INPUT_PROMPT="\
 Rewrite the following prompt in English to make it more grammatically correct and clear, while preserving its original meaning.
-When you rewrite the prompt, provide one or two lines explaining the changes you made.
 <PROMPT>
 $INPUT_PROMPT
 </PROMPT>\
 "
 
-claude --model sonnet --output-format json --json-schema "$JSON_SCHEMA" -p "$PROMPT" | jq .structured_output
+ENHANCED_PROMPT="$( \
+    claude \
+    --model sonnet \
+    --output-format json \
+    --json-schema "$JSON_SCHEMA" \
+    --settings '{ "allowManagedHooksOnly": true }' \
+    -p "$INPUT_PROMPT"
+)"
+
+ENHANCED_PROMPT="$(echo "$ENHANCED_PROMPT" | jq -r '.structured_output.enhanced_prompt')"
+
+if [[ -z "$ENHANCED_PROMPT" ]]; then
+    exit 0
+fi
+
+ENHANCED_PROMPT="\
+Below is the enhanced version of the original prompt:
+---
+$ENHANCED_PROMPT\
+"
+
+echo "$ENHANCED_PROMPT"
+exit 0
