@@ -2,6 +2,10 @@
 
 INPUT_PROMPT="$(cat | jq '.prompt')"
 
+if [[ -n "$REWRITER_LOCK" ]]; then
+    exit 0
+fi
+
 JSON_SCHEMA='
 {
     "type": "object",
@@ -19,11 +23,10 @@ $INPUT_PROMPT
 "
 
 ENHANCED_PROMPT="$( \
-    claude \
+    REWRITER_LOCK=1 claude \
     --model sonnet \
     --output-format json \
     --json-schema "$JSON_SCHEMA" \
-    --settings '{ "allowManagedHooksOnly": true }' \
     -p "$INPUT_PROMPT"
 )"
 
