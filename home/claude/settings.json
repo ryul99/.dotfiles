@@ -1,6 +1,7 @@
 {
   "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "stable",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
