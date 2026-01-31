@@ -19,7 +19,12 @@ JSON_SCHEMA='
 
 INPUT_PROMPT="\
 Rewrite the following prompt in English to make it more grammatically correct and clear, while preserving its original meaning.
-If there are any mistakes, let me know with a brief explanation in $TARGET_LANGUAGE as a lesson.
+Please let me know if there are any mistakes, and provide a brief explanation in $TARGET_LANGUAGE to help me learn.
+
+Result should have two fields:
+- enhanced_prompt: containing the improved prompt
+- lesson: containing the brief explanation in $TARGET_LANGUAGE.
+
 <PROMPT>
 $INPUT_PROMPT
 </PROMPT>\
