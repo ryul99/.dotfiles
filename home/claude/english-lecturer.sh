@@ -41,15 +41,19 @@ RESPONSE="$( \
 STRUCTURED_OUTPUT="$(echo "$RESPONSE" | jq -r '.structured_output')"
 
 if [[ -z "$STRUCTURED_OUTPUT" ]]; then
-    exit 0
+    OUTPUT_PROMPT="Failed to generate lesson."
+else
+    OUTPUT_PROMPT="\
+$(echo "$STRUCTURED_OUTPUT" | jq -r .enhanced_prompt)
+---
+$(echo "$STRUCTURED_OUTPUT" | jq -r .lesson)
+"
 fi
 
 OUTPUT_PROMPT="\
 This is lesson message for user. You should dismiss it.
 ---
-$(echo "$STRUCTURED_OUTPUT" | jq -r .enhanced_prompt)
----
-$(echo "$STRUCTURED_OUTPUT" | jq -r .lesson)
+$OUTPUT_PROMPT
 "
 
 echo -e "$OUTPUT_PROMPT"
