@@ -149,8 +149,7 @@ if [ -d "$HOME/.rye" ]; then
 fi
 
 # rbenv settings
-if [ -d ~/.rbenv/bin ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
+if [ -d ~/.rbenv/ ]; then
   eval "$(rbenv init -)"
 fi
 
