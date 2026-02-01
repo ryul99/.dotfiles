@@ -12,7 +12,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/english-lecturer.sh"
+            "command": "~/.claude/detailed-english-lecturer.sh"
           }
         ]
       }

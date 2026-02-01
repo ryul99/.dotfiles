@@ -38,6 +38,7 @@
     "~/.claude/settings.json" : "home/claude/settings.json",
     "~/.claude/statusline.sh" : "home/claude/statusline.sh",
     "~/.claude/english-lecturer.sh": "home/claude/english-lecturer.sh",
+    "~/.claude/detailed-english-lecturer.sh": "home/claude/detailed-english-lecturer.sh",
 
     "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
     "~/.config/opencode/AGENTS.md" : "home/claude/CLAUDE.md",
