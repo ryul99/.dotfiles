@@ -1,4 +1,5 @@
 #!/bin/bash
+# acknowledge: https://github.com/crescent-stdio for prompt
 
 if [[ -n "$REWRITER_LOCK" ]]; then
     exit 0
