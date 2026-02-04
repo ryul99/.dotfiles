@@ -104,5 +104,5 @@ OUTPUT_PROMPT="$OUTPUT_PROMPT
 
 ✨ $TIP"
 
-echo "$OUTPUT_PROMPT"
+echo -e "$OUTPUT_PROMPT"
 exit 0
