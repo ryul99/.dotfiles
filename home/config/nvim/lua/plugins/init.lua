@@ -320,7 +320,7 @@ return {
                 suggestion = { enabled = false },
                 panel = { enabled = false },
                 filetypes = { yaml = true, markdown = true },
-                copilot_model = "gpt-4o-copilot",
+                -- copilot_model = "gpt-41-copilot",
                 nes = { enabled = true }
             })
         end,
