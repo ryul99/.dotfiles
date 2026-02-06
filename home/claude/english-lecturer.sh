@@ -1,29 +1,65 @@
 #!/bin/bash
-
-INPUT_PROMPT="$(cat | jq '.prompt')"
+# acknowledge: https://github.com/crescent-stdio for prompt
 
 if [[ -n "$REWRITER_LOCK" ]]; then
     exit 0
 fi
 
+INPUT_PROMPT="$(cat | jq '.prompt')"
 TARGET_LANGUAGE="Korean"
+
 JSON_SCHEMA='
 {
     "type": "object",
     "properties": {
-        "enhanced_prompt": { "type": "string" },
-        "lesson": { "type": "string" }
-    }
+        "enhanced_prompt": {
+            "type": "string",
+            "description": "The improved prompt preserving original meaning"
+        },
+        "has_corrections": {
+            "type": "boolean",
+            "description": "Whether the original prompt had any issues to improve"
+        },
+        "corrections": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "original": { "type": "string" },
+                    "suggestion": { "type": "string" },
+                    "category": {
+                        "type": "string",
+                        "enum": ["grammar", "vocabulary", "style", "spelling", "word_order"]
+                    },
+                    "explanation": { "type": "string" }
+                },
+                "required": ["original", "suggestion", "category", "explanation"]
+            },
+            "description": "Gentle improvement suggestions, max 3 items"
+        },
+        "tip": {
+            "type": "string",
+            "description": "One concise learning tip"
+        }
+    },
+    "required": ["enhanced_prompt", "has_corrections", "corrections", "tip"]
 }
 '
 
 INPUT_PROMPT="\
-Rewrite the following prompt in English to make it more grammatically correct and clear, while preserving its original meaning.
-Please let me know if there are any mistakes, and provide a brief explanation in $TARGET_LANGUAGE to help me learn.
+You are a supportive, encouraging English coach for a $TARGET_LANGUAGE developer. Analyze the prompt below and return structured JSON.
 
-Result should have two fields:
-- enhanced_prompt: containing the improved prompt
-- lesson: containing the brief explanation in $TARGET_LANGUAGE.
+Rules:
+1. enhanced_prompt: Rewrite to be clear, natural, professional English. Preserve the original intent exactly. If the prompt is code-only or already perfect English, return it unchanged.
+2. has_corrections: true if you made any meaningful improvements, false if the prompt was already correct or is pure code/commands.
+3. corrections: List up to 3 gentle improvement suggestions. Each must have:
+   - original: the phrase from the original prompt
+   - suggestion: the improved phrase
+   - category: one of grammar, vocabulary, style, spelling, word_order
+   - explanation: brief explanation in $TARGET_LANGUAGE (1 sentence, max 20 words).
+4. tip: One memorable tip in $TARGET_LANGUAGE (1 sentence, max 30 words) about the most useful pattern. If no corrections, share a useful English expression tip.
+
+Focus on patterns $TARGET_LANGUAGE speakers commonly struggle with: articles (a/the), prepositions, singular/plural, tense consistency, word order.
 
 <PROMPT>
 $INPUT_PROMPT
@@ -40,21 +76,34 @@ RESPONSE="$( \
 
 STRUCTURED_OUTPUT="$(echo "$RESPONSE" | jq -r '.structured_output')"
 
-if [[ -z "$STRUCTURED_OUTPUT" ]]; then
+# echo 'This is lesson message for user. Assistant should dismiss it.'
+
+if [[ -z "$STRUCTURED_OUTPUT" || "$STRUCTURED_OUTPUT" == "null" ]]; then
     OUTPUT_PROMPT="Failed to generate lesson."
-else
-    OUTPUT_PROMPT="\
-$(echo "$STRUCTURED_OUTPUT" | jq -r .enhanced_prompt)
----
-$(echo "$STRUCTURED_OUTPUT" | jq -r .lesson)
-"
+    exit 0
 fi
 
-OUTPUT_PROMPT="\
-This is lesson message for user. You should dismiss it.
----
-$OUTPUT_PROMPT
-"
+ENHANCED="$(echo "$STRUCTURED_OUTPUT" | jq -r '.enhanced_prompt')"
+HAS_CORRECTIONS="$(echo "$STRUCTURED_OUTPUT" | jq -r '.has_corrections')"
+TIP="$(echo "$STRUCTURED_OUTPUT" | jq -r '.tip')"
 
-echo -e "$OUTPUT_PROMPT"
+OUTPUT_PROMPT="$ENHANCED"
+
+if [[ "$HAS_CORRECTIONS" == "true" ]]; then
+    CORRECTIONS_DISPLAY="$(echo "$STRUCTURED_OUTPUT" | jq -r '
+        .corrections[] |
+        "- ✅ \(.category): \(.original) → \(.suggestion)\n  - \(.explanation)\n"
+    ')"
+    OUTPUT_PROMPT="$OUTPUT_PROMPT
+
+$CORRECTIONS_DISPLAY"
+fi
+
+OUTPUT_PROMPT="
+$OUTPUT_PROMPT
+
+✨ $TIP"
+
+OUTPUT_PROMPT="${OUTPUT_PROMPT//$'\n'/\\n}"
+echo "{ \"suppressOutput\": false, \"systemMessage\": \"$OUTPUT_PROMPT\" }"
 exit 0
