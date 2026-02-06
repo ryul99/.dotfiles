@@ -105,6 +105,9 @@ $OUTPUT_PROMPT
 
 ✨ $TIP"
 
+# escape newlines
 OUTPUT_PROMPT="${OUTPUT_PROMPT//$'\n'/\\n}"
+# escape double quotes
+OUTPUT_PROMPT="${OUTPUT_PROMPT//\"/\\\"}"
 echo "{ \"suppressOutput\": false, \"systemMessage\": \"$OUTPUT_PROMPT\" }"
 exit 0
