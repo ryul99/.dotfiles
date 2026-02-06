@@ -68,6 +68,7 @@ $INPUT_PROMPT
 
 RESPONSE="$( \
     REWRITER_LOCK=1 claude \
+    --no-session-persistence \
     --model sonnet \
     --output-format json \
     --json-schema "$JSON_SCHEMA" \
