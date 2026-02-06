@@ -150,7 +150,7 @@ fi
 
 # rbenv settings
 if [ -d ~/.rbenv/ ]; then
-  eval "$(rbenv init -)"
+  eval "$($HOME/.rbenv/bin/rbenv init -)"
 fi
 
 # nodenv settings
