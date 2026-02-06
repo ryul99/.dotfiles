@@ -105,6 +105,8 @@ $OUTPUT_PROMPT
 
 ✨ $TIP"
 
+# handling when LLM output contains escaped characters
+OUTPUT_PROMPT="$(echo -e "$OUTPUT_PROMPT")"
 # escape newlines
 OUTPUT_PROMPT="${OUTPUT_PROMPT//$'\n'/\\n}"
 # escape double quotes
