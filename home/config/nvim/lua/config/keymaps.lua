@@ -125,6 +125,15 @@ nmap(',<Space>', ':noh<CR>', {
     silent = true
 })
 
+-- Toggle tab size between 4 and 2
+nmap('<leader><leader>t', function()
+    local new_val = vim.o.tabstop == 4 and 2 or 4
+    vim.o.tabstop = new_val
+    vim.o.softtabstop = new_val
+    vim.o.shiftwidth = new_val
+    vim.notify("Tab size: " .. new_val)
+end)
+
 -- Easy save
 nmap('<C-s>', ':w<CR>')
 imap('<C-s>', '<ESC>:w<CR>')
