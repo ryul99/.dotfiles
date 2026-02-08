@@ -152,10 +152,10 @@ nmap('=', '<C-^>')
 nmap('<F8>', ':TagbarToggle<CR>')
 
 -- fzf
-nmap('<leader><Tab>', ':Files<CR>')
-nmap('<leader><leader><Tab>', ':Files!<CR>')
-nmap('<leader>q', ':Buffers<CR>')
-nmap('<leader><leader>q', ':Buffers!<CR>')
+-- nmap('<leader><Tab>', ':Files<CR>')
+-- nmap('<leader><leader><Tab>', ':Files!<CR>')
+-- nmap('<leader>q', ':Buffers<CR>')
+-- nmap('<leader><leader>q', ':Buffers!<CR>')
 -- nmap('<leader>r', ':Rg<space>')
 -- nmap('<leader><leader>r', ':Rg!<space>')
 

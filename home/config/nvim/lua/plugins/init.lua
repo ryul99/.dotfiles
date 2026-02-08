@@ -2,15 +2,15 @@ return {
     "itchyny/lightline.vim",
     "vim-utils/vim-interruptless",
     "editorconfig/editorconfig-vim",
-    "junegunn/fzf.vim",
-    "junegunn/fzf",
+    -- "junegunn/fzf.vim",
+    -- "junegunn/fzf",
     "vim-scripts/BufOnly.vim",
     "google/vim-searchindex",
 
-    {
-        dir = "~/.fzf",
-        build = "fzf#install()",
-    },
+    -- {
+    --     dir = "~/.fzf",
+    --     build = "fzf#install()",
+    -- },
 
     "AndrewRadev/splitjoin.vim",
 
