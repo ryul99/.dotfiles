@@ -46,7 +46,8 @@ o.cindent = true
 o.autoindent = true
 o.smartindent = true
 
--- Taib
+-- Tab
+o.tabstop = 4
 o.softtabstop = 4
 o.shiftwidth = 4
 o.expandtab = true
@@ -94,4 +95,3 @@ require("config.lazy")
 require ('config/plugins')
 require ('config/ufo')
 require ('config/keymaps')
-require ('config/avante')

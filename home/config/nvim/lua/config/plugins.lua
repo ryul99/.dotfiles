@@ -14,9 +14,6 @@ if vim.fn.has('persistent_undo') == 1 then
     vim.opt.undofile = true
 end
 
--- indentLine
-vim.g.indentLine_char = '▏'
-
 -- vim-better-whitespace
 vim.g.better_whitespace_enabled = true
 vim.g.strip_whitespace_on_save = true

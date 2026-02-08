@@ -24,11 +24,11 @@ nmap('<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
 nmap('[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 nmap(']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
 
--- Toggle *conceallevel*
-nmap('<Leader>c', ":let &cole=(&cole == 2) ? 0 : 2 <bar> echo 'conceallevel ' . &cole <CR>")
+-- -- Toggle *conceallevel*
+-- nmap('<Leader>c', ":let &cole=(&cole == 2) ? 0 : 2 <bar> echo 'conceallevel ' . &cole <CR>")
 
--- diagnostic
-nmap('<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
+-- -- diagnostic
+-- nmap('<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 
 -- Easy Indentation
 -- vmap('<Tab>', '>gv', {
@@ -38,13 +38,13 @@ nmap('<leader>e', ':lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 --     silent = true
 -- })
 
--- Easy Splitting
-nmap('<C-_>', ':split<CR>', {
-    silent = true
-})
-nmap('<C-\\>', ':vertical split<CR>', {
-    silent = true
-})
+-- -- Easy Splitting
+-- nmap('<C-_>', ':split<CR>', {
+--     silent = true
+-- })
+-- nmap('<C-\\>', ':vertical split<CR>', {
+--     silent = true
+-- })
 
 -- Easy Navigation
 nmap('<C-h>', '<C-w><C-h>')
@@ -151,14 +151,6 @@ nmap('=', '<C-^>')
 -- tagbar
 nmap('<F8>', ':TagbarToggle<CR>')
 
--- neotree
-nmap('<leader>T', ':Neotree toggle<CR>')
-
--- indentline
-nmap('<leader>i', ':IndentLinesToggle<CR>', {
-    silent = true
-})
-
 -- fzf
 nmap('<leader><Tab>', ':Files<CR>')
 nmap('<leader><leader><Tab>', ':Files!<CR>')
@@ -166,17 +158,6 @@ nmap('<leader>q', ':Buffers<CR>')
 nmap('<leader><leader>q', ':Buffers!<CR>')
 -- nmap('<leader>r', ':Rg<space>')
 -- nmap('<leader><leader>r', ':Rg!<space>')
-
--- gv
-nmap('<leader>g', ':GV<CR>')
-nmap('<leader><leader>g', ':GV!<CR>', {
-    silent = true
-})
-
--- gitgutter
-nmap('<leader>G', ':GitGutterToggle<CR>', {
-    silent = true
-})
 
 -- vim-obsession
 nmap('<leader>o', ':Obsess<CR>', {
@@ -197,14 +178,14 @@ imap('<C-/>', '<ESC>gcca')
 nmap('<leader>v', ':Vista!!<CR>')
 nmap('<leader><leader>v', ':Vista finder<CR>')
 
--- telescope.nvim
-local status_ok, telescope = pcall(require, "telescope.builtin")
-if status_ok then
-    nmap('<leader>ff', telescope.find_files, {})
-    nmap('<leader>fg', telescope.live_grep, {})
-    nmap('<leader>fb', telescope.buffers, {})
-    nmap('<leader>fh', telescope.help_tags, {})
-end
+-- -- telescope.nvim
+-- local status_ok, telescope = pcall(require, "telescope.builtin")
+-- if status_ok then
+--     nmap('<leader>ff', telescope.find_files, {})
+--     nmap('<leader>fg', telescope.live_grep, {})
+--     nmap('<leader>fb', telescope.buffers, {})
+--     nmap('<leader>fh', telescope.help_tags, {})
+-- end
 
 -- blame.nvim
 nmap('<leader>bw', ':BlameToggle window<CR>', {})

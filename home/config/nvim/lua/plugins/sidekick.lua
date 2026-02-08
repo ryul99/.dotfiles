@@ -47,41 +47,41 @@ return {
             mode = { "n", "t", "i", "x" },
         },
         {
-            "<leader>sa",
+            "<leader>aa",
             function() require("sidekick.cli").toggle() end,
             desc = "Sidekick Toggle CLI",
         },
         {
-            "<leader>ss",
+            "<leader>as",
             function() require("sidekick.cli").select() end,
             -- Or to select only installed tools:
             -- require("sidekick.cli").select({ filter = { installed = true } })
             desc = "Select CLI",
         },
         {
-            "<leader>sd",
+            "<leader>ad",
             function() require("sidekick.cli").close() end,
             desc = "Detach a CLI Session",
         },
         {
-            "<leader>st",
+            "<leader>at",
             function() require("sidekick.cli").send({ msg = "{this}" }) end,
             mode = { "x", "n" },
             desc = "Send This",
         },
         {
-            "<leader>sf",
+            "<leader>af",
             function() require("sidekick.cli").send({ msg = "{file}" }) end,
             desc = "Send File",
         },
         {
-            "<leader>sv",
+            "<leader>av",
             function() require("sidekick.cli").send({ msg = "{selection}" }) end,
             mode = { "x" },
             desc = "Send Visual Selection",
         },
         {
-            "<leader>sp",
+            "<leader>ap",
             function() require("sidekick.cli").prompt() end,
             mode = { "n", "x" },
             desc = "Sidekick Select Prompt",
