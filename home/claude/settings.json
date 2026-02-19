@@ -1,10 +1,7 @@
 {
-  "includeCoAuthoredBy": false,
-  "alwaysThinkingEnabled": true,
-  "autoUpdatesChannel": "latest",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
   "hooks": {
     "UserPromptSubmit": [
@@ -17,5 +14,11 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "latest"
 }
