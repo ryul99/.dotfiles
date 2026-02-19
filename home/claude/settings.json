@@ -19,6 +19,12 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
+  "enabledPlugins": {
+    "code-simplifier@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
   "alwaysThinkingEnabled": true,
   "autoUpdatesChannel": "latest"
 }
