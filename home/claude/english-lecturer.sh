@@ -69,7 +69,7 @@ $INPUT_PROMPT
 RESPONSE="$( \
     REWRITER_LOCK=1 claude \
     --no-session-persistence \
-    --model sonnet \
+    --model haiku \
     --output-format json \
     --json-schema "$JSON_SCHEMA" \
     -p "$INPUT_PROMPT"
