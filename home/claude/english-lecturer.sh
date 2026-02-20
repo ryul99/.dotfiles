@@ -67,7 +67,7 @@ $INPUT_PROMPT
 "
 
 RESPONSE="$( \
-    REWRITER_LOCK=1 claude \
+    REWRITER_LOCK=1 MAX_THINKING_TOKENS=4000 claude \
     --no-session-persistence \
     --model sonnet \
     --output-format json \
