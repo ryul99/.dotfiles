@@ -1,10 +1,6 @@
 #!/bin/bash
 # acknowledge: https://github.com/crescent-stdio for prompt
 
-if [[ -n "$REWRITER_LOCK" ]]; then
-    exit 0
-fi
-
 INPUT_PROMPT="$(cat | jq '.prompt')"
 TARGET_LANGUAGE="Korean"
 
@@ -67,9 +63,10 @@ $INPUT_PROMPT
 "
 
 RESPONSE="$( \
-    REWRITER_LOCK=1 MAX_THINKING_TOKENS=4000 claude \
+    MAX_THINKING_TOKENS=4000 claude \
     --no-session-persistence \
     --model sonnet \
+    --settings '{ "disableAllHooks": true }' \
     --output-format json \
     --json-schema "$JSON_SCHEMA" \
     -p "$INPUT_PROMPT"
