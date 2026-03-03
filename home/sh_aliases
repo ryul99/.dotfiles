@@ -173,9 +173,9 @@ alias pyvenv="pyenv virtualenv"
 # alias kns=kubens
 
 # etc
-COMMIT_PROMPT="Read staged changes and make a commit for the changes. Do not use 'git add' because the changes I want are already staged. Follow the 'Conventional Commit' format."
-COMMIT_KOREAN_PROMPT="Also, write commit message in Korean."
-REVIEW_PROMPT='Read the staged git diff from this project and let me know your review. Also check for possible issues.'
+COMMIT_PROMPT="Commit the already-staged changes. Do NOT run 'git add'. Follow the Conventional Commits format."
+COMMIT_KOREAN_PROMPT="Also, write the commit message in Korean."
+REVIEW_PROMPT='Review the staged git diff and identify any potential bugs and issues.'
 
 if hash codex 2>/dev/null; then
     function comc() {
