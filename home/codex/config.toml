@@ -1,9 +1,12 @@
-model = "gpt-5-codex"
+model = "gpt-5.4"
 model_provider = "openai"
-model_reasoning_effort = "low"
+model_reasoning_effort = "high"
+
+[tui]
+status_line = ["current-dir", "model-with-reasoning", "context-used", "context-window-size", "five-hour-limit", "weekly-limit"]
 
 [features]
-collab = true
+multi_agent = true
 
 [model_providers.openrouter]
 name = "OpenRouter"
