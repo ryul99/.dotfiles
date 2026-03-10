@@ -63,7 +63,8 @@ $INPUT_PROMPT
 "
 
 RESPONSE="$( \
-    MAX_THINKING_TOKENS=2000 CLAUDE_CODE_SIMPLE=1 claude \
+    CLAUDE_CODE_EFFORT_LEVEL=low MAX_THINKING_TOKENS=2000 \
+    CLAUDE_CODE_SIMPLE=1 claude \
     --no-session-persistence \
     --model sonnet \
     --settings '{ "disableAllHooks": true }' \
