@@ -149,8 +149,8 @@ if [ -d "$HOME/.rye" ]; then
 fi
 
 # rbenv settings
-if [ -d ~/.rbenv/ ]; then
-  eval "$($HOME/.rbenv/bin/rbenv init -)"
+if hash rbenv 2>/dev/null; then
+  eval "$(rbenv init -)"
 fi
 
 # nodenv settings
