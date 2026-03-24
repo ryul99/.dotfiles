@@ -45,7 +45,8 @@
       "source": {
         "source": "github",
         "repo": "anthropics/claude-plugins-official"
-      }
+      },
+      "autoUpdate": false
     }
   },
   "alwaysThinkingEnabled": true,
