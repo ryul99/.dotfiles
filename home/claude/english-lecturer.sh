@@ -62,6 +62,10 @@ $INPUT_PROMPT
 </PROMPT>\
 "
 
+hook_output() {
+    printf '%s' "$1" | jq -Rs '{ suppressOutput: false, systemMessage: . }'
+}
+
 RESPONSE="$( \
     CLAUDE_CODE_EFFORT_LEVEL=low MAX_THINKING_TOKENS=2000 \
     CLAUDE_CODE_SIMPLE=1 claude \
@@ -75,33 +79,26 @@ RESPONSE="$( \
 
 STRUCTURED_OUTPUT="$(echo "$RESPONSE" | jq -r '.structured_output')"
 
-# echo 'This is lesson message for user. Assistant should dismiss it.'
-
 if [[ -z "$STRUCTURED_OUTPUT" || "$STRUCTURED_OUTPUT" == "null" ]]; then
-    OUTPUT_PROMPT="Failed to generate lesson."
+    ERROR_DETAIL="$(echo "$RESPONSE" | jq -r '.result // "unknown error"')"
+    hook_output "Failed to generate lesson: $ERROR_DETAIL"
     exit 0
 fi
 
 ENHANCED="$(echo "$STRUCTURED_OUTPUT" | jq -r '.enhanced_prompt')"
-HAS_CORRECTIONS="$(echo "$STRUCTURED_OUTPUT" | jq -r '.has_corrections')"
+CORRECTIONS_DISPLAY=""
 TIP="$(echo "$STRUCTURED_OUTPUT" | jq -r '.tip')"
 
-OUTPUT_PROMPT="$ENHANCED"
-
+HAS_CORRECTIONS="$(echo "$STRUCTURED_OUTPUT" | jq -r '.has_corrections')"
 if [[ "$HAS_CORRECTIONS" == "true" ]]; then
     CORRECTIONS_DISPLAY="$(echo "$STRUCTURED_OUTPUT" | jq -r '
         .corrections[] |
         "- ✅ \(.category): \(.original) → \(.suggestion)\n  - \(.explanation)\n"
     ')"
-    OUTPUT_PROMPT="$OUTPUT_PROMPT
-
-$CORRECTIONS_DISPLAY"
 fi
 
-OUTPUT_PROMPT="
-$OUTPUT_PROMPT
-
+hook_output "$ENHANCED
+$CORRECTIONS_DISPLAY
 ✨ $TIP"
 
-printf '%s' "$OUTPUT_PROMPT" | jq -Rs '{ suppressOutput: false, systemMessage: . }'
 exit 0
