@@ -45,6 +45,7 @@ o.mouse = 'a'
 o.cindent = true
 o.autoindent = true
 o.smartindent = true
+o.textwidth = 0
 
 -- Tab
 o.tabstop = 4
