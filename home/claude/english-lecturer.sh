@@ -69,6 +69,8 @@ hook_output() {
 RESPONSE="$( \
     CLAUDE_CODE_EFFORT_LEVEL=low MAX_THINKING_TOKENS=2000 \
     CLAUDE_CODE_SIMPLE=1 claude \
+    --tools='' \
+    --strict-mcp-config \
     --no-session-persistence \
     --model sonnet \
     --settings '{ "disableAllHooks": true }' \
