@@ -209,9 +209,6 @@ fi
 # Less
 #
 
-export UV_EXCLUDE_NEWER='7 days'
-export npm_config_min_release_age=7
-
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
@@ -267,6 +264,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Disable dot files in archive
 export COPYFILE_DISABLE=true
+
+# min release age
+export UV_EXCLUDE_NEWER='7 days'
+export npm_config_min_release_age=7
 
 if [ -f "$HOME/.zshenv.local" ]; then
   source "$HOME/.zshenv.local"
