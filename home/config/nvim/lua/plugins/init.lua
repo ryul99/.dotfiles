@@ -155,13 +155,13 @@ return {
     "neovim/nvim-lspconfig",
     "mfussenegger/nvim-lint",
     "mhartington/formatter.nvim",
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-        config = function()
-            require("dapui").setup()
-        end,
-    },
+    -- {
+    --     "rcarriga/nvim-dap-ui",
+    --     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    --     config = function()
+    --         require("dapui").setup()
+    --     end,
+    -- },
     {
         "mason-org/mason.nvim",
         opts = {}
