@@ -103,6 +103,7 @@ fi
 
 hook_output "$ENHANCED
 $CORRECTIONS_DISPLAY
+
 ✨ $TIP"
 
 exit 0
