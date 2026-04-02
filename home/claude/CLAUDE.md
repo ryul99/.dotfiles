@@ -9,6 +9,10 @@
     - When you write code
     - When you write commit messages
 
+## When you edit code
+
+- When modifying a function's return type or structure, ALWAYS search for and update ALL call sites in the same pass before presenting the change as done.
+
 ## When you write commit messages
 
 - YOU SHOULD follow the conventional commit format.
