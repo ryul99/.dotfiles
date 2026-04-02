@@ -101,10 +101,12 @@ if [[ "$HAS_CORRECTIONS" == "true" ]]; then
     ')"
 fi
 
-hook_output "$ENHANCED
+hook_output "
 
+$ENHANCED
+${CORRECTIONS_DISPLAY:+
 $CORRECTIONS_DISPLAY
-
+}
 ✨ $TIP"
 
 exit 0
