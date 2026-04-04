@@ -1,4 +1,7 @@
 {
+  "env": {
+    "CLAUDE_CODE_NO_FLICKER": "1"
+  },
   "attribution": {
     "commit": "",
     "pr": ""
@@ -49,7 +52,6 @@
       "autoUpdate": false
     }
   },
-  "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "autoUpdatesChannel": "latest"
 }
