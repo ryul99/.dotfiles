@@ -43,5 +43,10 @@ config.keys = {
     },
 }
 
+-- term
+if os.execute("infocmp wezterm > /dev/null 2>&1") then
+    config.term = "wezterm"
+end
+
 -- and finally, return the configuration to wezterm
 return config
