@@ -23,6 +23,8 @@
     "~/.config/wezterm" : "home/config/wezterm",
     "~/.wezterm.lua" : "home/wezterm.lua",
 
+    "~/.config/uv/uv.toml": "home/config/uv/uv.toml",
+
     "~/.config/litellm_config.yaml" : "home/config/litellm_config.yaml",
 
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
