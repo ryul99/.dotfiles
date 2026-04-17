@@ -54,5 +54,6 @@
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "autoMemoryEnabled": false
 }
