@@ -54,6 +54,7 @@
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
+  "autoMemoryEnabled": false,
   "skipAutoPermissionPrompt": true,
-  "autoMemoryEnabled": false
+  "model": "best"
 }
