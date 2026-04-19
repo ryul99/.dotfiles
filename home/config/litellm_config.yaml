@@ -1,6 +1,5 @@
 litellm_settings:
   drop_params: true
-  callbacks: callbacks.proxy_handler_instance
 
 model_list:
   - model_name: "github_copilot/*"
