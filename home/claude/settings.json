@@ -15,6 +15,7 @@
       "Bash(git log:*)"
     ]
   },
+  "model": "best",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -41,7 +42,8 @@
     "feature-dev@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "council@ryul99-ai-tools": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -50,11 +52,16 @@
         "repo": "anthropics/claude-plugins-official"
       },
       "autoUpdate": false
+    },
+    "ryul99-ai-tools": {
+      "source": {
+        "source": "github",
+        "repo": "ryul99/ai-tools"
+      }
     }
   },
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "autoMemoryEnabled": false,
-  "skipAutoPermissionPrompt": true,
-  "model": "best"
+  "skipAutoPermissionPrompt": true
 }
