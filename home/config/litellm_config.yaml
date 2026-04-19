@@ -1,5 +1,6 @@
 litellm_settings:
   drop_params: true
+  callbacks: callbacks.proxy_handler_instance
 
 model_list:
   - model_name: "github_copilot/*"
@@ -11,6 +12,12 @@ model_list:
         "Copilot-Integration-Id": "vscode-chat",
         "user-agent": "GithubCopilot/1.155.0"
       }
+
+  - model_name: "chatgpt/*"
+    model_info:
+      mode: responses
+    litellm_params:
+      model: "chatgpt/*"
 
   # fallback
   - model_name: "*"
