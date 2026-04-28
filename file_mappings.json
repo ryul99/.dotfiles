@@ -44,6 +44,9 @@
     "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
     "~/.config/opencode/AGENTS.md" : "home/claude/CLAUDE.md",
 
+    "~/.pi/agent/settings.json" : "home/pi/agent/settings.json",
+    "~/.pi/agent/AGENTS.md" : "home/claude/CLAUDE.md",
+
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
 

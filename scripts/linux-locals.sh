@@ -952,6 +952,10 @@ install_omo() {
   npx oh-my-opencode install
 }
 
+install_pi() {
+  curl -fsSL https://pi.dev/install.sh | bash
+}
+
 install_mise() {
   curl https://mise.run | sh
   mise use -g usage

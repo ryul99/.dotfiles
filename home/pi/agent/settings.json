@@ -1,0 +1,11 @@
+{
+  "lastChangelogVersion": "0.70.5",
+  "defaultThinkingLevel": "high",
+  "compaction": {
+    "enabled": true
+  },
+  "enableInstallTelemetry": false,
+  "terminal": {
+    "showTerminalProgress": true
+  }
+}
