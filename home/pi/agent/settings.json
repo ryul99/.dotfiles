@@ -11,7 +11,8 @@
   "packages": [
     "npm:pi-subagents",
     "npm:pi-permission-system",
-    "npm:@marckrenn/pi-sub-bar"
+    "npm:@marckrenn/pi-sub-bar",
+    "npm:pi-web-access"
   ],
   "quietStartup": true,
   "defaultProvider": "openai-codex",
