@@ -262,6 +262,21 @@ if hash opencode 2>/dev/null; then
     }
 fi
 
+if hash pi 2>/dev/null; then
+    function pimc() {
+        local prompt="$COMMIT_PROMPT $@"
+        pi "$prompt"
+    }
+    function pimck() {
+        local prompt="$COMMIT_KOREAN_PROMPT $@"
+        pimc "$prompt"
+    }
+    function pirv() {
+        local prompt="$REVIEW_PROMPT $@"
+        pi "$prompt"
+    }
+fi
+
 function rgd() {
     rg --json "$@" | delta
 }

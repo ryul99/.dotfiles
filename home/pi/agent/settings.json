@@ -9,6 +9,11 @@
     "showTerminalProgress": true
   },
   "packages": [
-    "npm:pi-subagents"
-  ]
+    "npm:pi-subagents",
+    "npm:pi-permission-system",
+    "npm:@marckrenn/pi-sub-bar"
+  ],
+  "quietStartup": true,
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5"
 }
