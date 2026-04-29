@@ -24,6 +24,9 @@
     "~/.wezterm.lua" : "home/wezterm.lua",
 
     "~/.config/uv/uv.toml": "home/config/uv/uv.toml",
+    "~/.config/pnpm/rc": "home/config/pnpm/rc",
+    "~/.npmrc": "home/npmrc",
+    "~/.bunfig.toml": "home/bunfig.toml",
 
     "~/.config/litellm_config.yaml" : "home/config/litellm_config.yaml",
 
@@ -50,4 +53,3 @@
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
-
