@@ -14,7 +14,8 @@
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "UserPromptSubmit": [
