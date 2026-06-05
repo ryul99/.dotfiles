@@ -32,21 +32,21 @@
     "~/.aider.conf.yml" : "home/aider.conf.yml",
 
     "~/.codex/config.toml" : "home/codex/config.toml",
-    "~/.codex/AGENTS.md" : "home/claude/CLAUDE.md",
+    "~/.codex/AGENTS.md" : "home/AGENTS.md",
 
     "~/.gemini/settings.json" : "home/gemini/settings.json",
-    "~/.gemini/GEMINI.md" : "home/claude/CLAUDE.md",
+    "~/.gemini/GEMINI.md" : "home/AGENTS.md",
 
-    "~/.claude/CLAUDE.md" : "home/claude/CLAUDE.md",
+    "~/.claude/CLAUDE.md" : "home/AGENTS.md",
     "~/.claude/settings.json" : "home/claude/settings.json",
     "~/.claude/statusline.sh" : "home/claude/statusline.sh",
     "~/.claude/english-lecturer.sh": "home/claude/english-lecturer.sh",
 
     "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
-    "~/.config/opencode/AGENTS.md" : "home/claude/CLAUDE.md",
+    "~/.config/opencode/AGENTS.md" : "home/AGENTS.md",
 
     "~/.pi/agent/settings.json" : "home/pi/agent/settings.json",
-    "~/.pi/agent/AGENTS.md" : "home/claude/CLAUDE.md",
+    "~/.pi/agent/AGENTS.md" : "home/AGENTS.md",
     "~/.pi/agent/pi-permissions.jsonc" : "home/pi/agent/pi-permissions.jsonc",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
