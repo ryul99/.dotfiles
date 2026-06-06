@@ -47,35 +47,4 @@ return {
             })
         end,
     },
-
-    -- 2. nvim-treesitter-textobjects (Extension)
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        branch = "main",
-        dependencies = { "romus204/tree-sitter-manager.nvim" },
-        config = function()
-            require("nvim-treesitter-textobjects").setup({
-                textobjects = {
-                    move = {
-                        enable = true,
-                        set_jumps = false,
-                        goto_next_start = {
-                            ["]b"] = { query = "@code_cell.inner", desc = "Next code block" },
-                        },
-                        goto_previous_start = {
-                            ["[b"] = { query = "@code_cell.inner", desc = "Previous code block" },
-                        },
-                    },
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ["ib"] = { query = "@code_cell.inner", desc = "Inside block" },
-                            ["ab"] = { query = "@code_cell.outer", desc = "Around block" },
-                        },
-                    },
-                },
-            })
-        end,
-    },
 }
