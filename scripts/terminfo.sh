@@ -74,10 +74,8 @@ kitty() {
 
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1" >/dev/null; then
   $@
-elif [[ -z "$@" ]]; then
-  install
-  test
 else
-  ( echo "invalid command" )
+  echo "Usage: $0 [command], where command is one of the following:"
+  declare -F | cut -d" " -f3 | grep -v '^_'
   exit 1;
 fi
