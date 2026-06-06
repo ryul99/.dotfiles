@@ -40,7 +40,6 @@
     "~/.claude/CLAUDE.md" : "home/AGENTS.md",
     "~/.claude/settings.json" : "home/claude/settings.json",
     "~/.claude/statusline.sh" : "home/claude/statusline.sh",
-    "~/.claude/english-lecturer.sh": "home/claude/english-lecturer.sh",
 
     "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
     "~/.config/opencode/AGENTS.md" : "home/AGENTS.md",
