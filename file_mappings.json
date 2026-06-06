@@ -28,9 +28,6 @@
 
     "~/.config/litellm_config.yaml" : "home/config/litellm_config.yaml",
 
-    "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
-    "~/.aider.conf.yml" : "home/aider.conf.yml",
-
     "~/.codex/ryul99.config.toml" : "home/codex/ryul99.config.toml",
     "~/.codex/AGENTS.md" : "home/AGENTS.md",
 
@@ -40,9 +37,6 @@
     "~/.claude/CLAUDE.md" : "home/AGENTS.md",
     "~/.claude/settings.json" : "home/claude/settings.json",
     "~/.claude/statusline.sh" : "home/claude/statusline.sh",
-
-    "~/.config/opencode/opencode.json" : "home/opencode/opencode.json",
-    "~/.config/opencode/AGENTS.md" : "home/AGENTS.md",
 
     "~/.pi/agent/settings.json" : "home/pi/agent/settings.json",
     "~/.pi/agent/AGENTS.md" : "home/AGENTS.md",

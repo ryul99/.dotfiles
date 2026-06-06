@@ -251,21 +251,6 @@ if hash copilot 2>/dev/null; then
     }
 fi
 
-if hash opencode 2>/dev/null; then
-    function ocmc() {
-        local prompt="$COMMIT_PROMPT $@"
-        opencode run "$prompt"
-    }
-    function ocmck() {
-        local prompt="$COMMIT_KOREAN_PROMPT $@"
-        ocmc "$prompt"
-    }
-    function ocrv() {
-        local prompt="$REVIEW_PROMPT $@"
-        opencode run "$prompt"
-    }
-fi
-
 if hash pi 2>/dev/null; then
     function pimc() {
         local prompt="$COMMIT_PROMPT $@"

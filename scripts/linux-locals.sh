@@ -944,14 +944,6 @@ install_copilot() {
   npm install -g @github/copilot
 }
 
-install_opencode() {
-  curl -fsSL https://opencode.ai/install | bash
-}
-
-install_omo() {
-  npx oh-my-opencode install
-}
-
 install_pi() {
   curl -fsSL https://pi.dev/install.sh | bash
 }

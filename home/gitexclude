@@ -45,5 +45,4 @@ $RECYCLE.BIN/
 # vim-obsession
 Session.vim
 
-.aider*
 .claude/settings.local.json
