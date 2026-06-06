@@ -5,7 +5,15 @@ return {
         lazy = false,
         config = function()
             require("tree-sitter-manager").setup({
-                ensure_installed = { "markdown", "markdown_inline", "python", "lua" },
+                ensure_installed = {
+                    "markdown",
+                    "markdown_inline",
+                    "python",
+                    "lua",
+                    "html",
+                    "latex",
+                    "yaml"
+                },
                 auto_install = true,
                 highlight = {},
             })
