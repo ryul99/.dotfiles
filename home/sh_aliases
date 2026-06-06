@@ -178,9 +178,13 @@ COMMIT_KOREAN_PROMPT="Also, write the commit message in Korean."
 REVIEW_PROMPT='Review the staged git diff and identify any potential bugs and issues.'
 
 if hash codex 2>/dev/null; then
+    function corl() {
+        codex -p ryul99 $@
+    }
+
     function comc() {
         local prompt="$COMMIT_PROMPT $@"
-        codex -c "model_reasoning_effort=low" "$prompt"
+        corl -c "model_reasoning_effort=low" "$prompt"
     }
 
     function comck() {
@@ -190,7 +194,7 @@ if hash codex 2>/dev/null; then
 
     function corv() {
         local prompt="$REVIEW_PROMPT $@"
-        codex -c "model_reasoning_effort=medium" "$prompt"
+        corl -c "model_reasoning_effort=medium" "$prompt"
     }
 fi
 
