@@ -31,7 +31,7 @@
     "~/.config/aichat/config.yaml" : "home/config/aichat/config.yaml",
     "~/.aider.conf.yml" : "home/aider.conf.yml",
 
-    "~/.codex/config.toml" : "home/codex/config.toml",
+    "~/.codex/ryul99.config.toml" : "home/codex/ryul99.config.toml",
     "~/.codex/AGENTS.md" : "home/AGENTS.md",
 
     "~/.gemini/settings.json" : "home/gemini/settings.json",

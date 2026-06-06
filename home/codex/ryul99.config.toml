@@ -1,15 +1,9 @@
-model = "gpt-5.5"
-model_provider = "openai"
-model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 approval_policy = "on-request"
 approvals_reviewer = "user"
 
 [tui]
 status_line = ["current-dir", "model-with-reasoning", "context-used", "context-window-size", "five-hour-limit", "weekly-limit"]
-
-[features]
-multi_agent = true
 
 [model_providers.openrouter]
 name = "OpenRouter"
