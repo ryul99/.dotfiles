@@ -1,62 +1,13 @@
-local function is_tree_sitter_cli_working()
-    -- Redirect output to void to avoid error messages in the UI
-    local cmd = "tree-sitter --version > /dev/null 2>&1"
-
-    vim.fn.system(cmd)
-    return vim.v.shell_error == 0
-end
-
--- install only when 1. not installed and 2. stable language
-local function need_install(lang)
-    local ok, _ = pcall(vim.treesitter.get_string_parser, "", lang)
-    if ok then
-        return false
-    end
-
-    if not is_tree_sitter_cli_working() then
-        return false
-    end
-
-    local ok, nt = pcall(require, "nvim-treesitter")
-    if not ok then
-        return false
-    end
-
-    local stable_langs = nt.get_available(1)
-    return vim.tbl_contains(stable_langs, lang)
-end
-
 return {
-    -- 1. nvim-treesitter (Core)
+    -- 1. Tree-sitter parser manager
     {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "main",
+        "romus204/tree-sitter-manager.nvim",
         lazy = false,
-        build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter").setup({})
-
-            -- ensure install
-            local ensure_installed = { "markdown", "markdown_inline", "python", "lua" }
-            for _, lang in ipairs(ensure_installed) do
-                if need_install(lang) then
-                    require("nvim-treesitter").install({ lang })
-                end
-            end
-
-            -- auto install
-            vim.api.nvim_create_autocmd("FileType", {
-                group = vim.api.nvim_create_augroup("TreesitterAutoInstall", { clear = true }),
-                callback = function(args)
-                    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
-                    if not lang then
-                        return
-                    end
-
-                    if need_install(lang) then
-                        require("nvim-treesitter").install({ lang })
-                    end
-                end,
+            require("tree-sitter-manager").setup({
+                ensure_installed = { "markdown", "markdown_inline", "python", "lua" },
+                auto_install = true,
+                highlight = {},
             })
 
             -- Highlighting
@@ -66,15 +17,15 @@ return {
                     local max_filesize = 1024 * 1024 -- 1MB
                     local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
 
-                    if vim.bo.filetype ~= "markdown" and (ok and stats and stats.size > max_filesize) then
+                    if vim.bo[args.buf].filetype ~= "markdown" and (ok and stats and stats.size > max_filesize) then
                         return
                     end
 
                     local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
                     if lang and pcall(vim.treesitter.get_parser, args.buf, lang) then
                         -- vim.notify("Treesitter highlighting enabled for " .. lang, vim.log.levels.INFO)
-                        vim.treesitter.start()
-                        vim.bo.syntax = 'ON'
+                        vim.treesitter.start(args.buf)
+                        vim.bo[args.buf].syntax = 'ON'
                     end
                 end,
             })
@@ -85,7 +36,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         branch = "main",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        dependencies = { "romus204/tree-sitter-manager.nvim" },
         config = function()
             require("nvim-treesitter-textobjects").setup({
                 textobjects = {

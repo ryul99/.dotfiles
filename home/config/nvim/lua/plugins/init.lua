@@ -145,7 +145,7 @@ return {
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'romus204/tree-sitter-manager.nvim', 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {},
@@ -191,7 +191,7 @@ return {
     {
         'jmbuhr/otter.nvim',
         dependencies = {
-            'nvim-treesitter/nvim-treesitter',
+            'romus204/tree-sitter-manager.nvim',
         },
         opts = {},
     },
