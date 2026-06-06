@@ -17,19 +17,6 @@
     ],
     "defaultMode": "auto"
   },
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/english-lecturer.sh",
-            "timeout": 120
-          }
-        ]
-      }
-    ]
-  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -41,7 +28,8 @@
     "skill-creator@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
-    "council@ryul99-ai-tools": true
+    "council@ryul99-ai-tools": true,
+    "english-lecturer@ryul99-ai-tools": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
