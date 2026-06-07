@@ -1,7 +1,10 @@
+local treesitter = require("utils.treesitter")
+
 return {
     -- 1. Tree-sitter parser manager
     {
         "romus204/tree-sitter-manager.nvim",
+        cond = treesitter.has_cli,
         lazy = false,
         config = function()
             require("tree-sitter-manager").setup({

@@ -1,3 +1,5 @@
+local treesitter = require("utils.treesitter")
+
 return {
     "benlubas/molten-nvim",
     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
@@ -14,7 +16,7 @@ return {
             "quarto-dev/quarto-nvim",
             dependencies = {
                 "jmbuhr/otter.nvim",
-                "romus204/tree-sitter-manager.nvim",
+                treesitter.manager_spec(),
             },
             config = function()
                 local quarto = require("quarto")

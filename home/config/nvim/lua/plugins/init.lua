@@ -1,3 +1,5 @@
+local treesitter = require("utils.treesitter")
+
 return {
     "itchyny/lightline.vim",
     "vim-utils/vim-interruptless",
@@ -145,7 +147,7 @@ return {
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'romus204/tree-sitter-manager.nvim', 'nvim-tree/nvim-web-devicons' },
+        dependencies = { treesitter.manager_spec(), 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {},
@@ -191,7 +193,7 @@ return {
     {
         'jmbuhr/otter.nvim',
         dependencies = {
-            'romus204/tree-sitter-manager.nvim',
+            treesitter.manager_spec(),
         },
         opts = {},
     },
