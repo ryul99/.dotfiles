@@ -18,7 +18,7 @@ return {
                     "yaml"
                 },
                 auto_install = true,
-                highlight = {},
+                highlight = false,
             })
 
             -- Highlighting
