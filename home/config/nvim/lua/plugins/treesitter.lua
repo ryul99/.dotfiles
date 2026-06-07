@@ -44,7 +44,7 @@ return {
                     local lang = vim.treesitter.language.get_lang(filetype)
                     if lang and pcall(vim.treesitter.start, args.buf, lang) then
                         -- vim.notify("Treesitter highlighting enabled for " .. lang, vim.log.levels.INFO)
-                        vim.bo[args.buf].syntax = 'ON'
+                        vim.bo[args.buf].syntax = lang
                     end
                 end,
             })
