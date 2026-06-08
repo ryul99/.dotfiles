@@ -1,3 +1,66 @@
+local function select_blink_item(direction, cmp)
+    cmp = cmp or require("blink.cmp")
+
+    if cmp.is_menu_visible() then
+        if direction == "next" then
+            return cmp.select_next()
+        end
+        return cmp.select_prev()
+    end
+
+    local list = require("blink.cmp.completion.list")
+    if cmp.is_active() and #list.items > 0 then
+        vim.schedule(function()
+            if direction == "next" then
+                list.select_next({ auto_insert = false })
+            else
+                list.select_prev({ auto_insert = false })
+            end
+        end)
+        return true
+    end
+end
+
+local function blink_select(direction)
+    return function(cmp)
+        return select_blink_item(direction, cmp)
+    end
+end
+
+local function set_insert_select_keymap(lhs, direction)
+    local fallback = require("blink.cmp.keymap.fallback").wrap("i", lhs)
+    vim.keymap.set("i", lhs, function()
+        if select_blink_item(direction) then
+            return ""
+        end
+        return fallback()
+    end, {
+        buffer = true,
+        desc = "blink.cmp: Select " .. (direction == "next" and "Next" or "Prev"),
+        expr = true,
+        replace_keycodes = false,
+        silent = true,
+    })
+end
+
+local function ensure_insert_select_keymaps()
+    set_insert_select_keymap("<NL>", "next")
+    set_insert_select_keymap("<C-j>", "next")
+    set_insert_select_keymap("<C-k>", "prev")
+end
+
+local function setup_insert_select_keymaps()
+    vim.api.nvim_create_autocmd("InsertEnter", {
+        callback = function()
+            vim.schedule(ensure_insert_select_keymaps)
+        end,
+    })
+
+    if vim.api.nvim_get_mode().mode == "i" then
+        vim.schedule(ensure_insert_select_keymaps)
+    end
+end
+
 return {
     "saghen/blink.cmp",
     version = "1.*",
@@ -14,8 +77,8 @@ return {
     opts = {
         keymap = {
             preset = "none",
-            ["<C-k>"] = { "select_prev", "fallback" },
-            ["<C-j>"] = { "select_next", "fallback" },
+            ["<C-k>"] = { blink_select("prev"), "fallback" },
+            ["<C-j>"] = { blink_select("next"), "fallback" },
             ["<C-b>"] = { "scroll_documentation_up", "fallback" },
             ["<C-f>"] = { "scroll_documentation_down", "fallback" },
             ["<C-e>"] = { "show", "hide", "fallback" },
@@ -124,5 +187,9 @@ return {
             },
         },
     },
+    config = function(_, opts)
+        require("blink.cmp").setup(opts)
+        setup_insert_select_keymaps()
+    end,
     enable = true,
 }
