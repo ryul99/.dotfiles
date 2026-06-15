@@ -3,7 +3,8 @@ approval_policy = "on-request"
 approvals_reviewer = "user"
 
 [tui]
-status_line = ["current-dir", "model-with-reasoning", "context-used", "context-window-size", "five-hour-limit", "weekly-limit"]
+status_line = ["current-dir", "model-with-reasoning", "context-used", "context-window-size", "permissions", "approval-mode", "five-hour-limit", "weekly-limit"]
+status_line_use_colors = true
 
 [model_providers.openrouter]
 name = "OpenRouter"
