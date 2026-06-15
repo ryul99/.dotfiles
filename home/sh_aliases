@@ -182,6 +182,10 @@ if hash codex 2>/dev/null; then
         codex -p ryul99 $@
     }
 
+    function corla() {
+        corl -c approvals_reviewer=auto_review $@
+    }
+
     function comc() {
         local prompt="$COMMIT_PROMPT $@"
         corl -c "model_reasoning_effort=low" "$prompt"
