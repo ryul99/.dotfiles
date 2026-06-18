@@ -9,6 +9,8 @@
   "permissions": {
     "allow": [
       "Bash(gh issue view:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue status:*)",
       "Bash(gh pr view:*)",
       "Bash(gh pr diff:*)",
       "Bash(git status:*)",
