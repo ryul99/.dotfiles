@@ -21,7 +21,7 @@ else
     context_percent=0
 fi
 
-# Build context progress bar (20 chars wide)
+# Build context progress bar
 bar_width=15
 filled=$((context_percent * bar_width / 100))
 empty=$((bar_width - filled))
@@ -84,7 +84,37 @@ if [ -n "$session_cost" ] && [ "$session_cost" != "null" ] && [ "$session_cost" 
 fi
 
 # Build context bar display
-context_info="${GRAY}${bar}${NC} ${context_percent}%"
+context_info="ctx: ${GRAY}${bar}${NC} ${context_percent}%"
+
+# Extract 5-hour rate limit information (Claude.ai subscription rolling limit)
+five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+
+# Build 5-hour rate limit gauge (same style as context gauge)
+five_hour_info=""
+if [ -n "$five_hour_pct" ]; then
+    five_hour_int=$(printf "%.0f" "$five_hour_pct")
+    fh_filled=$((five_hour_int * bar_width / 100))
+    fh_empty=$((bar_width - fh_filled))
+    fh_bar=""
+    for ((i=0; i<fh_filled; i++)); do fh_bar+="█"; done
+    for ((i=0; i<fh_empty; i++)); do fh_bar+="░"; done
+    five_hour_info=" ${GRAY}|${NC} 5h: ${GRAY}${fh_bar}${NC} ${five_hour_int}%"
+fi
+
+# Extract 7-day rate limit information (Claude.ai subscription weekly limit)
+seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+
+# Build 7-day rate limit gauge (same style as context gauge)
+seven_day_info=""
+if [ -n "$seven_day_pct" ]; then
+    seven_day_int=$(printf "%.0f" "$seven_day_pct")
+    sd_filled=$((seven_day_int * bar_width / 100))
+    sd_empty=$((bar_width - sd_filled))
+    sd_bar=""
+    for ((i=0; i<sd_filled; i++)); do sd_bar+="█"; done
+    for ((i=0; i<sd_empty; i++)); do sd_bar+="░"; done
+    seven_day_info=" ${GRAY}|${NC} 7d: ${GRAY}${sd_bar}${NC} ${seven_day_int}%"
+fi
 
 # Output the status line
-echo -e "${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${model_name}${NC} ${GRAY}|${NC} ${context_info}${git_info:+ ${GRAY}|${NC}}${cost_info}"
+echo -e "${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${model_name}${NC} ${GRAY}|${NC} ${context_info}${cost_info}${git_info:+ ${GRAY}|${NC}}${five_hour_info}${seven_day_info}"
