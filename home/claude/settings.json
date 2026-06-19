@@ -45,7 +45,8 @@
       "source": {
         "source": "github",
         "repo": "ryul99/ai-tools"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "effortLevel": "high",
