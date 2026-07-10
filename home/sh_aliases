@@ -183,7 +183,7 @@ if hash codex 2>/dev/null; then
     }
 
     function corla() {
-        corl -c approvals_reviewer=auto_review $@
+        corl -c approvals_reviewer=auto_review -c sandbox_mode=workspace-write $@
     }
 
     function comc() {
