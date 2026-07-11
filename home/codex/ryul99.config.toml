@@ -2,6 +2,11 @@ sandbox_mode = "read-only"
 approval_policy = "on-request"
 approvals_reviewer = "user"
 
+[features.multi_agent_v2]
+enabled = true
+hide_spawn_agent_metadata = false
+tool_namespace = "agents"
+
 [tui]
 status_line = ["current-dir", "model-with-reasoning", "context-used", "five-hour-limit", "weekly-limit", "permissions", "approval-mode"]
 status_line_use_colors = true
