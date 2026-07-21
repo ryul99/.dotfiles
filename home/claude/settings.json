@@ -52,5 +52,6 @@
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "autoMemoryEnabled": false,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "autoCompactEnabled": true
 }
