@@ -32,8 +32,10 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "council@ryul99-ai-tools": true,
-    "english-lecturer@ryul99-ai-tools": true,
-    "gepa-optimize-anything@gepa": true
+    "english-lecturer@ryul99-ai-tools": false,
+    "gepa-optimize-anything@gepa": true,
+    "okf-wiki-autosave@ryul99-ai-tools": true,
+    "okf-wiki@ryul99-ai-tools": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
