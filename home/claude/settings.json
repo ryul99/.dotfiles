@@ -19,6 +19,7 @@
     ],
     "defaultMode": "auto"
   },
+  "disableAgentView": true,
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -59,6 +60,6 @@
   "effortLevel": "high",
   "autoUpdatesChannel": "latest",
   "autoMemoryEnabled": false,
-  "skipAutoPermissionPrompt": true,
-  "autoCompactEnabled": true
+  "autoCompactEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
