@@ -35,6 +35,9 @@ tools:
   witr: pranshuparmar/witr
   gh: cli/cli
   codex: openai/codex
+  codex-code-mode-host:
+    repo: openai/codex
+    asset_patterns: codex-code-mode-host-*
   bun:
     repo: oven-sh/bun
     platform_map:
