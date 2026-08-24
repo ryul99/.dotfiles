@@ -47,6 +47,7 @@ tools:
       arm64: aarch64
     asset_patterns: bun-{platform}-{arch}.zip
   tree-sitter: tree-sitter/tree-sitter
+  deno: denoland/deno
 
   # Example with shell customization
   # starship:
