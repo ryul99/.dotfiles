@@ -35,7 +35,8 @@
     "english-lecturer@ryul99-ai-tools": true,
     "gepa-optimize-anything@gepa": true,
     "okf-wiki@ryul99-ai-tools": true,
-    "okf-wiki-autosave@ryul99-ai-tools": true
+    "okf-wiki-autosave@ryul99-ai-tools": true,
+    "tips-korean@ryul99-ai-tools": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
