@@ -54,6 +54,6 @@
 [gpg "ssh"]
     defaultKeyCommand = ssh-add -L
 [commit]
-    gpgsign = true
+    gpgsign = false
 [init]
     defaultBranch = main
