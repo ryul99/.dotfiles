@@ -37,7 +37,14 @@ tools:
   codex: openai/codex
   codex-code-mode-host:
     repo: openai/codex
-    asset_patterns: codex-code-mode-host-*
+    platform_map:
+      linux: unknown-linux-musl
+      macos: apple-darwin
+      windows: pc-windows-msvc.exe
+    arch_map:
+      amd64: x86_64
+      arm64: aarch64
+    asset_patterns: codex-code-mode-host-{arch}-{platform}.tar.gz
   bun:
     repo: oven-sh/bun
     platform_map:
