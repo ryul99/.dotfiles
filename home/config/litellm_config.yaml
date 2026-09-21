@@ -2,6 +2,13 @@ litellm_settings:
   drop_params: true
 
 model_list:
+  - model_name: "llama_cpp/*"
+    litellm_params:
+      model: "openai/*"
+      api_base: "http://127.0.0.1:9931/v1"
+      api_key: "unused"
+      use_chat_completions_api: true
+
   - model_name: "github_copilot/*"
     litellm_params:
       model: "github_copilot/*"

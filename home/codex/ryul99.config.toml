@@ -1,7 +1,7 @@
 sandbox_mode = "read-only"
 approval_policy = "on-request"
 approvals_reviewer = "user"
-oss_provider = "llama_cpp"
+oss_provider = "litellm"
 
 [features.multi_agent_v2]
 enabled = true
@@ -20,6 +20,10 @@ env_key = "OPENROUTER_API_KEY"
 
 [model_providers.llama_cpp]
 name = "llama.cpp"
-base_url = "http://localhost:9931"
-wire_api = "responses"
+base_url = "http://localhost:9931/v1"
+requires_openai_auth = false
+
+[model_providers.litellm]
+name = "LiteLLM"
+base_url = "http://localhost:4000/v1"
 requires_openai_auth = false
