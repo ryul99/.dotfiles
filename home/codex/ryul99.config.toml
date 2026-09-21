@@ -8,6 +8,7 @@ hide_spawn_agent_metadata = false
 tool_namespace = "agents"
 
 [tui]
+whimsy = false
 status_line = ["current-dir", "model-with-reasoning", "context-used", "five-hour-limit", "weekly-limit", "permissions", "approval-mode"]
 status_line_use_colors = true
 
