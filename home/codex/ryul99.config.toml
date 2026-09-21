@@ -1,6 +1,7 @@
 sandbox_mode = "read-only"
 approval_policy = "on-request"
 approvals_reviewer = "user"
+oss_provider = "llama_cpp"
 
 [features.multi_agent_v2]
 enabled = true
@@ -16,3 +17,9 @@ status_line_use_colors = true
 name = "OpenRouter"
 base_url = "https://openrouter.ai/api/v1"
 env_key = "OPENROUTER_API_KEY"
+
+[model_providers.llama_cpp]
+name = "llama.cpp"
+base_url = "http://localhost:9931"
+wire_api = "responses"
+requires_openai_auth = false
