@@ -7,12 +7,14 @@
         - When you write code
         - When you write commit messages
 
-# When you edit code
+# When you write code
 
 - When modifying a function's return type or structure, ALWAYS search for and update ALL call sites in the same pass before presenting the change as done.
 - Documentation and tests should describe current behavior, not removed behavior.
     - When deleting a feature, delete its associated documentation and tests unless they describe a still-active contract.
     - Do not leave "feature removed", "obsolete", "retired", or similar explanatory notes in working documentation.
+- Comments should describe the "why" of the code, not the "what" or "how". The code itself should be clear enough to convey the "what" and "how".
+    - In most cases, you don't need comments.
 
 # When you write commit messages
 
