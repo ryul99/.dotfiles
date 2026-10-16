@@ -933,7 +933,7 @@ install_claude() {
 }
 
 install_codex() {
-  npm install -g @openai/codex
+  curl -fsSL https://chatgpt.com/codex/install.sh | sh
 }
 
 install_gemini() {
