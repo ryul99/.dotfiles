@@ -16,6 +16,13 @@
 - Comments should describe the "why" of the code, not the "what" or "how". The code itself should be clear enough to convey the "what" and "how".
     - In most cases, you don't need comments.
 
+# When you write tests
+
+- Derive assertions from requirements and observable behavior, not by copying the implementation. Keep assertions stable across behavior-preserving refactors.
+- Prefer result or state assertions. Verify calls, counts, or order only when they enforce a meaningful contract or direct outcome testing is impractical.
+- Keep snapshots small and focused, validate baselines, and review diffs before updating them.
+- Before rewriting or removing tests that merely mirror implementation, check which contracts or defects they protect against.
+
 # When you write commit messages
 
 - YOU SHOULD follow the conventional commit format.
