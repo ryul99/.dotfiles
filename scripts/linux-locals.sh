@@ -971,6 +971,10 @@ install_treesitter() {
   cargo install --locked tree-sitter-cli
 }
 
+install_terminal_browser() {
+  curl -fsSL https://terminal-browser.sh/install | bash
+}
+
 # entrypoint script
 if [[ -n "$1" && "$1" != "--help" ]] && declare -f "$1"; then
   echo -e "\nProceed?"
