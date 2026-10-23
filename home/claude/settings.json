@@ -32,12 +32,13 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "council@ryul99-ai-tools": true,
-    "english-lecturer@ryul99-ai-tools": true,
+    "english-lecturer-mod@ryul99-ai-tools": true,
     "gepa-optimize-anything@gepa": true,
     "okf-wiki@ryul99-ai-tools": true,
-    "okf-wiki-autosave@ryul99-ai-tools": true,
+    "okf-wiki-autosave-mod@ryul99-ai-tools": true,
     "tips-korean@ryul99-ai-tools": true,
-    "tips-engineering@ryul99-ai-tools": true
+    "tips-engineering@ryul99-ai-tools": true,
+    "cc-plugin-you-should-know@builtin": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
