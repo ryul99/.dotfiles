@@ -25,13 +25,13 @@
 
 # When you write commit messages
 
-- YOU SHOULD follow the conventional commit format.
+- Follow the conventional commit format.
     - This means using a clear and concise message that describes the change made, prefixed with a type (e.g., feat, fix, docs, style, refactor, perf, test, chore).
-- YOU SHOULD NOT write commit messages that are too long.
+- Do not write commit messages that are too long.
     - A good commit message is typically one line long.
 
 # When you debug
 
-- Do NOT jump to conclusions from code alone. Always verify with real data and real environments first.
-- Do NOT fabricate mock data to "confirm" a hypothesis — mock data tends to reflect your assumptions, not reality.
+- Do not jump to conclusions from code alone. Always verify with real data and real environments first.
+- Do not fabricate mock data to "confirm" a hypothesis — mock data tends to reflect your assumptions, not reality.
 - When the user provides access to a live system (ES, API, DB, etc.), use it directly instead of simulating.
