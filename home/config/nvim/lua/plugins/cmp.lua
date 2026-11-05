@@ -172,7 +172,7 @@ return {
             completion = { menu = { auto_show = false } },
         },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer", "copilot" },
+            default = { "lsp", "path", "snippets", "buffer" }, --"copilot" },
             providers = {
                 lsp = {
                     min_keyword_length = 3,
