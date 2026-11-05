@@ -27,3 +27,6 @@ requires_openai_auth = false
 name = "LiteLLM"
 base_url = "http://localhost:4000/v1"
 requires_openai_auth = false
+
+[plugins."okf-wiki-handoff@ryul99-ai-tools".mcp_servers.okf-handoff]
+default_tools_approval_mode = "approve"
