@@ -68,11 +68,11 @@ return {
         "xzbdmw/colorful-menu.nvim",
         "rafamadriz/friendly-snippets",
         "onsails/lspkind.nvim",
-        "zbirenbaum/copilot.lua",
-        {
-            "giuxtaposition/blink-cmp-copilot",
-            dependencies = { "zbirenbaum/copilot.lua" },
-        },
+        -- "zbirenbaum/copilot.lua",
+        -- {
+        --     "giuxtaposition/blink-cmp-copilot",
+        --     dependencies = { "zbirenbaum/copilot.lua" },
+        -- },
     },
     opts = {
         keymap = {
@@ -178,12 +178,12 @@ return {
                     min_keyword_length = 3,
                     fallbacks = {},
                 },
-                copilot = {
-                    name = "copilot",
-                    module = "blink-cmp-copilot",
-                    score_offset = 100,
-                    async = true,
-                },
+                -- copilot = {
+                --     name = "copilot",
+                --     module = "blink-cmp-copilot",
+                --     score_offset = 100,
+                --     async = true,
+                -- },
             },
         },
     },

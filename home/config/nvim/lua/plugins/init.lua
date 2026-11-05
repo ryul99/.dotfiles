@@ -284,21 +284,21 @@ return {
             }
         end,
     },
-    {
-        "zbirenbaum/copilot.lua",
-        dependencies = {
-            "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-        },
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-                filetypes = { yaml = true, markdown = true },
-                -- copilot_model = "gpt-41-copilot",
-                nes = { enabled = true }
-            })
-        end,
-    },
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     dependencies = {
+    --         "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    --     },
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({
+    --             suggestion = { enabled = false },
+    --             panel = { enabled = false },
+    --             filetypes = { yaml = true, markdown = true },
+    --             -- copilot_model = "gpt-41-copilot",
+    --             nes = { enabled = true }
+    --         })
+    --     end,
+    -- },
 }
