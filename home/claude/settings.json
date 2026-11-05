@@ -35,10 +35,10 @@
     "english-lecturer-mod@ryul99-ai-tools": true,
     "gepa-optimize-anything@gepa": true,
     "okf-wiki@ryul99-ai-tools": true,
-    "okf-wiki-autosave-mod@ryul99-ai-tools": true,
     "tips-korean@ryul99-ai-tools": true,
     "tips-engineering@ryul99-ai-tools": true,
-    "cc-plugin-you-should-know@builtin": true
+    "cc-plugin-you-should-know@builtin": true,
+    "okf-wiki-handoff-mod@ryul99-ai-tools": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
