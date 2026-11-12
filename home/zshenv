@@ -4,6 +4,9 @@
 
 setopt auto_cd histignorealldups sharehistory
 
+# Without this, an argument like `====` is taken as =cmd expansion and fails with "=== not found".
+unsetopt equals
+
 # TIME FMT
 export TIMEFMT=$'\n================\nCPU\t%P\nuser\t%*U\nsystem\t%*S\ntotal\t%*E'
 
