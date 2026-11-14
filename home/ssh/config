@@ -2,12 +2,12 @@ Include ~/.ssh/config.local
 
 Host demian
     HostName demian.ryul99.me
-    User ryul99
+    User ubuntu
     ForwardAgent yes
 
 Host selkena
     HostName selkena.ryul99.me
-    User ryul99
+    User ubuntu
     ForwardAgent yes
 
 Host hikawa
