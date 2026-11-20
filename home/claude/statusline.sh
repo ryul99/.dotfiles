@@ -8,6 +8,7 @@ input=$(cat)
 # Extract information from JSON
 model_name=$(echo "$input" | jq -r '.model.display_name')
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
+effort_level=$(echo "$input" | jq -r '.effort.level // empty')
 
 # Extract context window information
 context_size=$(echo "$input" | jq -r '.context_window.context_window_size // 200000')
@@ -31,7 +32,7 @@ for ((i=0; i<empty; i++)); do bar+="░"; done
 
 # Extract cost information
 session_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
-[ "$session_cost" != "empty" ] && session_cost=$(printf "%.4f" "$session_cost") || session_cost=""
+[ -n "$session_cost" ] && session_cost=$(printf "%.4f" "$session_cost")
 
 # Get directory name (basename)
 dir_name=$(basename "$current_dir")
@@ -79,8 +80,13 @@ NC='\033[0m' # No Color
 
 # Add session cost if available
 cost_info=""
-if [ -n "$session_cost" ] && [ "$session_cost" != "null" ] && [ "$session_cost" != "empty" ]; then
+if [ -n "$session_cost" ]; then
     cost_info=" ${GRAY}[\$$session_cost]${NC}"
+fi
+
+effort_info=""
+if [ -n "$effort_level" ]; then
+    effort_info=" ${GRAY}(${effort_level})${NC}"
 fi
 
 # Build context bar display
@@ -117,4 +123,4 @@ if [ -n "$seven_day_pct" ]; then
 fi
 
 # Output the status line
-echo -e "${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${model_name}${NC} ${GRAY}|${NC} ${context_info}${cost_info}${git_info:+ ${GRAY}|${NC}}${five_hour_info}${seven_day_info}"
+echo -e "${BLUE}${dir_name}${NC} ${GRAY}|${NC} ${CYAN}${model_name}${NC}${effort_info} ${GRAY}|${NC} ${context_info}${cost_info}${git_info:+ ${GRAY}|${NC}}${five_hour_info}${seven_day_info}"
