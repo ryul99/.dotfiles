@@ -86,7 +86,7 @@ fi
 
 effort_info=""
 if [ -n "$effort_level" ]; then
-    effort_info=" ${GRAY}(${effort_level})${NC}"
+    effort_info=" (${effort_level})"
 fi
 
 # Build context bar display
