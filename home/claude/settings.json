@@ -26,7 +26,6 @@
   },
   "enabledPlugins": {
     "skill-creator@claude-plugins-official": true,
-    "council@ryul99-ai-tools": true,
     "english-lecturer-mod@ryul99-ai-tools": true,
     "gepa-optimize-anything@gepa": true,
     "okf-wiki@ryul99-ai-tools": true,
