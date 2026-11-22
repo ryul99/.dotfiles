@@ -10,7 +10,7 @@
   },
   "packages": [
     "npm:pi-subagents",
-    "npm:pi-permission-system",
+    "npm:pi-sandbox",
     "npm:@marckrenn/pi-sub-bar",
     "npm:pi-web-access"
   ],
