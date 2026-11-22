@@ -9,7 +9,17 @@
     "showTerminalProgress": true
   },
   "packages": [
-    "npm:pi-subagents",
+    {
+      "source": "npm:pi-subagents",
+      "prompts": [
+        "-prompts/council.md",
+        "-prompts/gather-context-and-clarify.md",
+        "-prompts/parallel-cleanup.md",
+        "-prompts/parallel-research.md",
+        "-prompts/parallel-review.md",
+        "-prompts/review-loop.md"
+      ]
+    },
     "npm:pi-sandbox",
     "npm:pi-web-access",
     "npm:pi-open-tui"
