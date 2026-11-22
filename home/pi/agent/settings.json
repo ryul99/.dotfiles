@@ -1,7 +1,6 @@
 {
   "$schema": "https://pi.dev/schemas/settings.schema.json",
   "defaultTools": ["+codemode"],
-  "defaultThinkingLevel": "high",
   "compaction": {
     "enabled": true
   },
