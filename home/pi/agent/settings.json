@@ -20,7 +20,6 @@
         "-prompts/review-loop.md"
       ]
     },
-    "npm:pi-sandbox",
     "npm:pi-web-access",
     "npm:pi-open-tui"
   ],
