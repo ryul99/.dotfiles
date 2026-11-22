@@ -11,8 +11,8 @@
   "packages": [
     "npm:pi-subagents",
     "npm:pi-sandbox",
-    "npm:@marckrenn/pi-sub-bar",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "npm:pi-open-tui"
   ],
   "lastChangelogVersion": "1.6.0"
 }

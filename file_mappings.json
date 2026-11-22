@@ -41,6 +41,7 @@
     "~/.pi/agent/settings.json" : "home/pi/agent/settings.json",
     "~/.pi/agent/AGENTS.md" : "home/AGENTS.md",
     "~/.pi/agent/pi-permissions.jsonc" : "home/pi/agent/pi-permissions.jsonc",
+    "~/.pi/agent/open-tui.json" : "home/pi/agent/open-tui.json",
 
     "~/.config/systemd/user/ssh-agent.service" : "systemd/ssh-agent.service"
 }
