@@ -20,6 +20,11 @@
 
 - Use conventional commits (feat, fix, docs, refactor, ...), usually one line.
 
+# When you run shell commands
+
+- The user's shell is zsh. Write commands for zsh, not bash.
+- Quote arguments containing `?`, `*`, or `[]` (URLs, `uv add "pkg[extra]"`); zsh errors on unmatched globs.
+
 # When you debug
 
 - Verify with real data and environments before concluding from code.
