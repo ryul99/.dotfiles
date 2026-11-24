@@ -27,6 +27,5 @@
 
 # When you debug
 
-- Verify with real data and environments before concluding from code.
+- Verify with real data and environments with user approval before concluding from code.
 - Don't fabricate mock data to confirm a hypothesis; it reflects your assumptions, not reality.
-- When given access to a live system (ES, API, DB), query it directly.
