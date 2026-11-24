@@ -1,6 +1,8 @@
 {
   "$schema": "https://pi.dev/schemas/settings.schema.json",
-  "defaultTools": ["+codemode"],
+  "defaultTools": [
+    "+codemode"
+  ],
   "compaction": {
     "enabled": true
   },
@@ -23,5 +25,5 @@
     "npm:pi-web-access",
     "npm:pi-open-tui"
   ],
-  "lastChangelogVersion": "1.6.0"
+  "quietStartup": true
 }
