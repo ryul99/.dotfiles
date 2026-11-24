@@ -20,6 +20,13 @@
 
 - Use Conventional Commits (feat, fix, docs, refactor, ...). Keep messages to one line in most cases.
 
+# When you choose tools
+
+- Follow the project's existing tooling (lockfiles, scripts, CI config) first.
+- Otherwise, prefer these tools when they fit the task:
+  - `uv` (`uv run`, `uv add`, `uvx`) instead of pip, venv, or poetry
+  - `rg` and `fd` instead of grep and find
+
 # When you run shell commands
 
 - The user's shell is zsh. Write commands for zsh, not bash.
