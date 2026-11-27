@@ -43,6 +43,8 @@ config.keys = {
     },
 }
 
+config.enable_kitty_keyboard = true
+
 -- term
 if os.execute("infocmp wezterm > /dev/null 2>&1") then
     config.term = "wezterm"
