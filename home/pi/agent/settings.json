@@ -25,5 +25,6 @@
     "npm:pi-web-access",
     "npm:pi-open-tui"
   ],
-  "quietStartup": true
+  "quietStartup": true,
+  "hideThinkingBlock": true
 }
