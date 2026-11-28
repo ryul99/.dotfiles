@@ -39,8 +39,8 @@
     "lines": 1
   },
   "toolView": {
-    "mode": "native",
-    "extensionTools": false,
+    "mode": "compact",
+    "extensionTools": true,
     "exclude": []
   }
 }
