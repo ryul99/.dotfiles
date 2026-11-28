@@ -23,12 +23,10 @@ import subprocess
 from sys import stderr
 
 try:
-    from distutils.spawn import find_executable
+    from shutil import which
 except ImportError:
-    # In some environments, distutils might not be available.
-    import sys
-    sys.stderr.write("WARNING: distutils not available\n")
-    find_executable = lambda _: False   # type: ignore
+    sys.stderr.write("WARNING: shutil.which not available\n")
+    which = lambda _: None
 
 def _wrap_colors(ansicode):
     return (lambda msg: ansicode + str(msg) + '\033[0m')
@@ -73,7 +71,7 @@ def get_post_actions(args):
         bash "scripts/install-neovim-py.sh"
     ''']
 
-    if find_executable('nvim'):
+    if which('nvim'):
         post_actions += [{
              'update'  : '''nvim --headless "+Lazy! sync" +qa''',
              'none'    : "# (neovim update skipped)",
